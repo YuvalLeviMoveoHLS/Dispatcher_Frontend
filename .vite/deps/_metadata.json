@@ -1,0 +1,62 @@
+{
+  "hash": "efaea04d",
+  "browserHash": "eafae763",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "7857244e",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "ace287da",
+      "needsInterop": true
+    },
+    "@mui/material/MenuItem": {
+      "src": "../../node_modules/@mui/material/MenuItem/index.js",
+      "file": "@mui_material_MenuItem.js",
+      "fileHash": "98c39248",
+      "needsInterop": false
+    },
+    "@mui/material/FormControl": {
+      "src": "../../node_modules/@mui/material/FormControl/index.js",
+      "file": "@mui_material_FormControl.js",
+      "fileHash": "d4b53a53",
+      "needsInterop": false
+    },
+    "@mui/material/Select": {
+      "src": "../../node_modules/@mui/material/Select/index.js",
+      "file": "@mui_material_Select.js",
+      "fileHash": "834c3726",
+      "needsInterop": false
+    },
+    "styled-components": {
+      "src": "../../node_modules/styled-components/dist/styled-components.browser.esm.js",
+      "file": "styled-components.js",
+      "fileHash": "cf9a5015",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-BKPP3D3N": {
+      "file": "chunk-BKPP3D3N.js"
+    },
+    "chunk-MDIHFEFG": {
+      "file": "chunk-MDIHFEFG.js"
+    },
+    "chunk-BPJNWXAI": {
+      "file": "chunk-BPJNWXAI.js"
+    },
+    "chunk-ALPUVBS4": {
+      "file": "chunk-ALPUVBS4.js"
+    },
+    "chunk-JKGW3AQO": {
+      "file": "chunk-JKGW3AQO.js"
+    },
+    "chunk-L7APZED3": {
+      "file": "chunk-L7APZED3.js"
+    }
+  }
+}

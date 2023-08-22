@@ -15,11 +15,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const mockSelectOptions = [
-  { value: "option1", title: "Option 1" },
-  { value: "option2", title: "Option 2" },
-  { value: "option3", title: "Option 3" },
-  { value: "option4", title: "Option 4" },
-  { value: "option5", title: "Option 5" },
+  { value: "Israel", title: "Israel" },
+  { value: "Portugal", title: "Portugal" },
+  { value: "England", title: "England" },
+  { value: "Spain", title: "Spain" },
+  { value: "Denmark", title: "Denmark" },
 ];
 
 export const Category: Story = {
