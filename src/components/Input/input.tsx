@@ -13,11 +13,11 @@ const SearchInput: React.FC<SearchInput> = ({ placeholder = "Search" }) => {
       <StyledSearchIcon src={SearchIcon} />
       {/* <StyledSearchIcon /> */}
       <StyledInput placeholder={placeholder} />
-      <FilterDropDown
+      {/* <FilterDropDown
         selectOptions={selectOptionsAppHeader}
         placeholder="Top Headlines"
         isAppHeader={true}
-      ></FilterDropDown>
+      ></FilterDropDown> */}
     </InputWrapper>
   );
 };

@@ -10,7 +10,7 @@ import { article } from "./mockData/article";
 function App() {
   return (
     <div>
-      <SearchInput />
+      {/* <SearchInput /> */}
       {/* <ArticleCard article={article} /> */}
       {/* <ArticleCardtest /> */}
       <FilterDropDown
