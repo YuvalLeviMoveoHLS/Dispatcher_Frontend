@@ -9,12 +9,6 @@ const AppHeader: React.FC = () => {
     <AppHeaderWrapper>
       <StyledLogo src={LogoIcon} />
       <SearchInput showFilterDropDown={true} />
-      {/* <div style={{ "background-color": "black" }}>test</div> */}
-      {/* <FilterDropDown
-        selectOptions={selectOptionsAppHeader}
-        placeholder="Top Headlines"
-        isAppHeader={true}
-      ></FilterDropDown> */}
     </AppHeaderWrapper>
   );
 };

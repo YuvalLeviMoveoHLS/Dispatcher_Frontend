@@ -5,23 +5,29 @@ import {
   StyledSearchIcon,
 } from "./searchInput.style";
 import SearchIcon from "../../assets/svg/searchIcon.svg";
-import FilterDropDown from "../FilterDropDown/filterDropDown";
+import FilterDropDown from "../../components/FilterDropDown/filterDropDown";
 import { selectOptionsAppHeader } from "../../mockData/selectOptionsDropDownAppHeader";
 
-export interface SearchInput {
+export interface SearchInputProps {
   placeholder?: string;
+  showFilterDropDown?: boolean;
 }
-const SearchInput: React.FC<SearchInput> = ({ placeholder = "Search" }) => {
+const SearchInput: React.FC<SearchInputProps> = ({
+  placeholder = "Search",
+  showFilterDropDown = false,
+}) => {
   return (
     <InputWrapper>
       <StyledSearchIcon src={SearchIcon} />
       {/* <StyledSearchIcon /> */}
       <StyledInput placeholder={placeholder} />
-      {/* <FilterDropDown
-        selectOptions={selectOptionsAppHeader}
-        placeholder="Top Headlines"
-        isAppHeader={true}
-      ></FilterDropDown> */}
+      {showFilterDropDown && (
+        <FilterDropDown
+          selectOptions={selectOptionsAppHeader}
+          placeholder="Top Headlines"
+          isAppHeader={true}
+        ></FilterDropDown>
+      )}
     </InputWrapper>
   );
 };

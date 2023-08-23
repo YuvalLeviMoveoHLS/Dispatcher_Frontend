@@ -9,6 +9,8 @@ export const StyledContainer = styled.div`
 `;
 
 export const buttonSx = {
+  maxWidth: "236px",
+  width: "100%",
   fontFeatureSettings: "'clig' off, 'liga' off",
   fontSize: "14px",
   fontStyle: "normal",

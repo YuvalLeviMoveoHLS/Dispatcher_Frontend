@@ -1,9 +1,7 @@
 import "./App.css";
 import StyledButton from "./components/Button/styledButton";
 import FilterDropDown from "./components/FilterDropDown/filterDropDown";
-// import FilterTest from "./components/FilterDropDown/filltertest";
 import ArticleCard from "./components/Article/articleCard";
-import ArticleCardtest from "./components/Article/articleTest";
 import SearchInput from "./components/Input/searchInput";
 import { selectOptions } from "./mockData/selectOptionsDropDown";
 import { article } from "./mockData/article";
@@ -15,11 +13,9 @@ function App() {
     <AppContainer>
       <AppHeader />
       <SearchInput showFilterDropDown={true} />
-      {/* <ArticleCard article={article} /> */}
-      {/* <ArticleCardtest /> */}
-
-      {/* <StyledButton>Navigate to dispatch</StyledButton> */}
-      {/* <FilterTest>test</FilterTest> */}
+      <ArticleCard article={article} />
+      <FilterDropDown placeholder="Country" selectOptions={selectOptions} />
+      <StyledButton>Navigate to dispatch</StyledButton>
     </AppContainer>
   );
 }
