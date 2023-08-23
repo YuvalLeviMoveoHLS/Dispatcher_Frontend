@@ -26,9 +26,9 @@ type FilterDropDownProps = {
   placeholder?: string;
   children?: ReactNode;
   isAppHeader?: boolean;
-  filterDropDownStyle?: SxProps; // for StoryBook
-  formControlStyle?: SxProps; // for StoryBook
-  menuItemStyle?: SxProps; // for StoryBook
+  filterDropDownStyle?: SxProps;
+  formControlStyle?: SxProps;
+  menuItemStyle?: SxProps;
 };
 
 const FilterDropDown: FC<FilterDropDownProps> = ({
@@ -55,6 +55,13 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
     setSelectedFilterValue(event.target.value as string);
   };
 
+  const renderSelectedValue = (selected: string) => {
+    if (selected === "") {
+      return <span>{placeholder}</span>;
+    }
+    return selected;
+  };
+
   return (
     // <Box sx={{ minWidth: 120 }}>
     <FormControl sx={{ ...FormControlStyleSx, ...formControlStyle }}>
@@ -64,14 +71,8 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
         value={selectedFilterValue}
         onChange={handleChange}
         IconComponent={ArrowDownIcon}
-        inputProps={{ "aria-label": "Value" }}
         sx={{ ...DropDownStyleSx, ...filterDropDownStyle }}
-        renderValue={(selected) => {
-          if (selected === "") {
-            return <span>{placeholder}</span>;
-          }
-          return selected;
-        }}
+        renderValue={renderSelectedValue}
       >
         {/* <MenuItem sx={menuItemSx} disabled value="">
             <em>{children}</em>

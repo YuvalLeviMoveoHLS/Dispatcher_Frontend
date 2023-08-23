@@ -13,17 +13,13 @@ type StyledButtonProps = {
 
 const StyledButton: FC<StyledButtonProps> = ({ children, sx, onClick }) => {
   return (
-    <Stack spacing={2} direction="row">
-      <Button
-        sx={{ ...buttonSx, ...sx }}
-        endIcon={
-          <img src={arrowRight} onClick={() => console.log("Clicked")} />
-        }
-        onClick={onClick}
-      >
-        {children}
-      </Button>
-    </Stack>
+    <Button
+      sx={{ ...buttonSx, ...sx }}
+      endIcon={<img src={arrowRight} />}
+      onClick={onClick}
+    >
+      {children}
+    </Button>
   );
 };
 export default StyledButton;
