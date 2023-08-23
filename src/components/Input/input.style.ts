@@ -18,7 +18,7 @@ export const InputWrapper = styled.div`
   width: 100%;
   border-radius: 10px;
   align-items: center;
-  padding-right: 6px;
+  //padding-right: 6px;
   background-color: ${COLORS.white};
 `;
 export const StyledInput = styled.input`

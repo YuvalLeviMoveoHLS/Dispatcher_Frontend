@@ -7,19 +7,20 @@ import ArticleCardtest from "./components/Article/articleTest";
 import SearchInput from "./components/Input/input";
 import { selectOptions } from "./mockData/selectOptionsDropDown";
 import { article } from "./mockData/article";
+import { CssBaseline } from "@mui/material";
+import AppHeader from "./components/AppHeader/appHeader";
+import { AppContainer } from "./styles/globalStyles";
 function App() {
   return (
-    <div>
-      {/* <SearchInput /> */}
+    <AppContainer>
+      <AppHeader />
+      {/* <SearchInput showFilterDropDown={true} /> */}
       {/* <ArticleCard article={article} /> */}
       {/* <ArticleCardtest /> */}
-      <FilterDropDown
-        selectOptions={selectOptions}
-        placeholder="Country"
-      ></FilterDropDown>
+
       {/* <StyledButton>Navigate to dispatch</StyledButton> */}
       {/* <FilterTest>test</FilterTest> */}
-    </div>
+    </AppContainer>
   );
 }
 
