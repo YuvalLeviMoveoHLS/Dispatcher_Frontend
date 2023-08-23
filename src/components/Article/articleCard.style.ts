@@ -28,32 +28,11 @@ export const CardSx = {
   borderRadius: "0px 20px 20px 0px",
   border: "none",
   boxShadow: "none",
-  //overflow: "auto", scroll option
-  //minWidth: 275, affect the responsive
-  //paddingRight: "16px",
-  //paddingLeft: "16px",
-  //paddingBottom: "16px",
-  //marginBottom: "0px",
-  //display: "flex",
-  //padding: "8px 0px",
-  //flexDirection: "column",
-  //   //justifyContent: "space-between",
-  //   alignItems: "flex-start",
-  //   flex: "1 0 0",
-  //   alignSelf: "stretch",
-  // display: "flex",
-  // flexDirection: "column",
-  // alignItems: "flex-start",
-  // justifyContent: "space-between",
-  // alignSelf: "stretch",
-  //flex: "1 0 0",
-  //padding: "0px, 16px, 0px, 16px",
 };
 
 export const DateAndSourceSharedSx = {
   fontSize: "14px",
   color: COLORS.articleDateAndSource,
-  //maxWidth: "711px", add to title
   width: "100%",
   maxHeight: "22px",
   height: "100%",
@@ -75,8 +54,6 @@ export const CardContentSx = {
   "&:last-child": {
     paddingBottom: "2px",
   },
-  //   flexWrap: "wrap",
-  //   alignContent: "flex-start",
 };
 
 export const ArticleTitleSx = {
@@ -89,15 +66,12 @@ export const ArticleTitleSx = {
   color: COLORS.articleTitle,
   lineHeight: "normal",
   mb: "10px",
-  // paddingBottom: "8px",
-  //margginBottom: "8px",
 };
 
 export const ArticleContentSx = {
   maxWidth: "711px",
   width: "100%",
   maxHeight: "32px",
-  //width: "100%",
   height: "100%",
   fontSize: "14px",
   color: COLORS.purple,
@@ -113,11 +87,4 @@ export const ArticleContentSx = {
 
 export const CardActionsSx = {
   alignSelf: "flex-end",
-  //display: "flex",
-  //justifyContent: "flex-end",
-  //alignItems: "flex-end",
-  // "& .MuiCardActions-spacing": {
-  //   disableSpacing: "true",
-  // },
-  //width: "200px",
 };

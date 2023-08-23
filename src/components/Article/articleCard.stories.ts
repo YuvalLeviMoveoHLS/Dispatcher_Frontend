@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import ArticleCard from "./article";
+import ArticleCard from "./articleCard";
 import { Article } from "../../models/article-interface";
 
 const meta = {

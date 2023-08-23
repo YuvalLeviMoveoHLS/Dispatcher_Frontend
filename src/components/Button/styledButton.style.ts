@@ -20,10 +20,10 @@ export const buttonSx = {
   color: "white",
   borderRadius: "20px",
   gap: "10px",
-  paddingLeft: "20px", // Add padding to the left of the text
+  paddingLeft: "20px", //
   paddingRight: "20px",
   "& .MuiButton-endIcon": {
-    marginLeft: "2px", // You can adjust this value to bring the icon closer or further from the text
+    marginLeft: "2px",
   },
   "&:hover": {
     backgroundColor: COLORS.primary,
@@ -31,25 +31,6 @@ export const buttonSx = {
   },
 };
 
-// export const StyledButton = styled(Button)` // styled.button
-//   background-color: ${COLORS.primary};
-//   color: white;
-
-//   &:hover {
-//     background-color: ${COLORS.primary};
-//   }
-// `;
-
 export const styledSvg = styled.img`
   z-index: 2;
 `;
-
-// export const StyledButton = styled.button`
-//   width: 500px;
-// `;
-// export const StyledButton = styled(Button)`
-//   width: "330px";
-// `;
-// const buttonSx = {
-//   width: "330px",
-// };

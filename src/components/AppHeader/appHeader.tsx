@@ -1,7 +1,7 @@
 import React from "react";
 import { AppHeaderWrapper, StyledLogo } from "./appHeader.style";
 import LogoIcon from "../../assets/svg/logoIcon.svg";
-import SearchInput from "../Input/input";
+import SearchInput from "../Input/searchInput";
 import FilterDropDown from "../FilterDropDown/filterDropDown";
 
 const AppHeader: React.FC = () => {

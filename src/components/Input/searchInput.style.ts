@@ -1,14 +1,5 @@
 import styled from "styled-components";
 import { COLORS } from "../../utils/colors";
-// export const InputStyled = styled.input`
-//   flex: 2;
-//   border: none;
-//   font-size: 0.875rem !important;
-//   color: ${COLORS.purple} !important;
-//   height: 100%;
-//   outline: none;
-//   border: none;
-// `;
 
 export const InputWrapper = styled.div`
   display: flex;
@@ -41,10 +32,3 @@ export const StyledSearchIcon = styled.img`
   padding-left: 15px;
   //border-right: 1px solid ${COLORS.secondary};
 `;
-
-// export const StyledSearchIcon = styled(SearchIcon)`
-//   //position: absolute;
-//   //left: 10px
-//   margin-right: 14px;
-//   margin-left: 15px;
-// `;
