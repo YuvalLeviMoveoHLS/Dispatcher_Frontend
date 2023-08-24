@@ -8,14 +8,17 @@ import { article } from "./mockData/article";
 import { CssBaseline } from "@mui/material";
 import AppHeader from "./components/AppHeader/appHeader";
 import { AppContainer } from "./styles/globalStyles";
+import RecentSearchDropdown from "./components/RecentSearchDropdown/RecentSearchDropdown";
 function App() {
   return (
     <AppContainer>
       <AppHeader />
-      <SearchInput showFilterDropDown={true} />
+
+      {/* <RecentSearchDropdown /> */}
+      {/* <SearchInput showFilterDropDown={true} />
       <ArticleCard article={article} />
       <FilterDropDown placeholder="Country" selectOptions={selectOptions} />
-      <StyledButton>Navigate to dispatch</StyledButton>
+      <StyledButton>Navigate to dispatch</StyledButton> */}
     </AppContainer>
   );
 }

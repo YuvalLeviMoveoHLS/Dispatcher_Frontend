@@ -15,13 +15,3 @@ export const article = {
   content:
     "Bitcoin plunged about 10% after it was revealed that SpaceX sold the cryptocurrency. The Wall Street Journal reported that SpaceX wrote down the value of bitcoin it owns by $373 million",
 };
-
-// {
-//     background: #ffffff);
-//     border-radius: 10px;
-//     width: 663px;
-//     height: 132px;
-//     position: absolute;
-//     box-sizing: border-box;
-//     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
-//   }

@@ -25,3 +25,14 @@ export const StyledLogo = styled.img`
 `;
 
 export const LogoWrapper = styled.div``;
+
+export const StyledInputWrapper = styled.div`
+  display: flex;
+  //align-items: center;
+  position: relative;
+  max-width: 663px;
+  width: 100%;
+  //height: 132px;
+  //max-height: 100%;
+  flex-direction: column;
+`;
