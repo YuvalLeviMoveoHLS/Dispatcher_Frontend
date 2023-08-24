@@ -1,35 +1,50 @@
-import React from "react";
+import React, { forwardRef, useState } from "react";
 import {
   StyledClearSpan,
   StyledListItem,
+  StyledListSpan,
   StyledRecentSearchDropdown,
+  StyledRemoveIcon,
   StyledTitle,
   StyledTitleAndClearContainer,
   StyledUl,
 } from "./RecentSearchDropdown.style";
+import RemoveIcon from "../../assets/svg/removeIcon.svg";
+import { recentSearchesMock } from "../../mockData/recentSearches";
 
-interface RecentSearchDropdownProps {}
-const recentSearches = ["crypto", "soccer", "basketball"];
-const RecentSearchDropdown: React.FC = () => {
+interface RecentSearchDropdownProps {
+  searches?: string[];
+}
+
+const RecentSearchDropdown: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  RecentSearchDropdownProps
+> = (props, ref) => {
+  const [recentSearches, setRecentSearches] = useState<string[]>(
+    props.searches || recentSearchesMock
+  );
+  const lastFourSearches = recentSearches.slice(-4).reverse();
+
   return (
     <>
-      {/* make recent searches and clear button */}
-      <StyledRecentSearchDropdown>
+      <StyledRecentSearchDropdown ref={ref}>
         <StyledTitleAndClearContainer>
           <StyledTitle>RECENT SEARCHES</StyledTitle>
           <StyledClearSpan>CLEAR</StyledClearSpan>
         </StyledTitleAndClearContainer>
-
         <StyledUl>
-          <StyledListItem>hh</StyledListItem>
-          <StyledListItem>hh</StyledListItem>
+          {lastFourSearches.map((search, index) => (
+            <StyledListItem key={index}>
+              {/* <StyledListSpan> */}
+              {search}
+              {/* </StyledListSpan> */}
+              <StyledRemoveIcon src={RemoveIcon} />
+            </StyledListItem>
+          ))}
         </StyledUl>
-        {/* <div>1</div>
-        <div>2</div>
-        <div>3</div> */}
       </StyledRecentSearchDropdown>
     </>
   );
 };
 
-export default RecentSearchDropdown;
+export default forwardRef(RecentSearchDropdown);

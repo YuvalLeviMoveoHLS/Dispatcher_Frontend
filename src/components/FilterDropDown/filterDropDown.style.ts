@@ -1,4 +1,4 @@
-import { COLORS } from "../../utils/colors";
+import { COLORS } from "../../utils/constants/colors";
 
 export const formControlSxDefault = {
   maxWidth: "175px",

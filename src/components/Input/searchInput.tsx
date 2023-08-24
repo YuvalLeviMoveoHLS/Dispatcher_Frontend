@@ -11,16 +11,23 @@ import { selectOptionsAppHeader } from "../../mockData/selectOptionsDropDownAppH
 export interface SearchInputProps {
   placeholder?: string;
   showFilterDropDown?: boolean;
+  onClick?: () => void;
 }
 const SearchInput: React.FC<SearchInputProps> = ({
   placeholder = "Search",
   showFilterDropDown = false,
+  onClick,
 }) => {
   return (
     <InputWrapper>
       <StyledSearchIcon src={SearchIcon} />
       {/* <StyledSearchIcon /> */}
-      <StyledInput placeholder={placeholder} />
+      <StyledInput
+        type="text"
+        placeholder={placeholder}
+        onClick={onClick}
+        onFocus={(e) => (e.target.placeholder = "")}
+      />
       {showFilterDropDown && (
         <FilterDropDown
           selectOptions={selectOptionsAppHeader}

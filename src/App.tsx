@@ -9,16 +9,17 @@ import { CssBaseline } from "@mui/material";
 import AppHeader from "./components/AppHeader/appHeader";
 import { AppContainer } from "./styles/globalStyles";
 import RecentSearchDropdown from "./components/RecentSearchDropdown/RecentSearchDropdown";
+import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
 function App() {
   return (
     <AppContainer>
       <AppHeader />
 
       {/* <RecentSearchDropdown /> */}
-      {/* <SearchInput showFilterDropDown={true} />
+      <SearchInput showFilterDropDown={true} />
       <ArticleCard article={article} />
       <FilterDropDown placeholder="Country" selectOptions={selectOptions} />
-      <StyledButton>Navigate to dispatch</StyledButton> */}
+      <StyledButton>Navigate to dispatch</StyledButton>
     </AppContainer>
   );
 }
