@@ -35,9 +35,7 @@ const RecentSearchDropdown: React.ForwardRefRenderFunction<
         <StyledUl>
           {lastFourSearches.map((search, index) => (
             <StyledListItem key={index}>
-              {/* <StyledListSpan> */}
-              {search}
-              {/* </StyledListSpan> */}
+              <StyledListSpan>{search}</StyledListSpan>
               <StyledRemoveIcon src={RemoveIcon} />
             </StyledListItem>
           ))}
