@@ -48,7 +48,7 @@ export const filterDropDownSharedSx = {
     maxHeight: "calc(28px * 4 + 24px * 4)",
     overflowY: "auto",
   },
-
+  //fontFamily: " Roboto-Regular, sans-serif",
   color: COLORS.purple,
   fontFeatureSettings: "clig",
   fontStyle: "normal",
@@ -76,6 +76,7 @@ export const MenuPropsDefault = {
       width: "175px",
       marginTop: "8px",
       left: "8px",
+      color: COLORS.purple,
     },
   },
 };
@@ -86,6 +87,7 @@ export const MenuPropsAppHeader = {
       maxHeight: ITEM_HEIGHT * 4 + ITEM_PADDING_TOP * 2,
       width: "114px",
       marginTop: "8px",
+      color: COLORS.purple,
     },
   },
 };
