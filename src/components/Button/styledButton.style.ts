@@ -11,6 +11,7 @@ export const StyledContainer = styled.div`
 export const buttonSx = {
   fontFeatureSettings: "'clig' off, 'liga' off",
   fontSize: "14px",
+  top: "8px", // for article card component
   fontStyle: "normal",
   fontWeight: "500",
   lineHeight: "26px",

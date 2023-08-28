@@ -66,6 +66,11 @@ export const ArticleTitleSx = {
   color: COLORS.articleTitle,
   lineHeight: "normal",
   mb: "10px",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  display: "-webkit-box",
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: "vertical",
 };
 
 export const ArticleContentSx = {
@@ -87,4 +92,5 @@ export const ArticleContentSx = {
 
 export const CardActionsSx = {
   alignSelf: "flex-end",
+  padding: "0px",
 };

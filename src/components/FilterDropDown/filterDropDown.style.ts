@@ -62,6 +62,7 @@ export const filterDropDownSxDefault = {
 };
 export const filterDropDownSxAppHeader = {
   borderLeft: `0.5px solid ${COLORS.secondary}`,
+  borderRadius: "0 10px 10px 0",
   "& .MuiSelect-select.MuiSelect-outlined.MuiInputBase-input.MuiOutlinedInput-input ":
     {
       paddingRight: "16px",

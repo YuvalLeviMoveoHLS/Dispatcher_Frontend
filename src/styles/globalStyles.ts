@@ -17,17 +17,15 @@ export const FilterContainer = styled.div`
   border-bottom: 1px solid ${COLORS.secondary};
 `;
 export const MainContainer = styled.div`
-  // width: 100%;
-  // padding: 0px 240px;
-  // max-width: 1440px;
-
   //width: calc(100% - 480px); /* 240px padding on each side */
-  padding: 0 230px;
-  max-width: 1440px;
+  padding: 0 8%;
+  //max-width: 1440px;
+  width: 100%;
 `;
 
 export const MainContent = styled.div`
-  //display: flex;
+  display: flex;
+  gap: 30px;
 `;
 
 export const ArticleContainer = styled.ul`
@@ -37,16 +35,27 @@ export const ArticleContainer = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  gap: 24px;
+`;
+
+export const TempDashboard = styled.div`
+  background-color: ${COLORS.white};
+  border: 1px solid;
+  border-color: ${COLORS.secondary};
+  border-radius: 20px;
+  padding: 25px 15px 25px 25px;
+  //position: relative;
+  max-height: 265px;
+  height: 100%;
 `;
 
 export const DashboardContainer = styled.div`
-  width: 300px; /* Or whatever width you want */
-  position: sticky;
-  top: 0;
   display: flex;
   flex-direction: column;
+  gap: 30px;
+  max-width: 280px;
+  width: 100%;
 `;
-
 export const TitleHeadLines = styled.h2`
   padding: 20px 0px;
   margin: 0;

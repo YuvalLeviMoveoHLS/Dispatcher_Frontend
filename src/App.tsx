@@ -12,6 +12,7 @@ import {
   AppContainer,
   ArticleContainer,
   DashboardContainer,
+  TempDashboard,
   FilterContainer,
   MainContainer,
   MainContent,
@@ -45,6 +46,10 @@ function App() {
             <ArticleCard article={article} />
             <ArticleCard article={article} />
           </ArticleContainer>
+          <DashboardContainer>
+            <TempDashboard>test12344567</TempDashboard>
+            <TempDashboard>test</TempDashboard>
+          </DashboardContainer>
         </MainContent>
         {/* <RecentSearchDropdown /> */}
         {/* <SearchInput showFilterDropDown={true} /> */}
