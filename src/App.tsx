@@ -7,7 +7,7 @@ import { selectOptions } from "./mockData/selectOptionsDropDown";
 import { article } from "./mockData/article";
 import { CssBaseline } from "@mui/material";
 import AppHeader from "./components/AppHeader/appHeader";
-import { AppContainer } from "./styles/globalStyles";
+import { AppContainer } from "./App.styles";
 import RecentSearchDropdown from "./components/RecentSearchDropdown/RecentSearchDropdown";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <AppHeader />
 
       {/* <RecentSearchDropdown /> */}
-      <SearchInput showFilterDropDown={true} />
+      <SearchInput />
       <ArticleCard article={article} />
       <FilterDropDown placeholder="Country" selectOptions={selectOptions} />
       <StyledButton>Navigate to dispatch</StyledButton>

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import RecentSearchDropdown from "./RecentSearchDropdown";
+import { recentSearchesMock } from "../../mockData/recentSearches";
 
 const meta = {
   title: "COMPONENTS/RecentSearchDropdown",
@@ -12,6 +13,6 @@ type Story = StoryObj<typeof meta>;
 
 export const RecentSearchStory: Story = {
   args: {
-    searches: ["crypto", "soccer", "basketball", "NBA"],
+    searches: recentSearchesMock,
   },
 };

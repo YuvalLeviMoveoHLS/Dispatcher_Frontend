@@ -11,6 +11,7 @@ import {
 } from "./RecentSearchDropdown.style";
 import RemoveIcon from "../../assets/svg/removeIcon.svg";
 import { recentSearchesMock } from "../../mockData/recentSearches";
+import { MAX_AMOUNT_RECENT_SEARCHES } from "../../utils/constants/maxValues";
 
 interface RecentSearchDropdownProps {
   searches?: string[];
@@ -20,10 +21,10 @@ const RecentSearchDropdown: React.ForwardRefRenderFunction<
   HTMLDivElement,
   RecentSearchDropdownProps
 > = (props, ref) => {
-  const [recentSearches, setRecentSearches] = useState<string[]>(
-    props.searches || recentSearchesMock
-  );
-  const lastFourSearches = recentSearches.slice(-4).reverse();
+  const recentSearches = props.searches ?? recentSearchesMock;
+  const lastFourSearches = recentSearches
+    .slice(-MAX_AMOUNT_RECENT_SEARCHES)
+    .reverse();
 
   return (
     <>
