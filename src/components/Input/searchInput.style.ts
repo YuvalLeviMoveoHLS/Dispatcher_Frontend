@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../utils/colors";
+import { COLORS } from "../../utils/constants/colors";
 
 export const InputWrapper = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ export const InputWrapper = styled.div`
   width: 100%;
   border-radius: 10px;
   align-items: center;
-  padding-right: 6px;
+  //padding-right: 6px;
   background-color: ${COLORS.white};
 `;
 export const StyledInput = styled.input`
@@ -21,7 +21,6 @@ export const StyledInput = styled.input`
   //left: 10px; // should be 0!
   //position: fixed;
   top: 0;
-
   outline: none;
   border: none;
   padding: 0px;

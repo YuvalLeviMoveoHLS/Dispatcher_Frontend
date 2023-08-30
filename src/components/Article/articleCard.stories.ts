@@ -28,7 +28,7 @@ const mockArticle: Article = {
     "Bitcoin plunged about 10% after it was revealed that SpaceX sold the cryptocurrency. The Wall Street Journal reported that SpaceX wrote down the value of bitcoin it owns by $373 million",
 };
 
-export const Category: Story = {
+export const ArticleCardStory: Story = {
   args: {
     article: {
       source: mockArticle.source,

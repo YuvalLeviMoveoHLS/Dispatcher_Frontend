@@ -1,0 +1,17 @@
+body {
+  /* background-color: #a0a3bd; */
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  /* height: 100vh; */
+}
+@font-face {
+  font-family: roboto-regular;
+  src: url(./assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+/* :root {
+  background-color: #a0a3bd;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin: 0;
+} */

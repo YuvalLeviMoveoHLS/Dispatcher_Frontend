@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../utils/colors";
+import { COLORS } from "../../utils/constants/colors";
 
 export const StyledContainer = styled.div`
   width: 300px;
@@ -9,6 +9,8 @@ export const StyledContainer = styled.div`
 `;
 
 export const buttonSx = {
+  maxWidth: "236px",
+  width: "100%",
   fontFeatureSettings: "'clig' off, 'liga' off",
   fontSize: "14px",
   fontStyle: "normal",

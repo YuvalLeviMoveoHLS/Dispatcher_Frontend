@@ -15,4 +15,5 @@ export const COLORS = {
   hoverMenuItem: "rgba(223, 224, 235, 0.41)",
   articleDateAndSource: "#5A5A8980",
   articleTitle: "#14142B",
+  hover: "#DFE0EB69",
 };

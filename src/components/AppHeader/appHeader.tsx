@@ -1,20 +1,22 @@
-import React from "react";
-import { AppHeaderWrapper, StyledLogo } from "./appHeader.style";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  AppHeaderWrapper,
+  StyledInputWrapper,
+  StyledLogo,
+} from "./appHeader.style";
 import LogoIcon from "../../assets/svg/logoIcon.svg";
 import SearchInput from "../Input/searchInput";
 import FilterDropDown from "../FilterDropDown/filterDropDown";
+import RecentSearchDropdown from "../RecentSearchDropdown/RecentSearchDropdown";
+import DropdownWithSearch from "../DropdownWithSearch/DropdownWithSearch";
 
 const AppHeader: React.FC = () => {
   return (
     <AppHeaderWrapper>
       <StyledLogo src={LogoIcon} />
-      <SearchInput showFilterDropDown={true} />
-      {/* <div style={{ "background-color": "black" }}>test</div> */}
-      {/* <FilterDropDown
-        selectOptions={selectOptionsAppHeader}
-        placeholder="Top Headlines"
-        isAppHeader={true}
-      ></FilterDropDown> */}
+      <StyledInputWrapper>
+        <DropdownWithSearch />
+      </StyledInputWrapper>
     </AppHeaderWrapper>
   );
 };
