@@ -22,7 +22,7 @@ const mockSelectOptions = [
   { value: "Denmark", title: "Denmark" },
 ];
 
-export const Category: Story = {
+export const FilterDropDownStory: Story = {
   args: {
     selectOptions: mockSelectOptions,
     defaultValue: "option1",

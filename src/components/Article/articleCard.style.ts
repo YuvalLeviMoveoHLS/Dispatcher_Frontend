@@ -1,5 +1,5 @@
 import styledCmp from "styled-components";
-import { COLORS } from "../../utils/colors";
+import { COLORS } from "../../utils/constants/colors";
 
 export const ArticleWrapper = styledCmp.div`
 border: 1px solid var(--grayscale-line, #D9DBE9);
@@ -41,6 +41,8 @@ export const DateAndSourceSharedSx = {
   lineHeight: "22px",
   letterSpacing: "0.25px",
   mb: "10px",
+  opacity: "0.5",
+  fontFamily: " Roboto-Regular, sans-serif",
 };
 
 export const CardContentSx = {
@@ -88,6 +90,7 @@ export const ArticleContentSx = {
   display: "-webkit-box",
   WebkitLineClamp: 2,
   WebkitBoxOrient: "vertical",
+  fontFamily: " Roboto-Regular, sans-serif",
 };
 
 export const CardActionsSx = {

@@ -1,7 +1,6 @@
 import "./App.css";
 import StyledButton from "./components/Button/styledButton";
 import FilterDropDown from "./components/FilterDropDown/filterDropDown";
-// import FilterTest from "./components/FilterDropDown/filltertest";
 import ArticleCard from "./components/Article/articleCard";
 import SearchInput from "./components/Input/searchInput";
 import { selectOptions } from "./mockData/selectOptionsDropDown";

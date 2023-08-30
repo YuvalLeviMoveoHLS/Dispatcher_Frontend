@@ -8,6 +8,7 @@ import LogoIcon from "../../assets/svg/logoIcon.svg";
 import SearchInput from "../Input/searchInput";
 import FilterDropDown from "../FilterDropDown/filterDropDown";
 import RecentSearchDropdown from "../RecentSearchDropdown/RecentSearchDropdown";
+import DropdownWithSearch from "../DropdownWithSearch/DropdownWithSearch";
 
 const AppHeader: React.FC = () => {
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
@@ -34,10 +35,8 @@ const AppHeader: React.FC = () => {
   return (
     <AppHeaderWrapper>
       <StyledLogo src={LogoIcon} />
-
       <StyledInputWrapper>
-        <SearchInput showFilterDropDown={true} onClick={toggleDropdown} />
-        {isDropdownVisible && <RecentSearchDropdown ref={dropdownRef} />}
+        <DropdownWithSearch />
       </StyledInputWrapper>
     </AppHeaderWrapper>
   );

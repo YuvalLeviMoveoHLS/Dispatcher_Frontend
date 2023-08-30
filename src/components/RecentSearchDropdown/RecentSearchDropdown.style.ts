@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../utils/colors";
+import { COLORS } from "../../utils/constants/colors";
 
 export const StyledRecentSearchDropdown = styled.div`
   border-radius: 10px;
