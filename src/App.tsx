@@ -1,12 +1,12 @@
 import "./App.css";
-import StyledButton from "./components/Button/styledButton";
-import FilterDropDown from "./components/FilterDropDown/filterDropDown";
-import ArticleCard from "./components/Article/articleCard";
-import SearchInput from "./components/Input/searchInput";
-import { selectOptions } from "./mockData/selectOptionsDropDown";
-import { article } from "./mockData/article";
+import StyledButton from "./components/Button/StyledButton";
+import FilterDropDown from "./components/FilterDropDown/FilterDropDown";
+import ArticleCard from "./components/Article/ArticleCard";
+import SearchInput from "./components/Input/SearchInput";
+import { selectOptions } from "./mockData/SelectOptionsDropDown";
+import { article } from "./mockData/Article";
 import { CssBaseline } from "@mui/material";
-import AppHeader from "./components/AppHeader/appHeader";
+import AppHeader from "./components/AppHeader/AppHeader";
 import {
   AppContainer,
   ArticleContainer,
@@ -17,7 +17,7 @@ import {
   MainContent,
   TitleHeadLines,
 } from "./App.styles";
-import RecentSearchDropdown from "./components/RecentSearchDropdown/RecentSearchDropdown";
+import DropdownBody from "./components/DropdownBody/DropdownBody";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
 import { useState } from "react";
 function App() {
@@ -50,7 +50,7 @@ function App() {
             <TempDashboard>test</TempDashboard>
           </DashboardContainer>
         </MainContent>
-        {/* <RecentSearchDropdown /> */}
+        {/* <DropdownBody /> */}
         {/* <SearchInput showFilterDropDown={true} /> */}
         {/* <ArticleCard article={article} />
         <FilterDropDown placeholder="Country" selectOptions={selectOptions} />

@@ -14,7 +14,7 @@ import {
   menuItemSx,
   MenuPropsDefault,
   MenuPropsAppHeader,
-} from "./filterDropDown.style";
+} from "./FilterDropDown.style";
 
 export interface SelectOption {
   value: string;

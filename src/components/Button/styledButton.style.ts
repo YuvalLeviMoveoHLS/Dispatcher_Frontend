@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../utils/constants/colors";
+import { COLORS } from "../../utils/constants/Colors";
 
 export const StyledContainer = styled.div`
   width: 300px;

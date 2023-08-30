@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import SearchInput from "../Input/searchInput";
-import RecentSearchDropdown from "../RecentSearchDropdown/RecentSearchDropdown";
-import FilterDropDown from "../FilterDropDown/filterDropDown";
-import { selectOptionsAppHeader } from "../../mockData/selectOptionsDropDownAppHeader";
-import { InputWrapper } from "../Input/searchInput.style";
+import SearchInput from "../Input/SearchInput";
+import DropdownBody from "../DropdownBody/DropdownBody";
+import FilterDropDown from "../FilterDropDown/FilterDropDown";
+import { selectOptionsAppHeader } from "../../mockData/SelectOptionsDropDownAppHeader";
+import { InputWrapper } from "../Input/SearchInput.style";
 
 const DropdownWithSearch: React.FC = () => {
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
@@ -30,7 +30,7 @@ const DropdownWithSearch: React.FC = () => {
           isAppHeader={true}
         ></FilterDropDown>
       </InputWrapper>
-      {isDropdownVisible && <RecentSearchDropdown ref={dropdownRef} />}
+      {isDropdownVisible && <DropdownBody ref={dropdownRef} />}
     </>
   );
 };

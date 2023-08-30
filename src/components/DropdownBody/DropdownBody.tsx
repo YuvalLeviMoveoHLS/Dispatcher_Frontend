@@ -3,23 +3,23 @@ import {
   StyledClearSpan,
   StyledListItem,
   StyledListSpan,
-  StyledRecentSearchDropdown,
+  StyledDropdownBody,
   StyledRemoveIcon,
   StyledTitle,
   StyledTitleAndClearContainer,
   StyledUl,
-} from "./RecentSearchDropdown.style";
+} from "./DropdownBody.style";
 import RemoveIcon from "../../assets/svg/removeIcon.svg";
-import { recentSearchesMock } from "../../mockData/recentSearches";
-import { MAX_AMOUNT_RECENT_SEARCHES } from "../../utils/constants/maxValues";
+import { recentSearchesMock } from "../../mockData/RecentSearches";
+import { MAX_AMOUNT_RECENT_SEARCHES } from "../../utils/constants/MaxValues";
 
-interface RecentSearchDropdownProps {
+interface DropdownBodyProps {
   searches?: string[];
 }
 
-const RecentSearchDropdown: React.ForwardRefRenderFunction<
+const DropdownBody: React.ForwardRefRenderFunction<
   HTMLDivElement,
-  RecentSearchDropdownProps
+  DropdownBodyProps
 > = (props, ref) => {
   const recentSearches = props.searches ?? recentSearchesMock;
   const lastFourSearches = recentSearches
@@ -28,7 +28,7 @@ const RecentSearchDropdown: React.ForwardRefRenderFunction<
 
   return (
     <>
-      <StyledRecentSearchDropdown ref={ref}>
+      <StyledDropdownBody ref={ref}>
         <StyledTitleAndClearContainer>
           <StyledTitle>RECENT SEARCHES</StyledTitle>
           <StyledClearSpan>CLEAR</StyledClearSpan>
@@ -41,9 +41,9 @@ const RecentSearchDropdown: React.ForwardRefRenderFunction<
             </StyledListItem>
           ))}
         </StyledUl>
-      </StyledRecentSearchDropdown>
+      </StyledDropdownBody>
     </>
   );
 };
 
-export default forwardRef(RecentSearchDropdown);
+export default forwardRef(DropdownBody);

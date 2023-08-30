@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { COLORS } from "../../utils/constants/colors";
+import { COLORS } from "../../utils/constants/Colors";
 
-export const StyledRecentSearchDropdown = styled.div`
+export const StyledDropdownBody = styled.div`
   border-radius: 10px;
   max-width: 663px;
   width: 100%;

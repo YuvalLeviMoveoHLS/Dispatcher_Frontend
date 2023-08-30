@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
-import FilterDropDown from "./filterDropDown";
+import FilterDropDown from "./FilterDropDown";
 import {
   filterDropDownSharedSx,
   formControlSxDefault,
   menuItemSx,
-} from "./filterDropDown.style";
+} from "./FilterDropDown.style";
 
 const meta = {
   title: "Components/Dropdown",

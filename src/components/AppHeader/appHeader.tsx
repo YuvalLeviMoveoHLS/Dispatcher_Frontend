@@ -3,11 +3,11 @@ import {
   AppHeaderWrapper,
   StyledInputWrapper,
   StyledLogo,
-} from "./appHeader.style";
+} from "./AppHeader.style";
 import LogoIcon from "../../assets/svg/logoIcon.svg";
-import SearchInput from "../Input/searchInput";
-import FilterDropDown from "../FilterDropDown/filterDropDown";
-import RecentSearchDropdown from "../RecentSearchDropdown/RecentSearchDropdown";
+import SearchInput from "../Input/SearchInput";
+import FilterDropDown from "../FilterDropDown/FilterDropDown";
+import DropdownBody from "../DropdownBody/DropdownBody";
 import DropdownWithSearch from "../DropdownWithSearch/DropdownWithSearch";
 
 const AppHeader: React.FC = () => {
