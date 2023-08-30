@@ -5,7 +5,7 @@ export const StyledContainer = styled.div`
   width: 300px;
   height: 300px;
   background-color: red;
-  z-index- 1;
+  z-index: 1;
 `;
 
 export const buttonSx = {

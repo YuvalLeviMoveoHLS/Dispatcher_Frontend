@@ -16,7 +16,7 @@ export const AppHeaderWrapper = styled.header`
   background-color: ${COLORS.darkPurple};
   //flex: 0 0 auto;
   //gap: 143px;
-  gap: 9%;
+  gap: 3.7%;
 `;
 export const StyledLogo = styled.img`
   max-width: 66px;

@@ -16,7 +16,7 @@ import {
   MainContainer,
   MainContent,
   TitleHeadLines,
-} from "./styles/globalStyles";
+} from "./App.styles";
 import RecentSearchDropdown from "./components/RecentSearchDropdown/RecentSearchDropdown";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
 import { useState } from "react";
