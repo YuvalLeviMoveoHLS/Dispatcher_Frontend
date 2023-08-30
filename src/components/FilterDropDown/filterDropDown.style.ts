@@ -48,7 +48,6 @@ export const filterDropDownSharedSx = {
     maxHeight: "calc(28px * 4 + 24px * 4)",
     overflowY: "auto",
   },
-  //fontFamily: " Roboto-Regular, sans-serif",
   color: COLORS.purple,
   fontFeatureSettings: "clig",
   fontStyle: "normal",
@@ -61,8 +60,6 @@ export const filterDropDownSxDefault = {
   borderRadius: "10px",
 };
 export const filterDropDownSxAppHeader = {
-  //borderRadius: "0px 10px 10px 0px",
-
   borderLeft: `0.5px solid ${COLORS.secondary}`,
   borderRadius: "0 10px 10px 0",
   "& .MuiSelect-select.MuiSelect-outlined.MuiInputBase-input.MuiOutlinedInput-input ":

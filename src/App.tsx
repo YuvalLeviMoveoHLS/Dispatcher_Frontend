@@ -4,7 +4,7 @@ import FilterDropDown from "./components/FilterDropDown/FilterDropDown";
 import ArticleCard from "./components/Article/ArticleCard";
 import SearchInput from "./components/Input/SearchInput";
 import { selectOptions } from "./mockData/SelectOptionsDropDown";
-import { article } from "./mockData/Article";
+import { articles } from "./mockData/Article";
 import { CssBaseline } from "@mui/material";
 import AppHeader from "./components/AppHeader/AppHeader";
 import {
@@ -39,22 +39,15 @@ function App() {
         )}
         <MainContent>
           <ArticleContainer>
-            <ArticleCard article={article} />
-            <ArticleCard article={article} />
-            <ArticleCard article={article} />
-            <ArticleCard article={article} />
-            <ArticleCard article={article} />
+            {articles.map((article, index) => (
+              <ArticleCard article={article} key={index} />
+            ))}
           </ArticleContainer>
           <DashboardContainer>
             <TempDashboard>test12344567</TempDashboard>
             <TempDashboard>test</TempDashboard>
           </DashboardContainer>
         </MainContent>
-        {/* <DropdownBody /> */}
-        {/* <SearchInput showFilterDropDown={true} /> */}
-        {/* <ArticleCard article={article} />
-        <FilterDropDown placeholder="Country" selectOptions={selectOptions} />
-        <StyledButton>Navigate to dispatch</StyledButton> */}
       </MainContainer>
     </AppContainer>
   );

@@ -17,9 +17,7 @@ export const FilterContainer = styled.div`
   border-bottom: 1px solid ${COLORS.secondary};
 `;
 export const MainContainer = styled.div`
-  //width: calc(100% - 480px); /* 240px padding on each side */
   padding: 0 8%;
-  //max-width: 1440px;
   width: 100%;
 `;
 
@@ -29,7 +27,6 @@ export const MainContent = styled.div`
 `;
 
 export const ArticleContainer = styled.ul`
-  //flex: 1;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -44,7 +41,6 @@ export const TempDashboard = styled.div`
   border-color: ${COLORS.secondary};
   border-radius: 20px;
   padding: 25px 15px 25px 25px;
-  //position: relative;
   max-height: 265px;
   height: 100%;
 `;
