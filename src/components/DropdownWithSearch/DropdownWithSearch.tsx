@@ -1,11 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import SearchInput from "../Input/SearchInput";
 import DropdownBody from "../DropdownBody/DropdownBody";
 import FilterDropDown from "../FilterDropDown/FilterDropDown";
 import { selectOptionsAppHeader } from "../../mockData/SelectOptionsDropDownAppHeader";
 import { InputWrapper } from "../Input/SearchInput.style";
+import AppContext from "../../context/AppContext";
 
 const DropdownWithSearch: React.FC = () => {
+  const { appHeaderFilter, setAppHeaderFilter } = useContext(AppContext);
+  const handleFilterChange = (newFilter: string) => {
+    setAppHeaderFilter(newFilter);
+  };
+
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const toggleDropdown = () => {
@@ -28,6 +34,7 @@ const DropdownWithSearch: React.FC = () => {
           selectOptions={selectOptionsAppHeader}
           placeholder="Top Headlines"
           isAppHeader={true}
+          onChange={handleFilterChange}
         ></FilterDropDown>
       </InputWrapper>
       {isDropdownVisible && <DropdownBody ref={dropdownRef} />}

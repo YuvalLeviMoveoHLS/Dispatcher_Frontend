@@ -29,6 +29,7 @@ type FilterDropDownProps = {
   filterDropDownStyle?: SxProps;
   formControlStyle?: SxProps;
   menuItemStyle?: SxProps;
+  onChange?: (value: string) => void;
 };
 
 const FilterDropDown: FC<FilterDropDownProps> = ({
@@ -40,6 +41,7 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
   filterDropDownStyle,
   formControlStyle,
   menuItemStyle,
+  onChange,
 }) => {
   const DropDownStyleSx = isAppHeader
     ? { ...filterDropDownSharedSx, ...filterDropDownSxAppHeader }
@@ -53,6 +55,10 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
 
   const handleChange = (event: SelectChangeEvent) => {
     setSelectedFilterValue(event.target.value as string);
+    if (onChange) {
+      console.log(event.target.value as string);
+      onChange(event.target.value as string); // Notify the parent component
+    }
   };
 
   const renderSelectedValue = (selected: string) => {
