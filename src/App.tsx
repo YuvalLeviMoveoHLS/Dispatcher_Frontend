@@ -20,6 +20,8 @@ import {
 import DropdownBody from "./components/DropdownBody/DropdownBody";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
 import { useState } from "react";
+import PieGraph from "./components/DashBoard/PieGraph";
+import Dashboard from "./components/DashBoard/Dashboard";
 function App() {
   const [visibleBigTitle, setVisibleBigTitle] = useState(true);
   return (
@@ -43,10 +45,12 @@ function App() {
               <ArticleCard article={article} key={index} />
             ))}
           </ArticleContainer>
-          <DashboardContainer>
+          <Dashboard />
+          {/* <DashboardContainer>
+            <PieGraph />
             <TempDashboard>test12344567</TempDashboard>
             <TempDashboard>test</TempDashboard>
-          </DashboardContainer>
+          </DashboardContainer> */}
         </MainContent>
       </MainContainer>
     </AppContainer>
