@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import StyledButton from "./styledButton";
-import { buttonSx } from "./styledButton.style";
+import StyledButton from "./StyledButton";
+import { buttonSx } from "./StyledButton.style";
 
 const meta = {
   title: "Components/Button",

@@ -1,7 +1,7 @@
 import Stack from "@mui/material/Stack";
 import { FC, ReactNode } from "react";
 import arrowRight from "../../assets/svg/arrowRight.svg";
-import { buttonSx } from "./styledButton.style";
+import { buttonSx } from "./StyledButton.style";
 import { Button, SxProps } from "@mui/material";
 console.log("styledButton");
 // delete stack! no  needed

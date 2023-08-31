@@ -1,4 +1,4 @@
-import { COLORS } from "../../utils/constants/colors";
+import { COLORS } from "../../utils/constants/Colors";
 
 export const formControlSxDefault = {
   maxWidth: "175px",
@@ -48,7 +48,6 @@ export const filterDropDownSharedSx = {
     maxHeight: "calc(28px * 4 + 24px * 4)",
     overflowY: "auto",
   },
-
   color: COLORS.purple,
   fontFeatureSettings: "clig",
   fontStyle: "normal",
@@ -61,9 +60,8 @@ export const filterDropDownSxDefault = {
   borderRadius: "10px",
 };
 export const filterDropDownSxAppHeader = {
-  borderRadius: "0px 10px 10px 0px",
-
   borderLeft: `0.5px solid ${COLORS.secondary}`,
+  borderRadius: "0 10px 10px 0",
   "& .MuiSelect-select.MuiSelect-outlined.MuiInputBase-input.MuiOutlinedInput-input ":
     {
       paddingRight: "16px",
@@ -78,6 +76,7 @@ export const MenuPropsDefault = {
       width: "175px",
       marginTop: "8px",
       left: "8px",
+      color: COLORS.purple,
     },
   },
 };
@@ -88,6 +87,7 @@ export const MenuPropsAppHeader = {
       maxHeight: ITEM_HEIGHT * 4 + ITEM_PADDING_TOP * 2,
       width: "114px",
       marginTop: "8px",
+      color: COLORS.purple,
     },
   },
 };

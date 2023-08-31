@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../utils/constants/colors";
+import { COLORS } from "../../utils/constants/Colors";
 
 export const AppHeaderWrapper = styled.header`
   display: flex;
@@ -15,7 +15,8 @@ export const AppHeaderWrapper = styled.header`
   position: relative;
   background-color: ${COLORS.darkPurple};
   //flex: 0 0 auto;
-  gap: 153px;
+  //gap: 143px;
+  gap: 3.7%;
 `;
 export const StyledLogo = styled.img`
   max-width: 66px;
@@ -30,7 +31,7 @@ export const StyledInputWrapper = styled.div`
   display: flex;
   //align-items: center;
   position: relative;
-  max-width: 663px;
+  //max-width: 663px;
   width: 100%;
   //height: 132px;
   //max-height: 100%;

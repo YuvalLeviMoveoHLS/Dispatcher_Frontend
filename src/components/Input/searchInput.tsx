@@ -3,10 +3,10 @@ import {
   StyledInput,
   InputWrapper,
   StyledSearchIcon,
-} from "./searchInput.style";
+} from "./SearchInput.style";
 import SearchIcon from "../../assets/svg/searchIcon.svg";
-import FilterDropDown from "../../components/FilterDropDown/filterDropDown";
-import { selectOptionsAppHeader } from "../../mockData/selectOptionsDropDownAppHeader";
+import FilterDropDown from "../FilterDropDown/FilterDropDown";
+import { selectOptionsAppHeader } from "../../mockData/SelectOptionsDropDownAppHeader";
 
 export interface SearchInputProps {
   placeholder?: string;
@@ -28,5 +28,4 @@ const SearchInput: React.FC<SearchInputProps> = ({
     </InputWrapper>
   );
 };
-
 export default SearchInput;

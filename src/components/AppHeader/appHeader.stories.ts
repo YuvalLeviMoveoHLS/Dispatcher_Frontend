@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import AppHeader from "./appHeader";
+import AppHeader from "./AppHeader";
 
 export default {
   component: AppHeader,

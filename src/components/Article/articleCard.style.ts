@@ -1,5 +1,5 @@
 import styledCmp from "styled-components";
-import { COLORS } from "../../utils/constants/colors";
+import { COLORS } from "../../utils/constants/Colors";
 
 export const ArticleWrapper = styledCmp.div`
 border: 1px solid var(--grayscale-line, #D9DBE9);
@@ -68,7 +68,11 @@ export const ArticleTitleSx = {
   color: COLORS.articleTitle,
   lineHeight: "normal",
   mb: "10px",
-  //fontFamily: " Roboto-Regular, sans-serif",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  display: "-webkit-box",
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: "vertical",
 };
 
 export const ArticleContentSx = {
@@ -91,4 +95,5 @@ export const ArticleContentSx = {
 
 export const CardActionsSx = {
   alignSelf: "flex-end",
+  padding: "0px",
 };

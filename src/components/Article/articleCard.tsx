@@ -4,7 +4,7 @@ import { Card } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import StyledButton from "../Button/styledButton";
+import StyledButton from "../Button/StyledButton";
 import {
   ArticleWrapper,
   StyledImage,
@@ -14,8 +14,8 @@ import {
   ArticleTitleSx,
   CardActionsSx,
   CardContentSx,
-} from "./articleCard.style";
-import { Article } from "../../models/article-interface";
+} from "./ArticleCard.style";
+import { Article } from "../../models/ArticleInterface";
 
 type ArticleProps = {
   article: Article;

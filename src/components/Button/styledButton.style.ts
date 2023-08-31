@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { COLORS } from "../../utils/constants/colors";
+import { COLORS } from "../../utils/constants/Colors";
 
 export const StyledContainer = styled.div`
   width: 300px;
   height: 300px;
   background-color: red;
-  z-index- 1;
+  z-index: 1;
 `;
 
 export const buttonSx = {
@@ -13,6 +13,7 @@ export const buttonSx = {
   width: "100%",
   fontFeatureSettings: "'clig' off, 'liga' off",
   fontSize: "14px",
+  top: "8px", // for article card component
   fontStyle: "normal",
   fontWeight: "500",
   lineHeight: "26px",
