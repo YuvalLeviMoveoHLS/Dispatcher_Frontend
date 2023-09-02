@@ -2,6 +2,11 @@ import React, { FC, useContext } from "react";
 import FilterDropDown from "../FilterDropDown/FilterDropDown";
 import { FilterbarContainer } from "./FilterBar.stories";
 import AppContext from "../../context/AppContext";
+import {
+  countriesOptions,
+  languages,
+  sortByArr,
+} from "../../utils/constants/Constants";
 
 const FilterBar: FC = () => {
   const { appHeaderFilter } = useContext(AppContext);
@@ -19,22 +24,22 @@ const FilterBar: FC = () => {
   ];
   return (
     <FilterbarContainer>
-      {appHeaderFilter === "Everything" &&
-        everythingOptions.map((option, index) => (
+      {appHeaderFilter === "Everything" && (
+        <>
+          <FilterDropDown selectOptions={sortByArr} placeholder={"Sort by"} />
+        </>
+      )}
+      {appHeaderFilter === "Top Headlines" && (
+        <>
           <FilterDropDown
-            key={index}
-            selectOptions={[option]}
-            placeholder={option.title}
+            selectOptions={countriesOptions}
+            placeholder={"Country"}
           />
-        ))}
-      {appHeaderFilter === "Top Headlines" &&
-        topHeadlinesOptions.map((option, index) => (
-          <FilterDropDown
-            key={index}
-            selectOptions={[option]}
-            placeholder={option.title}
-          />
-        ))}
+          <FilterDropDown selectOptions={[]} placeholder={"Dates"} />
+          <FilterDropDown selectOptions={[]} placeholder={"Sources"} />
+          <FilterDropDown selectOptions={languages} placeholder={"Language"} />
+        </>
+      )}
     </FilterbarContainer>
   );
 };

@@ -1,4 +1,4 @@
-export const CountriesOptions = [
+export const countriesOptions = [
   { value: "ar", title: "Argentina" },
   { value: "au", title: "Australia" },
   { value: "at", title: "Austria" },
@@ -54,7 +54,7 @@ export const CountriesOptions = [
   { value: "ve", title: "Venezuela" },
 ];
 
-export const Languages = [
+export const languages = [
   { value: "ar", title: "Arabic" },
   { value: "de", title: "German" },
   { value: "en", title: "English" },
@@ -81,3 +81,8 @@ export enum DropDownSearchType {
   TOP_HEADLINES = "top-headlines",
   EVERYTHING = "everything",
 }
+export const sortByArr = [
+  { value: "publishedAt", title: "Published at" },
+  { value: "popularity", title: "Popularity" },
+  { value: "relevancy", title: "Relevancy" },
+];

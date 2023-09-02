@@ -52,8 +52,9 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
   const MenuPropsStyleSx = isAppHeader ? MenuPropsAppHeader : MenuPropsDefault;
 
   const [selectedFilterValue, setSelectedFilterValue] = useState("");
-
   const handleChange = (event: SelectChangeEvent) => {
+    console.log(event);
+
     setSelectedFilterValue(event.target.value as string);
     if (onChange) {
       console.log(event.target.value as string);
@@ -65,7 +66,10 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
     if (selected === "") {
       return <span>{placeholder}</span>;
     }
-    return selected;
+    const matchingOption = selectOptions.find(
+      (option) => option.value === selected
+    );
+    return matchingOption ? matchingOption.title : selected;
   };
 
   return (
@@ -80,10 +84,6 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
         sx={{ ...DropDownStyleSx, ...filterDropDownStyle }}
         renderValue={renderSelectedValue}
       >
-        {/* <MenuItem sx={menuItemSx} disabled value="">
-            <em>{children}</em>
-          </MenuItem> */}
-
         {selectOptions.map((option, index) => {
           return (
             <MenuItem
