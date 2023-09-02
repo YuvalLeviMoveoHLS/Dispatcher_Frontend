@@ -6,6 +6,7 @@ import {
   countriesOptions,
   languages,
   sortByArr,
+  categories,
 } from "../../utils/constants/Constants";
 
 const FilterBar: FC = () => {
@@ -27,6 +28,9 @@ const FilterBar: FC = () => {
       {appHeaderFilter === "Everything" && (
         <>
           <FilterDropDown selectOptions={sortByArr} placeholder={"Sort by"} />
+          <FilterDropDown selectOptions={[]} placeholder={"Dates"} />
+          <FilterDropDown selectOptions={[]} placeholder={"Sources"} />
+          <FilterDropDown selectOptions={languages} placeholder={"Language"} />
         </>
       )}
       {appHeaderFilter === "Top Headlines" && (
@@ -35,9 +39,8 @@ const FilterBar: FC = () => {
             selectOptions={countriesOptions}
             placeholder={"Country"}
           />
-          <FilterDropDown selectOptions={[]} placeholder={"Dates"} />
+          <FilterDropDown selectOptions={categories} placeholder={"Category"} />
           <FilterDropDown selectOptions={[]} placeholder={"Sources"} />
-          <FilterDropDown selectOptions={languages} placeholder={"Language"} />
         </>
       )}
     </FilterbarContainer>

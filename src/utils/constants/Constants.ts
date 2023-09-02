@@ -86,3 +86,12 @@ export const sortByArr = [
   { value: "popularity", title: "Popularity" },
   { value: "relevancy", title: "Relevancy" },
 ];
+export const categories = [
+  { value: "business", title: "Business" },
+  { value: "entertainment", title: "Entertainment" },
+  { value: "general", title: "General" },
+  { value: "health", title: "Health" },
+  { value: "science", title: "Science" },
+  { value: "sports", title: "Sports" },
+  { value: "technology", title: "Technology" },
+];
