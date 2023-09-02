@@ -8,4 +8,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Input: Story = {};
+export const DropdownWithSearchStory: Story = {
+  args: {},
+};

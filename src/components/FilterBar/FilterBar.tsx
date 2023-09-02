@@ -1,6 +1,6 @@
 import React, { FC, useContext } from "react";
 import FilterDropDown from "../FilterDropDown/FilterDropDown";
-import { FilterbarContainer } from "./FilterBar.stories";
+import { FilterbarContainer } from "./FilterBar.style";
 import AppContext from "../../context/AppContext";
 import {
   countriesOptions,

@@ -1,11 +1,14 @@
-import styled from "styled-components";
-import { COLORS } from "../../utils/constants/Colors";
+import { Meta, StoryObj } from "@storybook/react";
+import FilterBar from "./FilterBar";
 
+const meta = {
+  title: "Components/FilterBar",
+  component: FilterBar,
+} satisfies Meta<typeof FilterBar>;
 
-export const FilterbarContainer = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 20px;
-  padding: 20px 0px 20px 0px;
-  border-bottom: 1px solid ${COLORS.secondary};
-`;
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const FilterBarStory: Story = {
+  args: {},
+};
