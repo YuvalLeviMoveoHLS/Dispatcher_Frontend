@@ -19,6 +19,7 @@ import {
 } from "./App.styles";
 import DropdownBody from "./components/DropdownBody/DropdownBody";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
+import ArticelsList from "./components/ArticelsList/ArticelsList";
 import { useState } from "react";
 function App() {
   const [visibleBigTitle, setVisibleBigTitle] = useState(true);
@@ -38,11 +39,7 @@ function App() {
           <p> 30 seraches</p>
         )}
         <MainContent>
-          <ArticleContainer>
-            {articles.map((article, index) => (
-              <ArticleCard article={article} key={index} />
-            ))}
-          </ArticleContainer>
+          <ArticelsList />
           <DashboardContainer>
             <TempDashboard>test12344567</TempDashboard>
             <TempDashboard>test</TempDashboard>

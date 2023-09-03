@@ -6,8 +6,8 @@ export interface Article {
   title: string;
   description: string;
   url: string;
-  urlToImage: string;
+  urlToImage: string | null;
   publishedAt: string;
   content: string;
-  author?: string;
+  author?: string | null;
 }
