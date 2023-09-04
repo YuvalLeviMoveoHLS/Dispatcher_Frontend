@@ -5,11 +5,11 @@ import FilterDropDown from "../FilterDropDown/FilterDropDown";
 import { selectOptionsAppHeader } from "../../mockData/SelectOptionsDropDownAppHeader";
 import { InputWrapper } from "../Input/SearchInput.style";
 import AppContext from "../../context/AppContext";
-
+import { ArticlesType } from "../../models/ArticlesType";
 const DropdownWithSearch: React.FC = () => {
-  const { appHeaderFilter, setAppHeaderFilter } = useContext(AppContext);
-  const handleFilterChange = (newFilter: string) => {
-    setAppHeaderFilter(newFilter);
+  const { articlesType, setArticlesType } = useContext(AppContext);
+  const handleFilterChange = (newFilter: ArticlesType) => {
+    setArticlesType(newFilter);
   };
 
   const [isDropdownVisible, setDropdownVisibility] = useState(false);

@@ -15,11 +15,8 @@ import {
   MenuPropsDefault,
   MenuPropsAppHeader,
 } from "./FilterDropDown.style";
+import { SelectOption } from "../../models/SelectOption";
 
-export interface SelectOption {
-  value: string;
-  title: string;
-}
 type FilterDropDownProps = {
   selectOptions: SelectOption[];
   defaultValue?: string;
@@ -53,12 +50,9 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
 
   const [selectedFilterValue, setSelectedFilterValue] = useState("");
   const handleChange = (event: SelectChangeEvent) => {
-    console.log(event);
-
     setSelectedFilterValue(event.target.value as string);
     if (onChange) {
-      console.log(event.target.value as string);
-      onChange(event.target.value as string); // Notify the parent component
+      onChange(event.target.value as string);
     }
   };
 

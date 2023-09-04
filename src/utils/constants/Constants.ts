@@ -77,10 +77,6 @@ export const languages = [
   { value: "ms", title: "Malay" },
 ];
 
-export enum DropDownSearchType {
-  TOP_HEADLINES = "top-headlines",
-  EVERYTHING = "everything",
-}
 export const sortByArr = [
   { value: "publishedAt", title: "Published at" },
   { value: "popularity", title: "Popularity" },
@@ -95,3 +91,6 @@ export const categories = [
   { value: "sports", title: "Sports" },
   { value: "technology", title: "Technology" },
 ];
+
+
+

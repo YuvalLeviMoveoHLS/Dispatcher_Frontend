@@ -1,13 +1,14 @@
 import { createContext } from "react";
+import { ArticlesType } from "../models/ArticlesType";
 
 interface AppContextType {
-  appHeaderFilter: string;
-  setAppHeaderFilter: (filter: string) => void;
+  articlesType: ArticlesType;
+  setArticlesType: (filter: ArticlesType) => void;
 }
 
 const initialAppContextValue: AppContextType = {
-  appHeaderFilter: "Top Headlines",
-  setAppHeaderFilter: () => {},
+  articlesType: "Top Headlines",
+  setArticlesType: () => {},
 };
 const AppContext = createContext<AppContextType>(initialAppContextValue);
 

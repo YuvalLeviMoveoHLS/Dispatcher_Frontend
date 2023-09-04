@@ -8,29 +8,28 @@ import {
   sortByArr,
   categories,
 } from "../../utils/constants/Constants";
-import SourcesMock from "../../mockData/SourcesMock.json";
+import { SelectOption } from "../../models/SelectOption";
 
-const FilterBar: FC = () => {
-  const { appHeaderFilter } = useContext(AppContext);
-  const fetchedData = SourcesMock.sources;
+interface FilterBarProps {
+  sourceOptions: SelectOption[];
+}
 
-  const sourcesOptions = fetchedData.map((source) => {
-    return { value: source.id, title: source.name };
-  });
+const FilterBar: FC<FilterBarProps> = ({ sourceOptions }) => {
+  const { articlesType } = useContext(AppContext);
   return (
     <FilterbarContainer>
-      {appHeaderFilter === "Everything" && (
+      {articlesType === "Everything" && (
         <>
           <FilterDropDown selectOptions={sortByArr} placeholder={"Sort by"} />
           <FilterDropDown selectOptions={[]} placeholder={"Dates"} />
           <FilterDropDown
-            selectOptions={sourcesOptions}
+            selectOptions={sourceOptions}
             placeholder={"Sources"}
           />
           <FilterDropDown selectOptions={languages} placeholder={"Language"} />
         </>
       )}
-      {appHeaderFilter === "Top Headlines" && (
+      {articlesType === "Top Headlines" && (
         <>
           <FilterDropDown
             selectOptions={countriesOptions}
@@ -38,7 +37,7 @@ const FilterBar: FC = () => {
           />
           <FilterDropDown selectOptions={categories} placeholder={"Category"} />
           <FilterDropDown
-            selectOptions={sourcesOptions}
+            selectOptions={sourceOptions}
             placeholder={"Sources"}
           />
         </>

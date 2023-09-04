@@ -4,7 +4,7 @@ import FilterDropDown from "./components/FilterDropDown/FilterDropDown";
 import ArticleCard from "./components/Article/ArticleCard";
 import SearchInput from "./components/Input/SearchInput";
 import { selectOptions } from "./mockData/SelectOptionsDropDown";
-import { articles } from "./mockData/Article";
+//import { articles } from "./mockData/Article";
 import { CssBaseline } from "@mui/material";
 import AppContext from "./context/AppContext";
 
@@ -21,29 +21,39 @@ import {
 } from "./App.styles";
 import DropdownBody from "./components/DropdownBody/DropdownBody";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterBar from "./components/FilterBar/FilterBar";
+import { ArticlesType } from "./models/ArticlesType";
+import { SelectOption } from "./models/SelectOption";
+
+import { getUniqueSources } from "./helpers/helpers";
+import TopHeadlinesMock from "./mockData/TopHeadlinesMock.json";
 function App() {
-  const [visibleBigTitle, setVisibleBigTitle] = useState(true);
-  const [appHeaderFilter, setAppHeaderFilter] =
-    useState<string>("Top Headlines");
+  const [uniqueSources, setUniqueSources] = useState<SelectOption[]>([]);
+  const [articlesType, setArticlesType] =
+    useState<ArticlesType>("Top Headlines");
+  const articles = TopHeadlinesMock.articles;
+  useEffect(() => {
+    const sources = getUniqueSources(articles);
+    setUniqueSources(sources);
+  }, [articles]);
 
   return (
     <>
       <AppContext.Provider
         value={{
-          appHeaderFilter,
-          setAppHeaderFilter,
+          articlesType,
+          setArticlesType,
         }}
       >
         <AppContainer>
           <AppHeader />
           <MainContainer>
-            <FilterBar />
-            {visibleBigTitle ? (
-              <TitleHeadLines>Top Headlines in Israel</TitleHeadLines>
+            <FilterBar sourceOptions={uniqueSources} />
+            {articlesType === "Top Headlines" ? (
+              <TitleHeadLines>Top Headlines in </TitleHeadLines>
             ) : (
-              <p> 30 seraches</p>
+              <p> ${articles.length} seraches</p>
             )}
             <MainContent>
               <ArticleContainer>
@@ -52,8 +62,8 @@ function App() {
                 ))}
               </ArticleContainer>
               <DashboardContainer>
-                <TempDashboard>test12344567</TempDashboard>
-                <TempDashboard>test</TempDashboard>
+                <TempDashboard></TempDashboard>
+                <TempDashboard></TempDashboard>
               </DashboardContainer>
             </MainContent>
           </MainContainer>
