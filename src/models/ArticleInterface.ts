@@ -4,10 +4,10 @@ export interface Article {
     name: string;
   };
   title: string;
-  description: string;
+  description: string | null;
   url: string;
   urlToImage: string | null;
   publishedAt: string;
-  content: string;
+  content: string | null;
   author?: string | null;
 }

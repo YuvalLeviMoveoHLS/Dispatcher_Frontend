@@ -9,9 +9,12 @@ const ArticelsList: React.FC = () => {
 
   return (
     <ArticlesContainer>
-      {atricleList.map((article, index) => (
-        <ArticleCard article={article} key={index} />
-      ))}
+      {atricleList.map(
+        (article, index) =>
+          article.title !== "[Removed]" && (
+            <ArticleCard article={article} key={index} />
+          )
+      )}
     </ArticlesContainer>
   );
 };

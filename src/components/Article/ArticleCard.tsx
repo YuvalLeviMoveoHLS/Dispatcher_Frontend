@@ -16,6 +16,7 @@ import {
   CardContentSx,
 } from "./ArticleCard.style";
 import { Article } from "../../models/ArticleInterface";
+import noDataImage from "../../assets/svg/noData.svg";
 
 type ArticleProps = {
   article: Article;
@@ -30,7 +31,7 @@ const ArticleCard: React.FC<ArticleProps> = ({ article }) => {
   };
   return (
     <ArticleWrapper>
-      <StyledImage src={urlToImage} alt="Article" />
+      <StyledImage src={urlToImage || noDataImage} alt="Article" />
       <Card sx={CardSx}>
         <CardContent sx={CardContentSx}>
           <Typography sx={DateAndSourceSharedSx}>{publishedAt}</Typography>
