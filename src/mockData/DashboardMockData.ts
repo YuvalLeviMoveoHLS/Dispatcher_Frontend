@@ -1,7 +1,8 @@
+import { ISourceNameAndValue } from "../models/SourceNameAndValueInterface";
 export const ColorsArray = ["#DDF3FE", "#343A6E", "#DDF3FE", "#FF8042"];
 
-export const SourcesArray = [
-  { name: "NBC", value: 200 },
+export const SourcesArray: ISourceNameAndValue[] = [
+  { name: "NBC", value: 300 },
   { name: "Vulture", value: 300 },
   { name: "CNN", value: 300 },
   { name: "ESPN", value: 200 },

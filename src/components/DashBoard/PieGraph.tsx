@@ -4,20 +4,21 @@ import {
   StyledPieGraphContainer,
   StyledHeader,
   StyledLine,
-  StyledListItem,
-  StyledDot,
-  StyledSpan,
-  StyledList,
   StyledHeaderContainer,
 } from "./PieGraph.style";
 import { PieChart, Pie, Cell, Label, ResponsiveContainer } from "recharts";
-import { ColorsArray, SourcesArray } from "../../mockData/DashboardMockData";
+import { ColorsArray } from "../../mockData/DashboardMockData";
+import { ISourceNameAndValue } from "../../models/SourceNameAndValueInterface";
+import PieGraphList from "./PieGraphList";
 
-interface PieGraphProps {}
+interface PieGraphProps {
+  data: { totalArticles: number; sources: ISourceNameAndValue[] };
+}
 
-const PieGraph: FC<PieGraphProps> = () => {
+const PieGraph: FC<PieGraphProps> = ({ data }) => {
+  const { totalArticles, sources } = data;
   const totalSum = useMemo(
-    () => SourcesArray.reduce((acc, cur) => acc + cur.value, 0),
+    () => sources.reduce((acc, cur) => acc + cur.value, 0),
     []
   );
   return (
@@ -30,7 +31,7 @@ const PieGraph: FC<PieGraphProps> = () => {
         <ResponsiveContainer>
           <PieChart>
             <Pie
-              data={SourcesArray}
+              data={sources}
               cx="50%"
               cy="50%"
               innerRadius={58}
@@ -39,30 +40,21 @@ const PieGraph: FC<PieGraphProps> = () => {
               paddingAngle={0}
               dataKey="value"
             >
-              {SourcesArray.map((entry, index) => (
+              {sources.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={ColorsArray[index % ColorsArray.length]}
                 />
               ))}
-              <Label value={totalSum} position="center" />
+              <Label value={totalArticles} position="center" />
             </Pie>
           </PieChart>
         </ResponsiveContainer>
-        <StyledList>
-          {SourcesArray.map((entry, index) => {
-            const percentage = Math.floor((entry.value / totalSum) * 100);
-            return (
-              <StyledListItem key={index}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <StyledDot color={ColorsArray[index % ColorsArray.length]} />
-                  <StyledSpan>{entry.name}</StyledSpan>
-                </div>
-                <StyledSpan>{percentage}%</StyledSpan>
-              </StyledListItem>
-            );
-          })}
-        </StyledList>
+        <PieGraphList
+          sources={sources}
+          colors={ColorsArray}
+          totalSum={totalSum}
+        />
       </div>
     </StyledPieGraphContainer>
   );

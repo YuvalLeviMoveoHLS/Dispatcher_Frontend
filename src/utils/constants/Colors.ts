@@ -16,4 +16,5 @@ export const COLORS = {
   articleDateAndSource: "#5A5A8980",
   articleTitle: "#14142B",
   hover: "#DFE0EB69",
+  pieGraphListItem: "#030035",
 };
