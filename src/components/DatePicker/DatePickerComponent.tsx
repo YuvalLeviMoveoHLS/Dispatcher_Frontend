@@ -18,7 +18,8 @@ const DatePickerComponent: React.FC = () => {
   const [startDate, endDate] = dateRange;
   const [showDatePicker, setShowDatePicker] = useState(false);
 
-  const onChange = (dates: any) => {
+  const onChange = (dates: [Date | null, Date | null]) => {
+    console.log(dates);
     const [start, end] = dates;
     setDateRange([start, end]);
   };
@@ -48,7 +49,7 @@ const DatePickerComponent: React.FC = () => {
             selectsRange
             inline
             isClearable
-            onClickOutside={() => setShowDatePicker(false)}
+            //onClickOutside={() => setShowDatePicker(false)}
           />
         </StyledDatePickerWrapper>
       )}

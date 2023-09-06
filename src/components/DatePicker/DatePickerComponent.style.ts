@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { COLORS } from "../../utils/constants/Colors";
-import DatePicker from "react-datepicker";
 
 export const StyledDatepickerButton = styled.button`
   max-width: 175px;
@@ -13,7 +12,6 @@ export const StyledDatepickerButton = styled.button`
   color: ${COLORS.purple};
   font-size: 14px;
   display: flex;
-  //position: relative;
   padding: 15px;
   font-feature-settings: clig;
   font-weight: 400;

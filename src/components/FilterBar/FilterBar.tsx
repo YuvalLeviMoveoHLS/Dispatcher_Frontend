@@ -21,7 +21,8 @@ const FilterBar: FC<FilterBarProps> = ({ sourceOptions }) => {
       {articlesType === "Everything" && (
         <>
           <FilterDropDown selectOptions={sortByArr} placeholder={"Sort by"} />
-          <FilterDropDown selectOptions={[]} placeholder={"Dates"} />
+          <DatePickerComponent />
+
           <FilterDropDown
             selectOptions={sourceOptions}
             placeholder={"Sources"}
@@ -35,7 +36,6 @@ const FilterBar: FC<FilterBarProps> = ({ sourceOptions }) => {
             selectOptions={countriesOptions}
             placeholder={"Country"}
           />
-          <DatePickerComponent />
           <FilterDropDown selectOptions={categories} placeholder={"Category"} />
           <FilterDropDown
             selectOptions={sourceOptions}
