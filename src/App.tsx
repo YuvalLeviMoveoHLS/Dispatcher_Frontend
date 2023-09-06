@@ -34,6 +34,10 @@ import Dashboard from "./components/DashBoard/Dashboard";
 import { SourcesArray } from "./mockData/DashboardMockData";
 
 function App() {
+  const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
+    null,
+    null,
+  ]);
   const [uniqueSources, setUniqueSources] = useState<SelectOption[]>([]);
   const [articlesType, setArticlesType] =
     useState<ArticlesType>("Top Headlines");
@@ -54,7 +58,11 @@ function App() {
         <AppContainer>
           <AppHeader />
           <MainContainer>
-            <FilterBar sourceOptions={uniqueSources} />
+            <FilterBar
+              sourceOptions={uniqueSources}
+              dateRange={dateRange}
+              setDateRange={setDateRange}
+            />
             {articlesType === "Top Headlines" ? (
               <TitleHeadLines>Top Headlines in </TitleHeadLines>
             ) : (

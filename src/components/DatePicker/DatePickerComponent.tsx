@@ -9,17 +9,20 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CalendarIcon from "../../assets/svg/calendarIcon.svg";
-
-const DatePickerComponent: React.FC = () => {
-  const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
-    null,
-    null,
-  ]);
+interface DatePickerComponentProps {
+  dateRange: [Date | null, Date | null];
+  setDateRange: React.Dispatch<
+    React.SetStateAction<[Date | null, Date | null]>
+  >;
+}
+const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
+  dateRange,
+  setDateRange,
+}) => {
   const [startDate, endDate] = dateRange;
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const onChange = (dates: [Date | null, Date | null]) => {
-    console.log(dates);
     const [start, end] = dates;
     setDateRange([start, end]);
   };
