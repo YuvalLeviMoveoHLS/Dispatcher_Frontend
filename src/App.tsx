@@ -21,6 +21,7 @@ import {
 } from "./App.styles";
 import DropdownBody from "./components/DropdownBody/DropdownBody";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
+import ArticelsList from "./components/ArticelsList/ArticelsList";
 import { useEffect, useState } from "react";
 import FilterBar from "./components/FilterBar/FilterBar";
 import { ArticlesType } from "./models/ArticlesType";
@@ -60,11 +61,8 @@ function App() {
               <p> ${articles.length} seraches</p>
             )}
             <MainContent>
-              <ArticleContainer>
-                {articles.map((article, index) => (
-                  <ArticleCard article={article} key={index} />
-                ))}
-              </ArticleContainer>
+              
+            <ArticelsList />
               <Dashboard data={{ totalArticles: 30, sources: SourcesArray }} />
             </MainContent>
           </MainContainer>
