@@ -4,8 +4,10 @@ import FilterDropDown from "./components/FilterDropDown/FilterDropDown";
 import ArticleCard from "./components/Article/ArticleCard";
 import SearchInput from "./components/Input/SearchInput";
 import { selectOptions } from "./mockData/SelectOptionsDropDown";
-import { articles } from "./mockData/Article";
+//import { articles } from "./mockData/Article";
 import { CssBaseline } from "@mui/material";
+import AppContext from "./context/AppContext";
+
 import AppHeader from "./components/AppHeader/AppHeader";
 import {
   AppContainer,
@@ -19,38 +21,56 @@ import {
 } from "./App.styles";
 import DropdownBody from "./components/DropdownBody/DropdownBody";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FilterBar from "./components/FilterBar/FilterBar";
+import { ArticlesType } from "./models/ArticlesType";
+import { SelectOption } from "./models/SelectOption";
+
+import { getUniqueSources } from "./helpers/helpers";
+import TopHeadlinesMock from "./mockData/TopHeadlinesMock.json";
 import PieGraph from "./components/DashBoard/PieGraph";
 import Dashboard from "./components/DashBoard/Dashboard";
 import { SourcesArray } from "./mockData/DashboardMockData";
 
 function App() {
-  const [visibleBigTitle, setVisibleBigTitle] = useState(true);
+  const [uniqueSources, setUniqueSources] = useState<SelectOption[]>([]);
+  const [articlesType, setArticlesType] =
+    useState<ArticlesType>("Top Headlines");
+  const articles = TopHeadlinesMock.articles;
+  useEffect(() => {
+    const sources = getUniqueSources(articles);
+    setUniqueSources(sources);
+  }, [articles]);
+
   return (
-    <AppContainer>
-      <AppHeader />
-      <MainContainer>
-        <FilterContainer>
-          <FilterDropDown placeholder="Country" selectOptions={selectOptions} />{" "}
-          <FilterDropDown placeholder="Country" selectOptions={selectOptions} />{" "}
-          <FilterDropDown placeholder="Country" selectOptions={selectOptions} />
-          <FilterDropDown placeholder="Country" selectOptions={selectOptions} />
-        </FilterContainer>
-        {visibleBigTitle ? (
-          <TitleHeadLines>Top Headlines in Israel</TitleHeadLines>
-        ) : (
-          <p> 30 seraches</p>
-        )}
-        <MainContent>
-          <ArticleContainer>
-            {articles.map((article, index) => (
-              <ArticleCard article={article} key={index} />
-            ))}
-          </ArticleContainer>
-          <Dashboard data={{ totalArticles: 30, sources: SourcesArray }} />
-        </MainContent>
-      </MainContainer>
-    </AppContainer>
+    <>
+      <AppContext.Provider
+        value={{
+          articlesType,
+          setArticlesType,
+        }}
+      >
+        <AppContainer>
+          <AppHeader />
+          <MainContainer>
+            <FilterBar sourceOptions={uniqueSources} />
+            {articlesType === "Top Headlines" ? (
+              <TitleHeadLines>Top Headlines in </TitleHeadLines>
+            ) : (
+              <p> ${articles.length} seraches</p>
+            )}
+            <MainContent>
+              <ArticleContainer>
+                {articles.map((article, index) => (
+                  <ArticleCard article={article} key={index} />
+                ))}
+              </ArticleContainer>
+              <Dashboard data={{ totalArticles: 30, sources: SourcesArray }} />
+            </MainContent>
+          </MainContainer>
+        </AppContainer>
+      </AppContext.Provider>
+    </>
   );
 }
 

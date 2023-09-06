@@ -15,11 +15,8 @@ import {
   MenuPropsDefault,
   MenuPropsAppHeader,
 } from "./FilterDropDown.style";
+import { SelectOption } from "../../models/SelectOption";
 
-export interface SelectOption {
-  value: string;
-  title: string;
-}
 type FilterDropDownProps = {
   selectOptions: SelectOption[];
   defaultValue?: string;
@@ -29,6 +26,7 @@ type FilterDropDownProps = {
   filterDropDownStyle?: SxProps;
   formControlStyle?: SxProps;
   menuItemStyle?: SxProps;
+  onChange?: (value: string) => void;
 };
 
 const FilterDropDown: FC<FilterDropDownProps> = ({
@@ -40,6 +38,7 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
   filterDropDownStyle,
   formControlStyle,
   menuItemStyle,
+  onChange,
 }) => {
   const DropDownStyleSx = isAppHeader
     ? { ...filterDropDownSharedSx, ...filterDropDownSxAppHeader }
@@ -50,16 +49,21 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
   const MenuPropsStyleSx = isAppHeader ? MenuPropsAppHeader : MenuPropsDefault;
 
   const [selectedFilterValue, setSelectedFilterValue] = useState("");
-
   const handleChange = (event: SelectChangeEvent) => {
     setSelectedFilterValue(event.target.value as string);
+    if (onChange) {
+      onChange(event.target.value as string);
+    }
   };
 
   const renderSelectedValue = (selected: string) => {
     if (selected === "") {
       return <span>{placeholder}</span>;
     }
-    return selected;
+    const matchingOption = selectOptions.find(
+      (option) => option.value === selected
+    );
+    return matchingOption ? matchingOption.title : selected;
   };
 
   return (
@@ -74,10 +78,6 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
         sx={{ ...DropDownStyleSx, ...filterDropDownStyle }}
         renderValue={renderSelectedValue}
       >
-        {/* <MenuItem sx={menuItemSx} disabled value="">
-            <em>{children}</em>
-          </MenuItem> */}
-
         {selectOptions.map((option, index) => {
           return (
             <MenuItem

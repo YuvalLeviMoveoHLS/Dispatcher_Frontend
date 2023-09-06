@@ -11,6 +11,7 @@ export const formControlSxAppHeader = {
 export const menuItemSx = {
   height: "28px",
   fontSize: "12px",
+
   "&:hover": {
     backgroundColor: COLORS.hoverMenuItem,
   },
