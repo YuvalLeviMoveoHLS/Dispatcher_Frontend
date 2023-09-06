@@ -13,7 +13,7 @@ import { SelectOption } from "../../models/SelectOption";
 interface FilterBarProps {
   sourceOptions: SelectOption[];
 }
-
+import DatePickerComponent from "../DatePicker/DatePickerComponent";
 const FilterBar: FC<FilterBarProps> = ({ sourceOptions }) => {
   const { articlesType } = useContext(AppContext);
   return (
@@ -35,6 +35,7 @@ const FilterBar: FC<FilterBarProps> = ({ sourceOptions }) => {
             selectOptions={countriesOptions}
             placeholder={"Country"}
           />
+          <DatePickerComponent />
           <FilterDropDown selectOptions={categories} placeholder={"Category"} />
           <FilterDropDown
             selectOptions={sourceOptions}
