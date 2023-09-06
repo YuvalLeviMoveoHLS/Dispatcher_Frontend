@@ -58,11 +58,10 @@ function App() {
             {articlesType === "Top Headlines" ? (
               <TitleHeadLines>Top Headlines in </TitleHeadLines>
             ) : (
-              <p> ${articles.length} seraches</p>
+              <p> {articles.length} seraches</p>
             )}
             <MainContent>
-              
-            <ArticelsList />
+              <ArticelsList />
               <Dashboard data={{ totalArticles: 30, sources: SourcesArray }} />
             </MainContent>
           </MainContainer>
