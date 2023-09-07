@@ -32,8 +32,12 @@ import TopHeadlinesMock from "./mockData/TopHeadlinesMock.json";
 import PieGraph from "./components/DashBoard/PieGraph";
 import Dashboard from "./components/DashBoard/Dashboard";
 import { SourcesArray } from "./mockData/DashboardMockData";
+import { IMonthlyArticleCount } from "./models/MonthlyArticleCountInterface";
 
 function App() {
+  const [monthlyArticleCounts, setMonthlyArticleCounts] = useState<
+    IMonthlyArticleCount[]
+  >([]);
   const [uniqueSources, setUniqueSources] = useState<SelectOption[]>([]);
   const [articlesType, setArticlesType] =
     useState<ArticlesType>("Top Headlines");
@@ -49,6 +53,8 @@ function App() {
         value={{
           articlesType,
           setArticlesType,
+          monthlyArticleCounts,
+          setMonthlyArticleCounts,
         }}
       >
         <AppContainer>
