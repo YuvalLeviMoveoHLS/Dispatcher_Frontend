@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { COLORS } from "../../utils/constants/Colors";
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { ResponsiveContainer } from "recharts";
 import {
   StyledLineGraphContainer,
   StyledHeader,
