@@ -1,44 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { COLORS } from "../../utils/constants/Colors";
 import {
   AreaChart,
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
 import {
   StyledLineGraphContainer,
   StyledHeader,
   StyledHeaderContainer,
   StyledLine,
 } from "./LineChart.style";
-const data = [
-  {
-    name: "MAR",
-    val: 50,
-  },
-  {
-    name: "APR",
-    val: 20,
-  },
-  {
-    name: "JUN",
-    val: 20,
-  },
-  {
-    name: "JUL",
-    val: 30,
-  },
-  {
-    name: "AUG",
-    val: 40,
-  },
-];
-const LineChart: React.FC = () => {
+import { generateSortedData } from "../../helpers/helpers";
+import { Article } from "../../models/ArticleInterface";
+import { CustomAreaChart } from "./CustomAreaChart";
+
+interface LineChartProps {
+  articles: Article[];
+}
+const LineChart: React.FC<LineChartProps> = ({ articles }) => {
+  const [data, setData] = useState<{ name: string; val: number }[]>([]);
+
+  useEffect(() => {
+    const sortedData = generateSortedData(articles);
+    setData(sortedData);
+  }, [articles]);
+
   return (
     <StyledLineGraphContainer>
       <StyledHeaderContainer>
@@ -46,43 +36,7 @@ const LineChart: React.FC = () => {
         <StyledLine />
       </StyledHeaderContainer>
       <ResponsiveContainer>
-        <AreaChart
-          width={280}
-          height={260}
-          data={data}
-          margin={{
-            top: 50,
-            right: 20,
-            left: -40,
-            bottom: 10,
-          }}
-        >
-          <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="40%" stopColor={COLORS.primary} stopOpacity={0.3} />
-              <stop offset="100%" stopColor={COLORS.white} stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <XAxis
-            dataKey="name"
-            fontFamily="Roboto-Regular, sans-serif"
-            fontSize={12}
-            tickMargin={4}
-            axisLine={false}
-            tickLine={false}
-          />
-          <YAxis tickLine={false} tick={false} axisLine={false} />
-
-          <Tooltip />
-
-          <Area
-            type="monotone"
-            dataKey="val"
-            stroke={COLORS.primary}
-            fill="url(#colorUv)"
-            strokeWidth={3}
-          />
-        </AreaChart>
+        <CustomAreaChart data={data} />
       </ResponsiveContainer>
     </StyledLineGraphContainer>
   );

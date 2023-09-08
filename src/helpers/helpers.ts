@@ -19,3 +19,35 @@ export const getUniqueSources = (articles: any[]): SelectOption[] => {
 
   return Object.values(uniqueSourceMap);
 };
+
+
+export const generateSortedData = (articles: any[]) => {
+  const monthMap: { [key: number]: number } = {};
+  for (let i = 1; i <= 12; i++) {
+    monthMap[i] = 0;
+  }
+
+  articles.forEach((article) => {
+    const date = new Date(article.publishedAt);
+    const month = date.getMonth() + 1; // getMonth() returns 0-11
+    monthMap[month] += 1;
+  });
+
+  const monthNames = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+  return monthNames
+    .map((name, index) => ({ name, val: monthMap[index + 1] }))
+    .slice(-6);
+};
