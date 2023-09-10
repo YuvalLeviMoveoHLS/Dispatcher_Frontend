@@ -37,6 +37,7 @@ function App() {
   const [uniqueSources, setUniqueSources] = useState<SelectOption[]>([]);
   const [articlesType, setArticlesType] =
     useState<ArticlesType>("Top Headlines");
+  const [searchInput, setSearchInput] = useState<string>("");
   const articles = TopHeadlinesMock.articles;
   useEffect(() => {
     const sources = getUniqueSources(articles);
@@ -49,6 +50,8 @@ function App() {
         value={{
           articlesType,
           setArticlesType,
+          searchInput,
+          setSearchInput,
         }}
       >
         <AppContainer>
