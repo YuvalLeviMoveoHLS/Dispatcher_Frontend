@@ -21,7 +21,12 @@ const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
 }) => {
   const [startDate, endDate] = dateRange;
   const [showDatePicker, setShowDatePicker] = useState(false);
-
+  const dateRangeDisplayText =
+    startDate && endDate
+      ? `${startDate.getDate()}/${
+          startDate.getMonth() + 1
+        } - ${endDate.getDate()}/${endDate.getMonth() + 1}`
+      : "Dates";
   const onChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
     setDateRange([start, end]);
@@ -32,13 +37,7 @@ const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
       <StyledDatepickerButton
         onClick={() => setShowDatePicker((prev) => !prev)}
       >
-        <StyledDateText>
-          {startDate && endDate
-            ? `${startDate.getDate()}/${
-                startDate.getMonth() + 1
-              } - ${endDate.getDate()}/${endDate.getMonth() + 1}`
-            : "Dates"}
-        </StyledDateText>
+        <StyledDateText>{dateRangeDisplayText}</StyledDateText>
         <StyledArrowDownIcon src={CalendarIcon} />
       </StyledDatepickerButton>
 
