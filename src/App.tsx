@@ -38,11 +38,31 @@ function App() {
   const [articlesType, setArticlesType] =
     useState<ArticlesType>("Top Headlines");
   const [searchInput, setSearchInput] = useState<string>("");
+  const [selectedSortBy, setSelectedSortBy] = useState<string>("");
+  const [selectedSource, setSelectedSource] = useState<string>("");
+  const [selectedLanguage, setSelectedLanguage] = useState<string>("");
+  const [selectedCountry, setSelectedCountry] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+
   const articles = TopHeadlinesMock.articles;
   useEffect(() => {
     const sources = getUniqueSources(articles);
     setUniqueSources(sources);
-  }, [articles]);
+    console.log("selectedSortBy:", selectedSortBy);
+    console.log("selectedSource:", selectedSource);
+    console.log("selectedLanguage:", selectedLanguage);
+    console.log("selectedCountry:", selectedCountry);
+    console.log("selectedCategory:", selectedCategory);
+    console.log(sources);
+  }, [
+    articles,
+    searchInput,
+    selectedSortBy,
+    selectedSource,
+    selectedLanguage,
+    selectedCountry,
+    selectedCategory,
+  ]);
 
   return (
     <>
@@ -52,6 +72,16 @@ function App() {
           setArticlesType,
           searchInput,
           setSearchInput,
+          selectedSortBy,
+          setSelectedSortBy,
+          selectedSource,
+          setSelectedSource,
+          selectedLanguage,
+          setSelectedLanguage,
+          selectedCountry,
+          setSelectedCountry,
+          selectedCategory,
+          setSelectedCategory,
         }}
       >
         <AppContainer>

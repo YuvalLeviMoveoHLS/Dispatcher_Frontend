@@ -14,6 +14,7 @@ import {
   menuItemSx,
   MenuPropsDefault,
   MenuPropsAppHeader,
+  StyledSpan,
 } from "./FilterDropDown.style";
 import { SelectOption } from "../../models/SelectOption";
 
@@ -55,15 +56,23 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
       onChange(event.target.value as string);
     }
   };
+  const indexOptions = selectOptions.map((option, index) => ({
+    ...option,
+    value: option.value ?? index.toString(),
+  }));
 
   const renderSelectedValue = (selected: string) => {
     if (selected === "") {
       return <span>{placeholder}</span>;
     }
-    const matchingOption = selectOptions.find(
+    const matchingOption = indexOptions.find(
       (option) => option.value === selected
     );
-    return matchingOption ? matchingOption.title : selected;
+    return (
+      <StyledSpan>
+        {matchingOption ? matchingOption.title : selected}
+      </StyledSpan>
+    );
   };
 
   return (
@@ -78,7 +87,7 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
         sx={{ ...DropDownStyleSx, ...filterDropDownStyle }}
         renderValue={renderSelectedValue}
       >
-        {selectOptions.map((option, index) => {
+        {indexOptions.map((option, index) => {
           return (
             <MenuItem
               sx={{ ...menuItemSx, ...menuItemStyle }}
