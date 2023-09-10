@@ -41,20 +41,20 @@ const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
         <StyledArrowDownIcon src={CalendarIcon} />
       </StyledDatepickerButton>
 
-      {showDatePicker && (
-        <StyledDatePickerWrapper>
-          <DatePicker
-            selected={startDate}
-            startDate={startDate}
-            endDate={endDate}
-            onChange={onChange}
-            selectsRange
-            inline
-            isClearable
-            //onClickOutside={() => setShowDatePicker(false)}
-          />
-        </StyledDatePickerWrapper>
-      )}
+      {/* {showDatePicker && ( */}
+      <StyledDatePickerWrapper>
+        <DatePicker
+          selected={startDate}
+          startDate={startDate}
+          endDate={endDate}
+          onChange={onChange}
+          selectsRange
+          inline
+          isClearable
+          // TODO: onClickOutside={() => setShowDatePicker(false)}
+        />
+      </StyledDatePickerWrapper>
+      {/* // )} */}
     </DatePickerAndButtonWrapper>
   );
 };
