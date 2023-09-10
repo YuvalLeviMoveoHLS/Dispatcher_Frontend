@@ -20,7 +20,7 @@ const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
   setDateRange,
 }) => {
   const [startDate, endDate] = dateRange;
-  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
   const dateRangeDisplayText =
     startDate && endDate
       ? `${startDate.getDate()}/${
@@ -34,27 +34,25 @@ const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
 
   return (
     <DatePickerAndButtonWrapper>
-      <StyledDatepickerButton
-        onClick={() => setShowDatePicker((prev) => !prev)}
-      >
+      <StyledDatepickerButton onClick={() => setShowCalendar((prev) => !prev)}>
         <StyledDateText>{dateRangeDisplayText}</StyledDateText>
         <StyledArrowDownIcon src={CalendarIcon} />
       </StyledDatepickerButton>
 
-      {/* {showDatePicker && ( */}
-      <StyledDatePickerWrapper>
-        <DatePicker
-          selected={startDate}
-          startDate={startDate}
-          endDate={endDate}
-          onChange={onChange}
-          selectsRange
-          inline
-          isClearable
-          // TODO: onClickOutside={() => setShowDatePicker(false)}
-        />
-      </StyledDatePickerWrapper>
-      {/* // )} */}
+      {showCalendar && (
+        <StyledDatePickerWrapper>
+          <DatePicker
+            selected={startDate}
+            startDate={startDate}
+            endDate={endDate}
+            onChange={onChange}
+            selectsRange
+            inline
+            isClearable
+            // TODO: onClickOutside={() => setShowCalendar(false)}
+          />
+        </StyledDatePickerWrapper>
+      )}
     </DatePickerAndButtonWrapper>
   );
 };
