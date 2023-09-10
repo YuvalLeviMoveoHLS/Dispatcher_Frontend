@@ -5,8 +5,6 @@ import {
   StyledSearchIcon,
 } from "./SearchInput.style";
 import SearchIcon from "../../assets/svg/searchIcon.svg";
-import FilterDropDown from "../FilterDropDown/FilterDropDown";
-import { selectOptionsAppHeader } from "../../mockData/SelectOptionsDropDownAppHeader";
 import AppContext from "../../context/AppContext";
 
 export interface SearchInputProps {
