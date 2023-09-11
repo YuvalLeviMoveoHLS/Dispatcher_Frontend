@@ -3,8 +3,6 @@ import { FC, ReactNode } from "react";
 import arrowRight from "../../assets/svg/arrowRight.svg";
 import { buttonSx } from "./StyledButton.style";
 import { Button, SxProps } from "@mui/material";
-console.log("styledButton");
-// delete stack! no  needed
 type StyledButtonProps = {
   children: ReactNode;
   sx?: SxProps;
