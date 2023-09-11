@@ -4,6 +4,19 @@
   "articles": [
     {
       "source": {
+        "id": "usa-today",
+        "name": "USA Today"
+      },
+      "author": "Bryan Alexander",
+      "title": "'Yellowstone': Kevin Costner speaks about 'disappointing' series exit - USA TODAY",
+      "description": "During a court hearing stemming from his divorce, Kevin Costner spoke out for the first time about his disappointment over leaving \"Yellowstone.\"",
+      "url": "https://www.usatoday.com/story/entertainment/tv/2023/09/02/yellowstone-kevin-costner-speaks-exit/70749108007/",
+      "urlToImage": "https://www.usatoday.com/gcdn/presto/2023/08/18/USAT/15a7e54a-8510-4e03-b00a-90f4044c58c5-XXX_IMG_636627557311116756_Y_1_1_Q711E5IRB.JPG?crop=2332,1312,x0,y875&width=2332&height=1312&format=pjpg&auto=webp",
+      "publishedAt": "2023-09-02T11:33:38Z",
+      "content": "Kevin Costner has broken his silence about his shocking decision to leave TV's top show \"Yellowstone.\"\r\nThe Oscar-winning actor, 68, who plays patriarch John Dutton on the Taylor Sheridan series, spo… [+2631 chars]"
+    },
+    {
+      "source": {
         "id": null,
         "name": "Investor's Business Daily"
       },
@@ -28,19 +41,7 @@
       "publishedAt": "2023-09-02T11:39:25Z",
       "content": "Its a very serious event but its a big-time show, said Bill Miller, a longtime Austin lobbyist and a friend of Paxton. Any way you cut it, its going to have the attention of anyone and everyone.\r\nThe… [+3537 chars]"
     },
-    {
-      "source": {
-        "id": "usa-today",
-        "name": "USA Today"
-      },
-      "author": "Bryan Alexander",
-      "title": "'Yellowstone': Kevin Costner speaks about 'disappointing' series exit - USA TODAY",
-      "description": "During a court hearing stemming from his divorce, Kevin Costner spoke out for the first time about his disappointment over leaving \"Yellowstone.\"",
-      "url": "https://www.usatoday.com/story/entertainment/tv/2023/09/02/yellowstone-kevin-costner-speaks-exit/70749108007/",
-      "urlToImage": "https://www.usatoday.com/gcdn/presto/2023/08/18/USAT/15a7e54a-8510-4e03-b00a-90f4044c58c5-XXX_IMG_636627557311116756_Y_1_1_Q711E5IRB.JPG?crop=2332,1312,x0,y875&width=2332&height=1312&format=pjpg&auto=webp",
-      "publishedAt": "2023-09-02T11:33:38Z",
-      "content": "Kevin Costner has broken his silence about his shocking decision to leave TV's top show \"Yellowstone.\"\r\nThe Oscar-winning actor, 68, who plays patriarch John Dutton on the Taylor Sheridan series, spo… [+2631 chars]"
-    },
+
     {
       "source": {
         "id": "cnn",
