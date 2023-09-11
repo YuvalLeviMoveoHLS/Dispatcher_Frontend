@@ -4,8 +4,10 @@ import { ArticlesContainer } from "./ArticelsList.style";
 import ArticleCard from "../Article/ArticleCard";
 import articlesMock from "../../mockData/Articles.json";
 
-const ArticelsList: React.FC = () => {
-  let atricleList: Article[] = articlesMock.articles;
+interface IArticelsListProps {
+  atricleList: Article[];
+}
+const ArticelsList: React.FC<IArticelsListProps> = ({ atricleList }) => {
 
   return (
     <ArticlesContainer>

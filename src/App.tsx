@@ -54,7 +54,7 @@ function App() {
     console.log("selectedLanguage:", selectedLanguage);
     console.log("selectedCountry:", selectedCountry);
     console.log("selectedCategory:", selectedCategory);
-    console.log(sources);
+    //console.log(sources);
   }, [
     articles,
     searchInput,
@@ -95,7 +95,7 @@ function App() {
               <p> {articles.length} seraches</p>
             )}
             <MainContent>
-              <ArticelsList />
+              <ArticelsList atricleList={articles} />
               <Dashboard data={{ totalArticles: 30, sources: SourcesArray }} />
             </MainContent>
           </MainContainer>
