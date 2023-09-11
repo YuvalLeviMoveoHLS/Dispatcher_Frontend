@@ -1,4 +1,5 @@
 // helpers.ts
+import { Article } from "../models/ArticleInterface";
 import { SelectOption } from "../models/SelectOption"; // Import the interface
 
 export const getUniqueSources = (articles: any[]): SelectOption[] => {
@@ -20,17 +21,19 @@ export const getUniqueSources = (articles: any[]): SelectOption[] => {
   return Object.values(uniqueSourceMap);
 };
 
-
-export const generateSortedData = (articles: any[]) => {
+export const generateSortedData = (articles: Article[]) => {
   const monthMap: { [key: number]: number } = {};
   for (let i = 1; i <= 12; i++) {
     monthMap[i] = 0;
   }
 
   articles.forEach((article) => {
-    const date = new Date(article.publishedAt);
-    const month = date.getMonth() + 1; // getMonth() returns 0-11
-    monthMap[month] += 1;
+    const publishedAt = article.publishedAt;
+    if (publishedAt) {
+      const date = new Date(publishedAt);
+      const month = date.getMonth() + 1; // getMonth() returns 0-11
+      monthMap[month] += 1;
+    }
   });
 
   const monthNames = [
