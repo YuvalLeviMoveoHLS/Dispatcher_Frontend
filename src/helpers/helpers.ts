@@ -54,3 +54,15 @@ export const generateSortedData = (articles: Article[]) => {
     .map((name, index) => ({ name, val: monthMap[index + 1] }))
     .slice(-6);
 };
+
+
+export const changeDateFormat = (dateString: string): string => {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  return date.toLocaleDateString("en-US", options);
+};

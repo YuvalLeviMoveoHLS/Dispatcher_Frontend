@@ -11,7 +11,7 @@ interface CustomAreaChartProps {
 
 export const CustomAreaChart: React.FC<CustomAreaChartProps> = ({ data }) => (
   <AreaChart
-    width={280}
+    width={270}
     height={260}
     data={data}
     margin={{ top: 50, right: 20, left: -40, bottom: 10 }}
