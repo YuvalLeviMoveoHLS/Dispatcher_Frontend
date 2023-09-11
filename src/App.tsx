@@ -53,12 +53,6 @@ function App() {
   useEffect(() => {
     const sources: SelectOption[] = createSourcesOptions(SourcesMock);
     setUniqueSources(sources);
-    console.log("selectedSortBy:", selectedSortBy);
-    console.log("selectedSource:", selectedSource);
-    console.log("selectedLanguage:", selectedLanguage);
-    console.log("selectedCountry:", selectedCountry);
-    console.log("selectedCategory:", selectedCategory);
-    //console.log(sources);
   }, [
     articles,
     searchInput,
