@@ -19,3 +19,13 @@ export const getUniqueSources = (articles: any[]): SelectOption[] => {
 
   return Object.values(uniqueSourceMap);
 };
+export const createSourcesOptions = (response: any): SelectOption[] => {
+  if (response.status !== "ok" || !Array.isArray(response.sources)) {
+    return [];
+  }
+
+  return response.sources.map((source: any) => ({
+    value: source.id,
+    title: source.name,
+  }));
+};

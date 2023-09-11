@@ -2,6 +2,7 @@ import { FC, ReactNode, useState } from "react";
 import { SxProps } from "@mui/material";
 // import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
+
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ArrowDownIcon from "../../assets/icon-tsx/arrowDownIcon";
@@ -56,16 +57,12 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
       onChange(event.target.value as string);
     }
   };
-  const indexOptions = selectOptions.map((option, index) => ({
-    ...option,
-    value: option.value ?? index.toString(),
-  }));
 
   const renderSelectedValue = (selected: string) => {
     if (selected === "") {
       return <span>{placeholder}</span>;
     }
-    const matchingOption = indexOptions.find(
+    const matchingOption = selectOptions.find(
       (option) => option.value === selected
     );
     return (
@@ -87,7 +84,7 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
         sx={{ ...DropDownStyleSx, ...filterDropDownStyle }}
         renderValue={renderSelectedValue}
       >
-        {indexOptions.map((option, index) => {
+        {selectOptions.map((option, index) => {
           return (
             <MenuItem
               sx={{ ...menuItemSx, ...menuItemStyle }}

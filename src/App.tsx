@@ -27,7 +27,8 @@ import FilterBar from "./components/FilterBar/FilterBar";
 import { ArticlesType } from "./models/ArticlesType";
 import { SelectOption } from "./models/SelectOption";
 
-import { getUniqueSources } from "./helpers/helpers";
+import { createSourcesOptions } from "./helpers/helpers";
+import SourcesMock from "./mockData/SourcesMock.json";
 import TopHeadlinesMock from "./mockData/TopHeadlinesMock.json";
 import PieGraph from "./components/DashBoard/PieGraph";
 import Dashboard from "./components/DashBoard/Dashboard";
@@ -46,7 +47,7 @@ function App() {
 
   const articles = TopHeadlinesMock.articles;
   useEffect(() => {
-    const sources = getUniqueSources(articles);
+    const sources: SelectOption[] = createSourcesOptions(SourcesMock);
     setUniqueSources(sources);
     console.log("selectedSortBy:", selectedSortBy);
     console.log("selectedSource:", selectedSource);
