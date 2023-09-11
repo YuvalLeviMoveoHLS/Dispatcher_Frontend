@@ -32,6 +32,8 @@ import TopHeadlinesMock from "./mockData/TopHeadlinesMock.json";
 import PieGraph from "./components/DashBoard/PieGraph";
 import Dashboard from "./components/DashBoard/Dashboard";
 import { SourcesArray } from "./mockData/DashboardMockData";
+import Api from "./services/Api";
+import { DEFAULT_COUNTRY, PAGE_SIZE } from "./utils/constants/Constants";
 
 function App() {
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
@@ -46,7 +48,24 @@ function App() {
     const sources = getUniqueSources(articles);
     setUniqueSources(sources);
   }, [articles]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await Api.get("top-headlines", {
+          params: {
+            country: DEFAULT_COUNTRY,
+            pageSize: PAGE_SIZE,
+          },
+        });
+        // setArticles(response.data.articles);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
+    fetchData();
+  }, []);
   return (
     <>
       <AppContext.Provider
