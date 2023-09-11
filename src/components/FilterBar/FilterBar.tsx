@@ -12,9 +12,17 @@ import { SelectOption } from "../../models/SelectOption";
 
 interface FilterBarProps {
   sourceOptions: SelectOption[];
+  dateRange: [Date | null, Date | null];
+  setDateRange: React.Dispatch<
+    React.SetStateAction<[Date | null, Date | null]>
+  >;
 }
-
-const FilterBar: FC<FilterBarProps> = ({ sourceOptions }) => {
+import DatePickerComponent from "../DatePicker/DatePickerComponent";
+const FilterBar: FC<FilterBarProps> = ({
+  sourceOptions,
+  dateRange,
+  setDateRange,
+}) => {
   const {
     articlesType,
     setSelectedSortBy,
@@ -32,7 +40,11 @@ const FilterBar: FC<FilterBarProps> = ({ sourceOptions }) => {
             placeholder={"Sort by"}
             onChange={setSelectedSortBy}
           />
-          <FilterDropDown selectOptions={[]} placeholder={"Dates"} />
+          <DatePickerComponent
+            dateRange={dateRange}
+            setDateRange={setDateRange}
+          />
+
           <FilterDropDown
             selectOptions={sourceOptions}
             placeholder={"Sources"}
