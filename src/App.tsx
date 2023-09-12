@@ -32,7 +32,7 @@ import TopHeadlinesMock from "./mockData/TopHeadlinesMock.json";
 import PieGraph from "./components/DashBoard/PieGraph";
 import Dashboard from "./components/DashBoard/Dashboard";
 import { SourcesArray } from "./mockData/DashboardMockData";
-import Api from "./services/Api";
+import { Api, buildApiQuery } from "./services/Api";
 import { DEFAULT_COUNTRY, PAGE_SIZE } from "./utils/constants/Constants";
 
 function App() {
@@ -48,16 +48,100 @@ function App() {
     const sources = getUniqueSources(articles);
     setUniqueSources(sources);
   }, [articles]);
+
+  /////// first
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await Api.get("top-headlines", {
+  //         params: {
+  //           country: DEFAULT_COUNTRY,
+  //           pageSize: PAGE_SIZE,
+  //         },
+  //       });
+  //       // setArticles(response.data.articles);
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  ///// with states
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       // Initialize an empty options object
+  //       const options: any = {};
+
+  //       // Populate the options object based on the states
+  //       if (articlesType === "Top Headlines") {
+  //         if (selectedCountry) options.country = selectedCountry;
+  //         if (selectedCategory) options.category = selectedCategory;
+  //         if (selectedSource) options.sources = selectedSource;
+  //         if (searchInput) options.q = searchInput;
+  //       } else if (articlesType === "Everything") {
+  //         if (selectedLanguage) options.language = selectedLanguage;
+  //         if (selectedSortBy) options.sortBy = selectedSortBy;
+  //         if (selectedSource) options.sources = selectedSource;
+  //         if (searchInput) options.q = searchInput;
+  //       }
+
+  //       // Use buildApiQuery to get the query parameters
+  //       const params = buildApiQuery(articlesType, options);
+
+  //       // Make the API call using the query parameters
+  //       const response = await Api.get(articlesType.toLowerCase(), { params });
+
+  //       // Uncomment the line below to set the articles in your state
+  //       // setArticles(response.data.articles);
+
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [
+  //   articlesType,
+  //   selectedCountry,
+  //   selectedCategory,
+  //   selectedSource,
+  //   searchInput,
+  //   selectedLanguage,
+  //   selectedSortBy,
+  // ]); // Add all relevant states to the dependency array
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await Api.get("top-headlines", {
-          params: {
-            country: DEFAULT_COUNTRY,
-            pageSize: PAGE_SIZE,
-          },
-        });
+        // Define the options based on your requirements
+        const options: any = {
+          // category: "sports",
+          sources: ["bbc-news"],
+          // Add other options here if needed
+        };
+        const effectiveCountry = /*selectedCountry||*/ "us"; // Use selectedCountry if available, otherwise default to "il"
+        //if (effectiveCountry) options.country = effectiveCountry;
+
+        // Use buildApiQuery to get the query parameters
+        const params = buildApiQuery(articlesType, options);
+        params.pageSize = PAGE_SIZE;
+        // Make the API call using the query parameters
+        const response = await Api.get(
+          articlesType === "Top Headlines"
+            ? "top-headlines"
+            : articlesType.toLowerCase(),
+          { params }
+        );
+
+        // Uncomment the line below to set the articles in your state
         // setArticles(response.data.articles);
+
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -65,7 +149,8 @@ function App() {
     };
 
     fetchData();
-  }, []);
+  }, [articlesType]); // Dependency array, re-run the effect if articlesType changes
+
   return (
     <>
       <AppContext.Provider

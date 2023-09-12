@@ -20,11 +20,13 @@ const buildApiQuery = (
   if (articlesType === "Top Headlines") {
     const topHeadlinesOptions = options as TopHeadlinesOptions;
 
-    if (topHeadlinesOptions.country && topHeadlinesOptions.sources) {
-      console.error("You can't mix country with sources.");
+    if (
+      (topHeadlinesOptions.country || topHeadlinesOptions.category) &&
+      topHeadlinesOptions.sources
+    ) {
+      console.error("You can't mix country or category with sources.");
       return;
     }
-
     if (topHeadlinesOptions.country) {
       params.country = topHeadlinesOptions.country;
     }
