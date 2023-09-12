@@ -27,7 +27,8 @@ import FilterBar from "./components/FilterBar/FilterBar";
 import { ArticlesType } from "./models/ArticlesType";
 import { SelectOption } from "./models/SelectOption";
 
-import { getUniqueSources } from "./helpers/helpers";
+import { createSourcesOptions } from "./helpers/helpers";
+import SourcesMock from "./mockData/SourcesMock.json";
 import TopHeadlinesMock from "./mockData/TopHeadlinesMock.json";
 import PieGraph from "./components/DashBoard/PieGraph";
 import Dashboard from "./components/DashBoard/Dashboard";
@@ -43,11 +44,26 @@ function App() {
   const [uniqueSources, setUniqueSources] = useState<SelectOption[]>([]);
   const [articlesType, setArticlesType] =
     useState<ArticlesType>("Top Headlines");
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [selectedSortBy, setSelectedSortBy] = useState<string>("");
+  const [selectedSource, setSelectedSource] = useState<string>("");
+  const [selectedLanguage, setSelectedLanguage] = useState<string>("");
+  const [selectedCountry, setSelectedCountry] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+
   const articles = TopHeadlinesMock.articles;
   useEffect(() => {
-    const sources = getUniqueSources(articles);
+    const sources: SelectOption[] = createSourcesOptions(SourcesMock);
     setUniqueSources(sources);
-  }, [articles]);
+  }, [
+    articles,
+    searchInput,
+    selectedSortBy,
+    selectedSource,
+    selectedLanguage,
+    selectedCountry,
+    selectedCategory,
+  ]);
 
   /////// first
 
@@ -157,6 +173,18 @@ function App() {
         value={{
           articlesType,
           setArticlesType,
+          searchInput,
+          setSearchInput,
+          selectedSortBy,
+          setSelectedSortBy,
+          selectedSource,
+          setSelectedSource,
+          selectedLanguage,
+          setSelectedLanguage,
+          selectedCountry,
+          setSelectedCountry,
+          selectedCategory,
+          setSelectedCategory,
         }}
       >
         <AppContainer>
@@ -173,7 +201,7 @@ function App() {
               <p> {articles.length} seraches</p>
             )}
             <MainContent>
-              <ArticelsList />
+              <ArticelsList atricleList={articles} />
               <Dashboard
                 data={{ totalArticles: 30, sources: SourcesArray }}
                 articles={articles}

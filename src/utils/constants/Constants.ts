@@ -94,3 +94,11 @@ export const categories = [
 
 export const DEFAULT_COUNTRY = "il";
 export const PAGE_SIZE = 10;
+
+
+
+export enum Status {
+  OK = "ok",
+  ERROR = "error",
+  // Add other statuses if needed
+}

@@ -2,6 +2,7 @@ import { FC, ReactNode, useState } from "react";
 import { SxProps } from "@mui/material";
 // import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
+
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ArrowDownIcon from "../../assets/icon-tsx/arrowDownIcon";
@@ -14,6 +15,7 @@ import {
   menuItemSx,
   MenuPropsDefault,
   MenuPropsAppHeader,
+  StyledSpan,
 } from "./FilterDropDown.style";
 import { SelectOption } from "../../models/SelectOption";
 
@@ -63,7 +65,7 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
     const matchingOption = selectOptions.find(
       (option) => option.value === selected
     );
-    return matchingOption ? matchingOption.title : selected;
+    return <StyledSpan>{matchingOption?.title ?? selected}</StyledSpan>;
   };
 
   return (

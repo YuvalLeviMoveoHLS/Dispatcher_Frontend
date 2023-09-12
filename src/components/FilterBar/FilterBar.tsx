@@ -23,12 +23,23 @@ const FilterBar: FC<FilterBarProps> = ({
   dateRange,
   setDateRange,
 }) => {
-  const { articlesType } = useContext(AppContext);
+  const {
+    articlesType,
+    setSelectedSortBy,
+    setSelectedSource,
+    setSelectedLanguage,
+    setSelectedCountry,
+    setSelectedCategory,
+  } = useContext(AppContext);
   return (
     <FilterbarContainer>
       {articlesType === "Everything" && (
         <>
-          <FilterDropDown selectOptions={sortByArr} placeholder={"Sort by"} />
+          <FilterDropDown
+            selectOptions={sortByArr}
+            placeholder="Sort by"
+            onChange={setSelectedSortBy}
+          />
           <DatePickerComponent
             dateRange={dateRange}
             setDateRange={setDateRange}
@@ -36,21 +47,32 @@ const FilterBar: FC<FilterBarProps> = ({
 
           <FilterDropDown
             selectOptions={sourceOptions}
-            placeholder={"Sources"}
+            placeholder="Sources"
+            onChange={setSelectedSource}
           />
-          <FilterDropDown selectOptions={languages} placeholder={"Language"} />
+          <FilterDropDown
+            selectOptions={languages}
+            placeholder="Language"
+            onChange={setSelectedLanguage}
+          />
         </>
       )}
       {articlesType === "Top Headlines" && (
         <>
           <FilterDropDown
             selectOptions={countriesOptions}
-            placeholder={"Country"}
+            placeholder="Country"
+            onChange={setSelectedCountry}
           />
-          <FilterDropDown selectOptions={categories} placeholder={"Category"} />
+          <FilterDropDown
+            selectOptions={categories}
+            placeholder="Category"
+            onChange={setSelectedCategory}
+          />
           <FilterDropDown
             selectOptions={sourceOptions}
-            placeholder={"Sources"}
+            placeholder="Sources"
+            onChange={setSelectedSource}
           />
         </>
       )}
