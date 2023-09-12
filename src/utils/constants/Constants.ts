@@ -91,3 +91,11 @@ export const categories = [
   { value: "sports", title: "Sports" },
   { value: "technology", title: "Technology" },
 ];
+
+
+
+export enum Status {
+  OK = "ok",
+  ERROR = "error",
+  // Add other statuses if needed
+}

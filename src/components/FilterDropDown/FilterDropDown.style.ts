@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { COLORS } from "../../utils/constants/Colors";
 
 export const formControlSxDefault = {
@@ -92,3 +93,11 @@ export const MenuPropsAppHeader = {
     },
   },
 };
+
+export const StyledSpan = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+  display: inline-block;
+`;
