@@ -122,12 +122,12 @@ function App() {
         // Define the options based on your requirements
         const options: any = {
           // category: "sports",
-          sources: ["bbc-news"],
+          //sources: ["bbc-news"],
+          q: "novak",
           // Add other options here if needed
         };
         const effectiveCountry = /*selectedCountry||*/ "us"; // Use selectedCountry if available, otherwise default to "il"
         //if (effectiveCountry) options.country = effectiveCountry;
-
         // Use buildApiQuery to get the query parameters
         const params = buildApiQuery(articlesType, options);
         params.pageSize = PAGE_SIZE;
