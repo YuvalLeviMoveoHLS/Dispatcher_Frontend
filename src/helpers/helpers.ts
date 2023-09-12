@@ -1,4 +1,5 @@
 // helpers.ts
+import { Article } from "../models/ArticleInterface";
 import { SelectOption } from "../models/SelectOption"; // Import the interface
 
 export const getUniqueSources = (articles: any[]): SelectOption[] => {
@@ -18,4 +19,50 @@ export const getUniqueSources = (articles: any[]): SelectOption[] => {
   );
 
   return Object.values(uniqueSourceMap);
+};
+
+export const generateSortedData = (articles: Article[]) => {
+  const monthMap: { [key: number]: number } = {};
+  for (let i = 1; i <= 12; i++) {
+    monthMap[i] = 0;
+  }
+
+  articles.forEach((article) => {
+    const publishedAt = article.publishedAt;
+    if (publishedAt) {
+      const date = new Date(publishedAt);
+      const month = date.getMonth() + 1; // getMonth() returns 0-11
+      monthMap[month] += 1;
+    }
+  });
+
+  const monthNames = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+  return monthNames
+    .map((name, index) => ({ name, val: monthMap[index + 1] }))
+    .slice(-6);
+};
+
+
+export const changeDateFormat = (dateString: string): string => {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  return date.toLocaleDateString("en-US", options);
 };

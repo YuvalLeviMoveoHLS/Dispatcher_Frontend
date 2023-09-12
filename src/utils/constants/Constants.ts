@@ -91,6 +91,3 @@ export const categories = [
   { value: "sports", title: "Sports" },
   { value: "technology", title: "Technology" },
 ];
-
-
-

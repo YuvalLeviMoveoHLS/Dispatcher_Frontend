@@ -1,3 +1,36 @@
+// export const generateSortedData = (articles: any[]) => {
+//   const monthMap: { [key: string]: number } = {
+//     JAN: 0,
+//     FEB: 0,
+//     MAR: 0,
+//     APR: 0,
+//     MAY: 0,
+//     JUN: 0,
+//     JUL: 0,
+//     AUG: 0,
+//     SEP: 0,
+//     OCT: 0,
+//     NOV: 0,
+//     DEC: 0,
+//   };
+
+//   articles.forEach((article) => {
+//     const date = new Date(article.publishedAt);
+//     const month = date
+//       .toLocaleString("default", { month: "short" })
+//       .toUpperCase();
+//     monthMap[month] = (monthMap[month] || 0) + 1;
+//   });
+
+//   return Object.keys(monthMap)
+//     .sort(
+//       (a, b) =>
+//         new Date(`2023-${a}-01`).getTime() - new Date(`2023-${b}-01`).getTime()
+//     )
+//     .slice(-6)
+//     .map((month) => ({ name: month, val: monthMap[month] }));
+// };
+
 // styledButton.style
 
 // export const StyledButton = styled(Button)` // styled.button

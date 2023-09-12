@@ -70,7 +70,10 @@ function App() {
             )}
             <MainContent>
               <ArticelsList />
-              <Dashboard data={{ totalArticles: 30, sources: SourcesArray }} />
+              <Dashboard
+                data={{ totalArticles: 30, sources: SourcesArray }}
+                articles={articles}
+              />
             </MainContent>
           </MainContainer>
         </AppContainer>
