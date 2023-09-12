@@ -10,7 +10,7 @@ border: 1px solid var(--grayscale-line, #D9DBE9);
   width: 100%;
   height: 242px;
   background: ${COLORS.white};
-
+  min-width: 520px;
 `;
 export const StyledImage = styledCmp.img`
   max-width: 245px;
