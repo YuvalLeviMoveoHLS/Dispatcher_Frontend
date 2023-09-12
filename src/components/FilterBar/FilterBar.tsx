@@ -37,7 +37,7 @@ const FilterBar: FC<FilterBarProps> = ({
         <>
           <FilterDropDown
             selectOptions={sortByArr}
-            placeholder={"Sort by"}
+            placeholder="Sort by"
             onChange={setSelectedSortBy}
           />
           <DatePickerComponent
@@ -47,12 +47,12 @@ const FilterBar: FC<FilterBarProps> = ({
 
           <FilterDropDown
             selectOptions={sourceOptions}
-            placeholder={"Sources"}
+            placeholder="Sources"
             onChange={setSelectedSource}
           />
           <FilterDropDown
             selectOptions={languages}
-            placeholder={"Language"}
+            placeholder="Language"
             onChange={setSelectedLanguage}
           />
         </>
@@ -61,17 +61,17 @@ const FilterBar: FC<FilterBarProps> = ({
         <>
           <FilterDropDown
             selectOptions={countriesOptions}
-            placeholder={"Country"}
+            placeholder="Country"
             onChange={setSelectedCountry}
           />
           <FilterDropDown
             selectOptions={categories}
-            placeholder={"Category"}
+            placeholder="Category"
             onChange={setSelectedCategory}
           />
           <FilterDropDown
             selectOptions={sourceOptions}
-            placeholder={"Sources"}
+            placeholder="Sources"
             onChange={setSelectedSource}
           />
         </>

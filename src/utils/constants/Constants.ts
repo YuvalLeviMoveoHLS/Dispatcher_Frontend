@@ -94,3 +94,8 @@ export const categories = [
 
 
 
+export enum Status {
+  OK = "ok",
+  ERROR = "error",
+  // Add other statuses if needed
+}

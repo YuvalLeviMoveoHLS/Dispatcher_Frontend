@@ -65,11 +65,7 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
     const matchingOption = selectOptions.find(
       (option) => option.value === selected
     );
-    return (
-      <StyledSpan>
-        {matchingOption ? matchingOption.title : selected}
-      </StyledSpan>
-    );
+    return <StyledSpan>{matchingOption?.title ?? selected}</StyledSpan>;
   };
 
   return (
