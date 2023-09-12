@@ -17,6 +17,7 @@ import {
 } from "./ArticleCard.style";
 import { Article } from "../../models/ArticleInterface";
 import noDataImage from "../../assets/svg/noData.svg";
+import { changeDateFormat } from "../../helpers/helpers";
 
 type ArticleProps = {
   article: Article;
@@ -26,6 +27,7 @@ type ArticleProps = {
 
 const ArticleCard: React.FC<ArticleProps> = ({ article }) => {
   const { source, title, url, urlToImage, publishedAt, content } = article;
+
   const handleButtonClick = () => {
     window.open(url);
   };
@@ -34,7 +36,9 @@ const ArticleCard: React.FC<ArticleProps> = ({ article }) => {
       <StyledImage src={urlToImage || noDataImage} alt="Article" />
       <Card sx={CardSx}>
         <CardContent sx={CardContentSx}>
-          <Typography sx={DateAndSourceSharedSx}>{publishedAt}</Typography>
+          <Typography sx={DateAndSourceSharedSx}>
+            {changeDateFormat(publishedAt)}
+          </Typography>
           <Typography sx={ArticleTitleSx}>{title}</Typography>
           <Typography sx={DateAndSourceSharedSx}>{source.name}</Typography>
           <Typography variant="body2" sx={ArticleContentSx}>
