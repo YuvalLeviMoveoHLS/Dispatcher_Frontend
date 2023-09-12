@@ -28,6 +28,7 @@ type FilterDropDownProps = {
   filterDropDownStyle?: SxProps;
   formControlStyle?: SxProps;
   menuItemStyle?: SxProps;
+  disabled?: boolean;
   onChange?: (value: string) => void;
 };
 
@@ -41,6 +42,7 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
   formControlStyle,
   menuItemStyle,
   onChange,
+  disabled = false,
 }) => {
   const DropDownStyleSx = isAppHeader
     ? { ...filterDropDownSharedSx, ...filterDropDownSxAppHeader }
@@ -79,6 +81,7 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
         IconComponent={ArrowDownIcon}
         sx={{ ...DropDownStyleSx, ...filterDropDownStyle }}
         renderValue={renderSelectedValue}
+        disabled={disabled}
       >
         {selectOptions.map((option, index) => {
           return (

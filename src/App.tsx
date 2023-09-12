@@ -132,40 +132,83 @@ function App() {
   //   selectedLanguage,
   //   selectedSortBy,
   // ]); // Add all relevant states to the dependency array
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       // Define the options based on your requirements
+  //       const options: any = {
+  //         // category: "sports",
+  //         //sources: ["bbc-news"],
+  //         //q: "עומר",
+  //         // Add other options here if needed
+  //       };
+  //       const effectiveCountry = selectedCountry || "il";
+  //       if (effectiveCountry) options.country = effectiveCountry;
+  //       // Use buildApiQuery to get the query parameters
+  //       const params = buildApiQuery(articlesType, options);
+  //       params.pageSize = PAGE_SIZE;
+  //       console.log(params);
+  //       // Make the API call using the query parameters
+  //       const response = await Api.get(
+  //         articlesType === "Top Headlines"
+  //           ? articlesType.toLowerCase().split(" ").join("-")
+  //           : articlesType.toLowerCase(),
+  //         { params }
+  //       );
+
+  //       // Uncomment the line below to set the articles in your state
+  //       // setArticles(response.data.articles);
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [articlesType]); // Dependency array, re-run the effect if articlesType changes
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Define the options based on your requirements
-        const options: any = {
-          // category: "sports",
-          //sources: ["bbc-news"],
-          q: "novak",
-          // Add other options here if needed
-        };
-        const effectiveCountry = /*selectedCountry||*/ "us"; // Use selectedCountry if available, otherwise default to "il"
-        //if (effectiveCountry) options.country = effectiveCountry;
-        // Use buildApiQuery to get the query parameters
+        const options: any = {};
+
+        if (articlesType === "Top Headlines") {
+          if (selectedCountry) options.country = selectedCountry;
+          if (selectedCategory) options.category = selectedCategory;
+          if (selectedSource) options.sources = [selectedSource];
+          if (searchInput) options.q = searchInput;
+        } else if (articlesType === "Everything") {
+          if (selectedLanguage) options.language = selectedLanguage;
+          if (selectedSortBy) options.sortBy = selectedSortBy;
+          if (selectedSource) options.sources = [selectedSource];
+          if (searchInput) options.q = searchInput;
+        }
+
         const params = buildApiQuery(articlesType, options);
         params.pageSize = PAGE_SIZE;
-        // Make the API call using the query parameters
+
         const response = await Api.get(
-          articlesType === "Top Headlines"
-            ? articlesType.toLowerCase().split(" ").join("-")
-            : articlesType.toLowerCase(),
+          articlesType === "Top Headlines" ? "top-headlines" : "everything",
           { params }
         );
 
-        // Uncomment the line below to set the articles in your state
-        // setArticles(response.data.articles);
-
         console.log(response.data);
+        // Uncomment this when you are ready to set state
+        // setArticles(response.data.articles);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, [articlesType]); // Dependency array, re-run the effect if articlesType changes
+  }, [
+    articlesType,
+    searchInput,
+    selectedSortBy,
+    selectedSource,
+    selectedLanguage,
+    selectedCountry,
+    selectedCategory,
+  ]);
 
   return (
     <>

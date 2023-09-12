@@ -7,9 +7,24 @@ import { InputWrapper } from "../Input/SearchInput.style";
 import AppContext from "../../context/AppContext";
 import { ArticlesType } from "../../models/ArticlesType";
 const DropdownWithSearch: React.FC = () => {
-  const { articlesType, setArticlesType } = useContext(AppContext);
+  const {
+    articlesType,
+    setArticlesType,
+    setSelectedCategory,
+    setSelectedCountry,
+    setSelectedLanguage,
+    setSearchInput,
+    setSelectedSortBy,
+    setSelectedSource,
+  } = useContext(AppContext);
   const handleFilterChange = (newFilter: ArticlesType) => {
     setArticlesType(newFilter);
+    setSearchInput("");
+    setSelectedSortBy("");
+    setSelectedSource("");
+    setSelectedLanguage("");
+    setSelectedCountry("");
+    setSelectedCategory("");
   };
 
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
