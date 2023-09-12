@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ResponsiveContainer } from "recharts";
 import {
   StyledLineGraphContainer,
@@ -14,11 +14,10 @@ interface LineChartProps {
   articles: Article[];
 }
 const LineChart: React.FC<LineChartProps> = ({ articles }) => {
-  const [data, setData] = useState<{ name: string; val: number }[]>([]);
+  //const [data, setData] = useState<{ name: string; val: number }[]>([]);
 
-  useEffect(() => {
-    const sortedData = generateSortedData(articles);
-    setData(sortedData);
+  const data = useMemo(() => {
+    return generateSortedData(articles);
   }, [articles]);
 
   return (
