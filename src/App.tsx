@@ -134,7 +134,7 @@ function App() {
         // Make the API call using the query parameters
         const response = await Api.get(
           articlesType === "Top Headlines"
-            ? "top-headlines"
+            ? articlesType.toLowerCase().split(" ").join("-")
             : articlesType.toLowerCase(),
           { params }
         );

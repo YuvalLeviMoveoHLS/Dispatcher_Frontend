@@ -13,7 +13,7 @@ export const COLORS = {
   doughnut: ["#ff9800", "#ddf3fe", "#343a6e", "#e8e8e8", "#030035", "#d54958"],
   doughnutGrey: "#9fa2b4",
   hoverMenuItem: "rgba(223, 224, 235, 0.41)",
-  articleDateAndSource: "#5A5A8980",
+  articleDateAndSource: "#5A5A89",
   articleTitle: "#14142B",
   hover: "#DFE0EB69",
   pieGraphListItem: "#030035",
