@@ -51,6 +51,13 @@ const buildApiQuery = (
     if (everythingOptions.q) {
       params.q = everythingOptions.q;
     }
+    if (everythingOptions.from) {
+      params.from = everythingOptions.from;
+    }
+
+    if (everythingOptions.to) {
+      params.to = everythingOptions.to;
+    }
 
     if (everythingOptions.language) {
       params.language = everythingOptions.language;

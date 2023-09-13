@@ -7,15 +7,17 @@ import {
   StyledHeaderContainer,
 } from "./PieGraph.style";
 import { PieChart, Pie, Cell, Label, ResponsiveContainer } from "recharts";
-import { ColorsArray } from "../../mockData/DashboardMockData";
+//import { ColorsArray } from "../../mockData/DashboardMockData";
 import { ISourceNameAndValue } from "../../models/SourceNameAndValueInterface";
 import PieGraphList from "./PieGraphList";
+import { COLORS } from "../../utils/constants/Colors";
 
 interface PieGraphProps {
   data: { totalArticles: number; sources: ISourceNameAndValue[] };
 }
 
 const PieGraph: FC<PieGraphProps> = ({ data }) => {
+  const ColorsArray = COLORS.pie;
   const { totalArticles, sources } = data;
   const totalSum = useMemo(
     () => sources.reduce((acc, cur) => acc + cur.value, 0),

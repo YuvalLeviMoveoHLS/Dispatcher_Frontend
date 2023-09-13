@@ -13,9 +13,12 @@ border: 1px solid var(--grayscale-line, #D9DBE9);
   min-width: 520px;
 `;
 export const StyledImage = styledCmp.img`
+//border: 1px solid var(--grayscale-line, #D9DBE9);
+
+background: ${COLORS.lightGrey};
   max-width: 245px;
   width: 100%;
-  height: 242px;
+  height: 240px;
   border-radius: 20px 0px 0px 20px;
   object-fit: cover;
 `;
