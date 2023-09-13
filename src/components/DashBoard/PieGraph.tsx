@@ -11,6 +11,7 @@ import { PieChart, Pie, Cell, Label, ResponsiveContainer } from "recharts";
 import { ISourceNameAndValue } from "../../models/SourceNameAndValueInterface";
 import PieGraphList from "./PieGraphList";
 import { COLORS } from "../../utils/constants/Colors";
+import CustomLabel from "./CustomLabel";
 
 interface PieGraphProps {
   data: { totalArticles: number; sources: ISourceNameAndValue[] };
@@ -19,9 +20,13 @@ interface PieGraphProps {
 const PieGraph: FC<PieGraphProps> = ({ data }) => {
   const ColorsArray = COLORS.pie;
   const { totalArticles, sources } = data;
-  const totalSum = useMemo(
-    () => sources.reduce((acc, cur) => acc + cur.value, 0),
-    []
+  // const totalSum = useMemo(
+  //   () => sources.reduce((acc, cur) => acc + cur.value, 0),
+  //   []
+  // );
+  const topFourSources = useMemo(
+    () => [...sources].sort((a, b) => b.value - a.value).slice(0, 4),
+    [sources]
   );
   return (
     <StyledPieGraphContainer>
@@ -33,7 +38,7 @@ const PieGraph: FC<PieGraphProps> = ({ data }) => {
         <ResponsiveContainer>
           <PieChart>
             <Pie
-              data={sources}
+              data={topFourSources}
               cx="50%"
               cy="50%"
               innerRadius={58}
@@ -53,9 +58,9 @@ const PieGraph: FC<PieGraphProps> = ({ data }) => {
           </PieChart>
         </ResponsiveContainer>
         <PieGraphList
-          sources={sources}
+          sources={topFourSources}
           colors={ColorsArray}
-          totalSum={totalSum}
+          totalSum={totalArticles}
         />
       </div>
     </StyledPieGraphContainer>

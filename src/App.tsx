@@ -27,7 +27,7 @@ import FilterBar from "./components/FilterBar/FilterBar";
 import { ArticlesType } from "./models/ArticlesType";
 import { SelectOption } from "./models/SelectOption";
 import ArticelsMock from "./mockData/Articles.json";
-import { createSourcesOptions } from "./helpers/helpers";
+import { countArticlesBySource, createSourcesOptions } from "./helpers/helpers";
 import SourcesMock from "./mockData/SourcesMock.json";
 import TopHeadlinesMock from "./mockData/TopHeadlinesMock.json";
 import PieGraph from "./components/DashBoard/PieGraph";
@@ -51,9 +51,11 @@ function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<string>("");
   const [selectedCountry, setSelectedCountry] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [debouncedSearchInput, setDebouncedSearchInput] = useState(searchInput);
 
   const [articles, setArticles] = useState<Article[]>([]);
   //const articles = ArticelsMock.articles;
+  const articlesBySource = countArticlesBySource(articles);
   useEffect(() => {
     const sources: SelectOption[] = createSourcesOptions(SourcesMock);
     setUniqueSources(sources);
@@ -66,7 +68,15 @@ function App() {
     selectedCountry,
     selectedCategory,
   ]);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSearchInput(searchInput);
+    }, 500);
 
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [searchInput]);
   useEffect(() => {
     const fetchDefaultData = async () => {
       try {
@@ -125,7 +135,6 @@ function App() {
         console.log(params);
 
         console.log(response.data);
-        // Uncomment this when you are ready to set state
         setArticles(response.data.articles);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -134,7 +143,7 @@ function App() {
 
     fetchData();
   }, [
-    searchInput,
+    debouncedSearchInput,
     selectedSortBy,
     selectedSource,
     selectedLanguage,
@@ -179,7 +188,10 @@ function App() {
             <MainContent>
               <ArticelsList atricleList={articles} />
               <Dashboard
-                data={{ totalArticles: articles.length, sources: SourcesArray }}
+                data={{
+                  totalArticles: articles.length,
+                  sources: articlesBySource,
+                }}
                 articles={articles}
               />
             </MainContent>

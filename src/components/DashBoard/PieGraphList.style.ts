@@ -12,6 +12,7 @@ export const StyledList = styled.ul`
   margin-top: "20px";
   padding: 0;
   margin: 0;
+  margin-top: 16px;
 `;
 export const StyledDot = styled.div`
   width: 5px;
