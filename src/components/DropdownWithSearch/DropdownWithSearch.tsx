@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import SearchInput from "../Input/SearchInput";
 import DropdownBody from "../DropdownBody/DropdownBody";
 import FilterDropDown from "../FilterDropDown/FilterDropDown";
@@ -8,7 +14,6 @@ import AppContext from "../../context/AppContext";
 import { ArticlesType } from "../../models/ArticlesType";
 const DropdownWithSearch: React.FC = () => {
   const {
-    articlesType,
     setArticlesType,
     setSelectedCategory,
     setSelectedCountry,
@@ -16,6 +21,9 @@ const DropdownWithSearch: React.FC = () => {
     setSearchInput,
     setSelectedSortBy,
     setSelectedSource,
+    recentSearches,
+    debouncedSearchInput,
+    articlesType,
   } = useContext(AppContext);
   const handleFilterChange = (newFilter: ArticlesType) => {
     setArticlesType(newFilter);
@@ -28,19 +36,23 @@ const DropdownWithSearch: React.FC = () => {
   };
 
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  //const dropdownRef = useRef<HTMLDivElement>(null);
+
   const toggleDropdown = () => {
-    setDropdownVisibility(!isDropdownVisible);
-  };
-  const handleClickOutside = (event: MouseEvent) => {
-    setDropdownVisibility(false);
+    if (recentSearches.length === 0) {
+      setDropdownVisibility(false);
+    } else {
+      setDropdownVisibility(!isDropdownVisible);
+    }
   };
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    if (debouncedSearchInput) {
+      setDropdownVisibility(false);
+    } else if (recentSearches.length > 0) {
+      setDropdownVisibility(true);
+    }
+  }, [debouncedSearchInput, recentSearches]);
+
   return (
     <>
       <InputWrapper>
@@ -52,7 +64,7 @@ const DropdownWithSearch: React.FC = () => {
           onChange={handleFilterChange}
         ></FilterDropDown>
       </InputWrapper>
-      {isDropdownVisible && <DropdownBody ref={dropdownRef} />}
+      {isDropdownVisible && <DropdownBody />}
     </>
   );
 };

@@ -52,7 +52,7 @@ function App() {
   const [selectedCountry, setSelectedCountry] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [debouncedSearchInput, setDebouncedSearchInput] = useState(searchInput);
-
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
   //const articles = ArticelsMock.articles;
   const articlesBySource = countArticlesBySource(articles);
@@ -68,6 +68,7 @@ function App() {
     selectedCountry,
     selectedCategory,
   ]);
+
   useEffect(() => {
     const timerId = setTimeout(() => {
       setDebouncedSearchInput(searchInput);
@@ -100,6 +101,14 @@ function App() {
     fetchDefaultData();
   }, []);
 
+  useEffect(() => {
+    if (debouncedSearchInput) {
+      setRecentSearches((prevSearches) => [
+        ...prevSearches,
+        debouncedSearchInput,
+      ]);
+    }
+  }, [debouncedSearchInput]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -170,6 +179,10 @@ function App() {
           setSelectedCountry,
           selectedCategory,
           setSelectedCategory,
+          recentSearches,
+          setRecentSearches,
+          debouncedSearchInput,
+          setDebouncedSearchInput,
         }}
       >
         <AppContainer>

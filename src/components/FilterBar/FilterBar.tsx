@@ -51,7 +51,7 @@ const FilterBar: FC<FilterBarProps> = ({
             selectOptions={sortByArr}
             placeholder="Sort by"
             onChange={setSelectedSortBy}
-            disabled={disableAdditionalFilters}
+            disabled={disableAdditionalFilters && !searchInput}
           />
           <DatePickerComponent
             dateRange={dateRange}
@@ -68,7 +68,7 @@ const FilterBar: FC<FilterBarProps> = ({
             selectOptions={languages}
             placeholder="Language"
             onChange={setSelectedLanguage}
-            disabled={disableAdditionalFilters}
+            disabled={disableAdditionalFilters && !searchInput}
           />
         </>
       )}

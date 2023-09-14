@@ -16,6 +16,7 @@ export const COLORS = {
   articleDateAndSource: "#5A5A89",
   articleTitle: "#14142B",
   hover: "#DFE0EB69",
+  stringHover: "#D3D3D3",
   pieGraphListItem: "#030035",
   disable: "rgba(0, 0, 0, 0.38)",
 };
