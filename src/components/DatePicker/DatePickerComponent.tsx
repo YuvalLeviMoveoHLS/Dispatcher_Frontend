@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   DatePickerAndButtonWrapper,
-  StyledArrowDownIcon,
+  StyledCalendarIcon,
   StyledDatePickerWrapper,
   StyledDateText,
   StyledDatepickerButton,
@@ -14,10 +14,12 @@ interface DatePickerComponentProps {
   setDateRange: React.Dispatch<
     React.SetStateAction<[Date | null, Date | null]>
   >;
+  disabled: boolean;
 }
 const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
   dateRange,
   setDateRange,
+  disabled,
 }) => {
   const [startDate, endDate] = dateRange;
   const [showCalendar, setShowCalendar] = useState(false);
@@ -34,12 +36,15 @@ const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
 
   return (
     <DatePickerAndButtonWrapper>
-      <StyledDatepickerButton onClick={() => setShowCalendar((prev) => !prev)}>
+      <StyledDatepickerButton
+        disabled={disabled}
+        onClick={() => !disabled && setShowCalendar((prev) => !prev)}
+      >
         <StyledDateText>{dateRangeDisplayText}</StyledDateText>
-        <StyledArrowDownIcon src={CalendarIcon} />
+        <StyledCalendarIcon src={CalendarIcon} disabled={disabled} />
       </StyledDatepickerButton>
 
-      {showCalendar && (
+      {showCalendar && !disabled && (
         <StyledDatePickerWrapper>
           <DatePicker
             selected={startDate}
@@ -49,6 +54,7 @@ const DatePickerComponent: React.FC<DatePickerComponentProps> = ({
             selectsRange
             inline
             isClearable
+            disabled={false}
             // TODO: onClickOutside={() => setShowCalendar(false)}
           />
         </StyledDatePickerWrapper>

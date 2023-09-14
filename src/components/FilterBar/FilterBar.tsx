@@ -28,6 +28,7 @@ const FilterBar: FC<FilterBarProps> = ({
     selectedSource,
     selectedCountry,
     selectedCategory,
+    searchInput,
     setSelectedSortBy,
     setSelectedSource,
     setSelectedLanguage,
@@ -55,6 +56,7 @@ const FilterBar: FC<FilterBarProps> = ({
           <DatePickerComponent
             dateRange={dateRange}
             setDateRange={setDateRange}
+            disabled={!selectedSource && !searchInput}
           />
 
           <FilterDropDown
