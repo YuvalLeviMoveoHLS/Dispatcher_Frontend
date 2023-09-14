@@ -61,15 +61,7 @@ function App() {
   useEffect(() => {
     const sources: SelectOption[] = createSourcesOptions(SourcesMock);
     setUniqueSources(sources);
-  }, [
-    articles,
-    searchInput,
-    selectedSortBy,
-    selectedSource,
-    selectedLanguage,
-    selectedCountry,
-    selectedCategory,
-  ]);
+  }, []);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -121,7 +113,6 @@ function App() {
     selectedCountry,
     selectedCategory,
     dateRange,
-    ,
   ]);
   useEffect(() => {
     const fetchData = async () => {
