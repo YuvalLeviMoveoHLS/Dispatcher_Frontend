@@ -51,7 +51,7 @@ const DropdownWithSearch: React.FC = () => {
     } else if (recentSearches.length > 0) {
       setDropdownVisibility(true);
     }
-  }, [debouncedSearchInput, recentSearches]);
+  }, [debouncedSearchInput]);
 
   return (
     <>

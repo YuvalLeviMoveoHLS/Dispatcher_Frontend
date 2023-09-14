@@ -55,7 +55,9 @@ function App() {
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
   //const articles = ArticelsMock.articles;
+  const [currentPage, setCurrentPage] = useState(1);
   const articlesBySource = countArticlesBySource(articles);
+
   useEffect(() => {
     const sources: SelectOption[] = createSourcesOptions(SourcesMock);
     setUniqueSources(sources);
@@ -92,7 +94,7 @@ function App() {
         // Reset state to initial values
         setArticlesType("Top Headlines");
         setSelectedCountry("");
-        setSelectedCategory("");
+        //setSelectedCategory("");
       } catch (error) {
         console.error("Error fetching default data:", error);
       }
@@ -109,6 +111,18 @@ function App() {
       ]);
     }
   }, [debouncedSearchInput]);
+  useEffect(() => {
+    resetArticlesAndPage();
+  }, [
+    debouncedSearchInput,
+    selectedSortBy,
+    selectedSource,
+    selectedLanguage,
+    selectedCountry,
+    selectedCategory,
+    dateRange,
+    ,
+  ]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -134,7 +148,7 @@ function App() {
           if (searchInput) options.q = searchInput;
         }
 
-        const params = buildApiQuery(articlesType, options);
+        const params = buildApiQuery(articlesType, options, currentPage);
         params.pageSize = PAGE_SIZE;
 
         const response = await Api.get(
@@ -144,7 +158,10 @@ function App() {
         console.log(params);
 
         console.log(response.data);
-        setArticles(response.data.articles);
+        setArticles((prevArticles) => [
+          ...prevArticles,
+          ...response.data.articles,
+        ]);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -159,7 +176,27 @@ function App() {
     selectedCountry,
     selectedCategory,
     dateRange,
+    currentPage,
   ]);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        setCurrentPage((prevPage) => prevPage + 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  //// make 1 sec of 0 articels
+  const resetArticlesAndPage = () => {
+    setArticles([]);
+    setCurrentPage(1);
+  };
 
   return (
     <>

@@ -11,10 +11,11 @@ const Api = axios.create({
 
 const buildApiQuery = (
   articlesType: ArticlesType,
-  options: TopHeadlinesOptions | EverythingOptions
+  options: TopHeadlinesOptions | EverythingOptions,
+  page: number // Add this line
 ) => {
   // Initialize with required parameters
-  let params: any = {};
+  let params: any = { page };
 
   // Logic for "Top Headlines"
   if (articlesType === "Top Headlines") {

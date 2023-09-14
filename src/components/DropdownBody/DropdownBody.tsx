@@ -19,7 +19,8 @@ interface DropdownBodyProps {
 }
 
 const DropdownBody: React.FC<DropdownBodyProps> = ({}) => {
-  const { recentSearches, setRecentSearches } = useContext(AppContext);
+  const { recentSearches, setRecentSearches, setSearchInput } =
+    useContext(AppContext);
   //const recentSearches = props.searches ?? recentSearchesMock;
   const lastFourSearches = recentSearches
     .slice(-MAX_AMOUNT_RECENT_SEARCHES)
@@ -33,6 +34,9 @@ const DropdownBody: React.FC<DropdownBodyProps> = ({}) => {
   const clearRecentSearches = () => {
     setRecentSearches([]); // Clear the recentSearches array
   };
+  const setSearchInputFromRecentSearch = (search: string) => {
+    setSearchInput(search); // Set the search input to the clicked value
+  };
   return (
     <>
       <StyledDropdownBody>
@@ -42,12 +46,15 @@ const DropdownBody: React.FC<DropdownBodyProps> = ({}) => {
         </StyledTitleAndClearContainer>
         <StyledUl>
           {lastFourSearches.map((search, index) => (
-            <StyledListItem key={index}>
+            <StyledListItem
+              key={index}
+              onClick={() => setSearchInputFromRecentSearch(search)}
+            >
               <StyledListSpan>{search}</StyledListSpan>
               <StyledRemoveIcon
                 src={RemoveIcon}
                 onClick={(e) => {
-                  //e.stopPropagation(); // Stop event propagation
+                  e.stopPropagation();
                   handleRemoveSearch(search);
                 }}
               />
