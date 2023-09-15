@@ -23,7 +23,13 @@ export const useFetchArticles = (
 ) => {
   useEffect(() => {
     if (!shouldFetch) return;
-
+    const [startDate, endDate] = dateRange;
+    if (
+      (startDate === null && endDate !== null) ||
+      (startDate !== null && endDate === null)
+    ) {
+      return;
+    }
     if (firstRender) {
       const fetchDefaultData = async () => {
         try {
