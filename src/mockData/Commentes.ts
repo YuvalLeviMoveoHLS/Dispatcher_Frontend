@@ -1,3 +1,136 @@
+// useEffect(() => {
+//   const handleScroll = () => {
+//     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+//       setCurrentPage((prevPage) => prevPage + 1);
+//     }
+//   };
+
+//   window.addEventListener("scroll", handleScroll);
+
+//   return () => {
+//     window.removeEventListener("scroll", handleScroll);
+//   };
+// }, []);
+// useEffect(() => {
+//   const timerId = setTimeout(() => {
+//     setDebouncedSearchInput(searchInput);
+//   }, 500);
+
+//   return () => {
+//     clearTimeout(timerId);
+//   };
+// }, [searchInput]);
+
+// useEffect(() => {
+//   if (debouncedSearchInput) {
+//     setRecentSearches((prevSearches) => [
+//       ...prevSearches,
+//       debouncedSearchInput,
+//     ]);
+//   }
+// }, [debouncedSearchInput]);
+
+// useEffect(() => {
+//   if (firstRender) {
+//     const fetchDefaultData = async () => {
+//       try {
+//         const response = await Api.get("top-headlines", {
+//           params: {
+//             country: DEFAULT_COUNTRY,
+//             pageSize: PAGE_SIZE,
+//           },
+//         });
+//         setArticles(response.data.articles);
+
+//         // Reset state to initial values
+//         //setArticlesType("Top Headlines");
+//         //setSelectedCountry("");
+//         //setSelectedCategory("");
+//       } catch (error) {
+//         console.error("Error fetching default data:", error);
+//       }
+//     };
+//     setFirstrender(false);
+//     fetchDefaultData();
+//   } else {
+//     const fetchData = async () => {
+//       try {
+//         const options: any = {};
+
+//         if (articlesType === "Top Headlines") {
+//           if (selectedCountry) options.country = selectedCountry;
+//           if (selectedCategory) options.category = selectedCategory;
+//           if (selectedSource) options.sources = [selectedSource];
+//           if (searchInput) options.q = searchInput;
+//         } else if (articlesType === "Everything") {
+//           const [startDate, endDate] = dateRange;
+
+//           if (startDate) options.from = startDate.toISOString();
+//           if (endDate) {
+//             const adjustedEndDate = new Date(endDate);
+//             adjustedEndDate.setDate(endDate.getDate() + 1);
+//             options.to = adjustedEndDate.toISOString();
+//           }
+//           if (selectedLanguage) options.language = selectedLanguage;
+//           if (selectedSortBy) options.sortBy = selectedSortBy;
+//           if (selectedSource) options.sources = [selectedSource];
+//           if (searchInput) options.q = searchInput;
+//         }
+
+//         const params = buildApiQuery(articlesType, options, currentPage);
+//         params.pageSize = PAGE_SIZE;
+
+//         const response = await Api.get(
+//           articlesType === "Top Headlines" ? "top-headlines" : "everything",
+//           { params }
+//         );
+//         console.log(params);
+
+//         console.log(response.data);
+//         setArticles((prevArticles) => [
+//           ...prevArticles,
+//           ...response.data.articles,
+//         ]);
+//       } catch (error) {
+//         console.error("Error fetching data:", error);
+//       }
+//     };
+
+//     fetchData();
+//   }
+// }, [
+//   debouncedSearchInput,
+//   selectedSortBy,
+//   selectedSource,
+//   selectedLanguage,
+//   selectedCountry,
+//   selectedCategory,
+//   dateRange,
+//   currentPage,
+// ]);
+// useEffect(() => {
+//   const fetchDefaultData = async () => {
+//     try {
+//       const response = await Api.get("top-headlines", {
+//         params: {
+//           country: DEFAULT_COUNTRY,
+//           pageSize: PAGE_SIZE,
+//         },
+//       });
+//       setArticles(response.data.articles);
+
+//       // Reset state to initial values
+//       //setArticlesType("Top Headlines");
+//       //setSelectedCountry("");
+//       //setSelectedCategory("");
+//     } catch (error) {
+//       console.error("Error fetching default data:", error);
+//     }
+//   };
+
+//   fetchDefaultData();
+// }, []);
+
 /////// first
 
 // useEffect(() => {

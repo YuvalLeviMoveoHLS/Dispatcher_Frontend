@@ -27,12 +27,12 @@ const DropdownWithSearch: React.FC = () => {
   } = useContext(AppContext);
   const handleFilterChange = (newFilter: ArticlesType) => {
     setArticlesType(newFilter);
-    setSearchInput("");
-    setSelectedSortBy("");
-    setSelectedSource("");
-    setSelectedLanguage("");
-    setSelectedCountry("");
-    setSelectedCategory("");
+    // setSearchInput("");
+    // setSelectedSortBy("");
+    // setSelectedSource("");
+    // setSelectedLanguage("");
+    // setSelectedCountry("");
+    // setSelectedCategory("");
   };
 
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
@@ -42,15 +42,16 @@ const DropdownWithSearch: React.FC = () => {
     if (recentSearches.length === 0) {
       setDropdownVisibility(false);
     } else {
-      setDropdownVisibility(!isDropdownVisible);
+      setDropdownVisibility((prev) => !prev);
     }
   };
   useEffect(() => {
-    if (debouncedSearchInput) {
-      setDropdownVisibility(false);
-    } else if (recentSearches.length > 0) {
-      setDropdownVisibility(true);
-    }
+    // if (debouncedSearchInput) {
+    //   setDropdownVisibility(false);
+    // } else if (recentSearches.length > 0) {
+    //   setDropdownVisibility(true);
+    // }
+    // setDropdownVisibility(false);
   }, [debouncedSearchInput]);
 
   return (
