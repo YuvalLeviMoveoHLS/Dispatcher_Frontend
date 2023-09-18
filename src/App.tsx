@@ -19,6 +19,7 @@ import {
   MainContainer,
   MainContent,
   TitleHeadLines,
+  StyledP,
 } from "./App.styles";
 import DropdownBody from "./components/DropdownBody/DropdownBody";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
@@ -86,9 +87,10 @@ function App() {
     selectedLanguage,
     selectedCountry,
     selectedCategory,
-    dateRange, ///// maybe change to should fetch all this dependncies
+    dateRange, ///// maybe change to fetch all this dependncies
+    //articlesType, // i have problem with this : "articles type change the prev articels still render" so i added this dependency.
   ]);
-
+  useEffect(() => setCurrentPage(1), [articlesType]);
   useFetchArticles(
     firstRender,
     debouncedSearchInput,
@@ -108,7 +110,7 @@ function App() {
   );
   //// make 1 sec of 0 articels
   const resetArticlesAndPage = () => {
-    //if articles type change the prev articels still render.
+    //if articles type change the prev articels still render. /// check this again, i added articlesType to the reset dependncies.
     if (
       debouncedSearchInput !== "" ||
       selectedSortBy !== "" ||
@@ -173,7 +175,8 @@ function App() {
             {/* {articlesType === "Top Headlines" ? (
               <TitleHeadLines>Top Headlines in </TitleHeadLines>
             ) : ( */}
-            <p> {articles.length} seraches</p>
+            {/* <p style={{ fontSize: "14px" }}> {articles.length} seraches</p> */}
+            <StyledP>{articles.length} seraches</StyledP>
             {/* )} */}
             <MainContent>
               <InfiniteScroll

@@ -14,10 +14,11 @@ export const StyledPieGraphContainer = styled.div`
 `;
 
 export const StyledHeader = styled.h1`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 900;
   line-height: 32px;
   margin-bottom: 8px;
+  font-family: Roboto-Regular, sans-serif;
 `;
 export const StyledHeaderContainer = styled.div`
   display: "flex";

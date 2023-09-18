@@ -55,3 +55,11 @@ export const TitleHeadLines = styled.h2`
   padding: 20px 0px;
   margin: 0;
 `;
+
+export const StyledP = styled.p`
+  font-size: 14px;
+  line-height: 22px;
+  font-family: Roboto-Regular, sans-serif;
+  color: ${COLORS.articleDateAndSource};
+  opacity: 0.5;
+`;
