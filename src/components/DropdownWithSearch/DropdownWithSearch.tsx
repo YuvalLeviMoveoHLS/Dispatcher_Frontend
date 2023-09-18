@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import SearchInput from "../Input/SearchInput";
 import DropdownBody from "../DropdownBody/DropdownBody";
 import FilterDropDown from "../FilterDropDown/FilterDropDown";
@@ -7,25 +13,47 @@ import { InputWrapper } from "../Input/SearchInput.style";
 import AppContext from "../../context/AppContext";
 import { ArticlesType } from "../../models/ArticlesType";
 const DropdownWithSearch: React.FC = () => {
-  const { articlesType, setArticlesType } = useContext(AppContext);
+  const {
+    setArticlesType,
+    setSelectedCategory,
+    setSelectedCountry,
+    setSelectedLanguage,
+    setSearchInput,
+    setSelectedSortBy,
+    setSelectedSource,
+    recentSearches,
+    debouncedSearchInput,
+    articlesType,
+  } = useContext(AppContext);
   const handleFilterChange = (newFilter: ArticlesType) => {
     setArticlesType(newFilter);
+    // setSearchInput("");
+    // setSelectedSortBy("");
+    // setSelectedSource("");
+    // setSelectedLanguage("");
+    // setSelectedCountry("");
+    // setSelectedCategory("");
   };
 
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  //const dropdownRef = useRef<HTMLDivElement>(null);
+
   const toggleDropdown = () => {
-    setDropdownVisibility(!isDropdownVisible);
-  };
-  const handleClickOutside = (event: MouseEvent) => {
-    setDropdownVisibility(false);
+    if (recentSearches.length === 0) {
+      setDropdownVisibility(false);
+    } else {
+      setDropdownVisibility((prev) => !prev);
+    }
   };
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    // if (debouncedSearchInput) {
+    //   setDropdownVisibility(false);
+    // } else if (recentSearches.length > 0) {
+    //   setDropdownVisibility(true);
+    // }
+    // setDropdownVisibility(false);
+  }, [debouncedSearchInput]);
+
   return (
     <>
       <InputWrapper>
@@ -37,7 +65,7 @@ const DropdownWithSearch: React.FC = () => {
           onChange={handleFilterChange}
         ></FilterDropDown>
       </InputWrapper>
-      {isDropdownVisible && <DropdownBody ref={dropdownRef} />}
+      {isDropdownVisible && <DropdownBody />}
     </>
   );
 };

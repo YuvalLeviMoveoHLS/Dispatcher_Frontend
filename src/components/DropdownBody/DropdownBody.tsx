@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useContext, useState } from "react";
 import {
   StyledClearSpan,
   StyledListItem,
@@ -12,32 +12,52 @@ import {
 import RemoveIcon from "../../assets/svg/removeIcon.svg";
 import { recentSearchesMock } from "../../mockData/RecentSearches";
 import { MAX_AMOUNT_RECENT_SEARCHES } from "../../utils/constants/MaxValues";
+import AppContext from "../../context/AppContext";
 
 interface DropdownBodyProps {
   searches?: string[];
 }
 
-const DropdownBody: React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  DropdownBodyProps
-> = (props, ref) => {
-  const recentSearches = props.searches ?? recentSearchesMock;
+const DropdownBody: React.FC<DropdownBodyProps> = ({}) => {
+  const { recentSearches, setRecentSearches, setSearchInput } =
+    useContext(AppContext);
+  //const recentSearches = props.searches ?? recentSearchesMock;
   const lastFourSearches = recentSearches
     .slice(-MAX_AMOUNT_RECENT_SEARCHES)
     .reverse();
-
+  const handleRemoveSearch = (searchToRemove: string) => {
+    const updatedSearches = recentSearches.filter(
+      (search) => search !== searchToRemove
+    );
+    setRecentSearches(updatedSearches);
+  };
+  const clearRecentSearches = () => {
+    setRecentSearches([]); // Clear the recentSearches array
+  };
+  const setSearchInputFromRecentSearch = (search: string) => {
+    setSearchInput(search); // Set the search input to the clicked value
+  };
   return (
     <>
-      <StyledDropdownBody ref={ref}>
+      <StyledDropdownBody>
         <StyledTitleAndClearContainer>
           <StyledTitle>RECENT SEARCHES</StyledTitle>
-          <StyledClearSpan>CLEAR</StyledClearSpan>
+          <StyledClearSpan onClick={clearRecentSearches}>CLEAR</StyledClearSpan>
         </StyledTitleAndClearContainer>
         <StyledUl>
           {lastFourSearches.map((search, index) => (
-            <StyledListItem key={index}>
+            <StyledListItem
+              key={index}
+              onClick={() => setSearchInputFromRecentSearch(search)}
+            >
               <StyledListSpan>{search}</StyledListSpan>
-              <StyledRemoveIcon src={RemoveIcon} />
+              <StyledRemoveIcon
+                src={RemoveIcon}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleRemoveSearch(search);
+                }}
+              />
             </StyledListItem>
           ))}
         </StyledUl>
@@ -46,4 +66,4 @@ const DropdownBody: React.ForwardRefRenderFunction<
   );
 };
 
-export default forwardRef(DropdownBody);
+export default DropdownBody;

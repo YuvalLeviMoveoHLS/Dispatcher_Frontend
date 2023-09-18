@@ -25,12 +25,24 @@ const FilterBar: FC<FilterBarProps> = ({
 }) => {
   const {
     articlesType,
+    selectedSource,
+    selectedCountry,
+    selectedCategory,
+    searchInput,
     setSelectedSortBy,
     setSelectedSource,
     setSelectedLanguage,
     setSelectedCountry,
     setSelectedCategory,
   } = useContext(AppContext);
+  const disableAdditionalFilters =
+    articlesType === "Everything" && !selectedSource;
+  const disableSource = Boolean(
+    articlesType === "Top Headlines" && (selectedCountry || selectedCategory)
+  );
+  const disableCountryAndCategory = Boolean(
+    articlesType === "Top Headlines" && selectedSource
+  );
   return (
     <FilterbarContainer>
       {articlesType === "Everything" && (
@@ -39,10 +51,12 @@ const FilterBar: FC<FilterBarProps> = ({
             selectOptions={sortByArr}
             placeholder="Sort by"
             onChange={setSelectedSortBy}
+            disabled={disableAdditionalFilters && !searchInput}
           />
           <DatePickerComponent
             dateRange={dateRange}
             setDateRange={setDateRange}
+            disabled={!selectedSource && !searchInput}
           />
 
           <FilterDropDown
@@ -54,6 +68,7 @@ const FilterBar: FC<FilterBarProps> = ({
             selectOptions={languages}
             placeholder="Language"
             onChange={setSelectedLanguage}
+            disabled={disableAdditionalFilters && !searchInput}
           />
         </>
       )}
@@ -63,16 +78,19 @@ const FilterBar: FC<FilterBarProps> = ({
             selectOptions={countriesOptions}
             placeholder="Country"
             onChange={setSelectedCountry}
+            disabled={disableCountryAndCategory}
           />
           <FilterDropDown
             selectOptions={categories}
             placeholder="Category"
             onChange={setSelectedCategory}
+            disabled={disableCountryAndCategory}
           />
           <FilterDropDown
             selectOptions={sourceOptions}
             placeholder="Sources"
             onChange={setSelectedSource}
+            disabled={disableSource}
           />
         </>
       )}

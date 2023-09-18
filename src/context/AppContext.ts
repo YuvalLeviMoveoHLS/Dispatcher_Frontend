@@ -18,6 +18,12 @@ interface AppContextType {
   setSelectedCountry: (value: string) => void;
   selectedCategory: string;
   setSelectedCategory: (value: string) => void;
+
+  recentSearches: string[];
+  setRecentSearches: (searches: string[]) => void;
+
+  debouncedSearchInput: string;
+  setDebouncedSearchInput: (input: string) => void;
 }
 
 const initialAppContextValue: AppContextType = {
@@ -37,6 +43,12 @@ const initialAppContextValue: AppContextType = {
   setSelectedCountry: () => {},
   selectedCategory: "",
   setSelectedCategory: () => {},
+
+  recentSearches: [],
+  setRecentSearches: () => {},
+
+  debouncedSearchInput: "",
+  setDebouncedSearchInput: () => {},
 };
 const AppContext = createContext<AppContextType>(initialAppContextValue);
 

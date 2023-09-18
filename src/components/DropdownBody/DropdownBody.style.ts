@@ -74,6 +74,13 @@ export const StyledClearSpan = styled.span`
 
 export const StyledRemoveIcon = styled.img`
   width: 10px;
+  z-index: 16;
+  &:hover {
+    background-color: ${COLORS.stringHover};
+    opacity: 1;
+    cursor: pointer;
+    border-radius: 7px;
+  }
   //padding-right: 10px;
 `;
 

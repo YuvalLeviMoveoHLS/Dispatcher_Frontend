@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { COLORS } from "../../utils/constants/Colors";
-
+type StyledCalendarIconProps = {
+  disabled?: boolean;
+};
 export const StyledDatepickerButton = styled.button`
   max-width: 175px;
   width: 100%;
@@ -9,7 +11,7 @@ export const StyledDatepickerButton = styled.button`
   border: none;
   background-color: ${COLORS.white};
   gap: 10px;
-  color: ${COLORS.purple};
+  //color: ${COLORS.purple};
   font-size: 14px;
   display: flex;
   padding: 15px;
@@ -22,10 +24,19 @@ export const StyledDatepickerButton = styled.button`
     outline: none;
     border: none;
   }
+  color: ${(props) => (props.disabled ? COLORS.disable : COLORS.purple)};
 `;
 
-export const StyledArrowDownIcon = styled.img`
+// export const StyledCalendarIcon = styled.img`
+//   margin-top: -4px;
+//   filter: ${(props) => props.disabled && "grayscale(80%)"};
+// `;
+export const StyledCalendarIcon = styled.img.attrs<StyledCalendarIconProps>(
+  () => ({})
+)<StyledCalendarIconProps>`
   margin-top: -4px;
+  filter: ${(props) => (props.disabled ? "grayscale(100%)" : COLORS.purple)};
+  opacity: ${(props) => (props.disabled ? "0.38" : "1")};
 `;
 export const StyledDateText = styled.span``;
 export const DatePickerAndButtonWrapper = styled.div`

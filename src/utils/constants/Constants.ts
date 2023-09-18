@@ -92,6 +92,9 @@ export const categories = [
   { value: "technology", title: "Technology" },
 ];
 
+export const DEFAULT_COUNTRY = "il";
+export const PAGE_SIZE = 10;
+
 
 
 export enum Status {
