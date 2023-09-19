@@ -23,7 +23,7 @@ import {
 import DropdownBody from "./components/DropdownBody/DropdownBody";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
 import ArticelsList from "./components/ArticelsList/ArticelsList";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import FilterBar from "./components/FilterBar/FilterBar";
 import { ArticlesType } from "./models/ArticlesType";
 import { SelectOption } from "./models/SelectOption";
@@ -39,52 +39,49 @@ import { DEFAULT_COUNTRY, PAGE_SIZE } from "./utils/constants/Constants";
 import { Article } from "./models/ArticleInterface";
 import { useFetchArticles } from "./hooks/useFetchArticles";
 import { useSearch } from "./hooks/useSearch";
-import AppContextProvider from "./context/AppContext";
+import AppContextProvider, { AppContext } from "./context/AppContext";
 
-function App() {
+function MainContent() {
   const [uniqueSources, setUniqueSources] = useState<SelectOption[]>([]);
 
   useEffect(() => {
     const sources: SelectOption[] = createSourcesOptions(SourcesMock);
     setUniqueSources(sources);
   }, []);
+
+  const { dateRange, setDateRange, articles } = useContext(AppContext);
   return (
-    <AppContextProvider>
-      <AppContainer>
-        <AppHeader />
-        <MainContainer>
-          <FilterBar
-            sourceOptions={uniqueSources}
-            dateRange={dateRange}
-            setDateRange={setDateRange}
-          />
-          {/* {articlesType === "Top Headlines" ? (
+    <MainContainer>
+      <FilterBar
+        sourceOptions={uniqueSources}
+        dateRange={dateRange}
+        setDateRange={setDateRange}
+      />
+      {/* {articlesType === "Top Headlines" ? (
               <TitleHeadLines>Top Headlines in </TitleHeadLines>
             ) : ( */}
-          {/* <p style={{ fontSize: "14px" }}> {articles.length} seraches</p> */}
-          <StyledP>{articles.length} seraches</StyledP>
-          {/* )} */}
-          <MainContent>
-            <InfiniteScroll
-              dataLength={articles.length}
-              next={() => setCurrentPage((prevPage) => prevPage + 1)}
-              hasMore={hasMore} // You can set a condition to stop loading more articles
-              loader={<h4>Loading...</h4>}
-            >
-              <ArticelsList atricleList={articles} />
-            </InfiniteScroll>
-            <Dashboard
-              data={{
-                totalArticles: articles.length,
-                sources: articlesBySource,
-              }}
-              articles={articles}
-            />
-          </MainContent>
-        </MainContainer>
-      </AppContainer>
-    </AppContextProvider>
+      {/* <p style={{ fontSize: "14px" }}> {articles.length} seraches</p> */}
+      <StyledP>{articles.length} seraches</StyledP>
+      {/* )} */}
+      <MainContent>
+        <InfiniteScroll
+          dataLength={articles.length}
+          next={() => setCurrentPage((prevPage) => prevPage + 1)}
+          hasMore={hasMore} // You can set a condition to stop loading more articles
+          loader={<h4>Loading...</h4>}
+        >
+          <ArticelsList atricleList={articles} />
+        </InfiniteScroll>
+        <Dashboard
+          data={{
+            totalArticles: articles.length,
+            sources: articlesBySource,
+          }}
+          articles={articles}
+        />
+      </MainContent>
+    </MainContainer>
   );
 }
 
-export default App;
+export default MainContent;
