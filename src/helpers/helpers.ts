@@ -1,5 +1,6 @@
 import { Article } from "../models/ArticleInterface";
 import { SelectOption } from "../models/SelectOption"; // Import the interface
+import { SourceInterface } from "../models/SourceInterface";
 import { ISourceNameAndValue } from "../models/SourceNameAndValueInterface";
 import { SourcesResponse, Source } from "../models/SourcesResponse";
 import { Status } from "../utils/constants/Constants";
@@ -22,13 +23,9 @@ export const getUniqueSources = (articles: any[]): SelectOption[] => {
   return Object.values(uniqueSourceMap);
 };
 export const createSourcesOptions = (
-  response: SourcesResponse
+  sources: SourceInterface[]
 ): SelectOption[] => {
-  if (response.status !== Status.OK || !Array.isArray(response.sources)) {
-    return [];
-  }
-
-  return response.sources.map((source: Source) => ({
+  return sources.map((source) => ({
     value: source.id,
     title: source.name,
   }));

@@ -3,10 +3,10 @@ import { TopHeadlinesOptions, EverythingOptions } from "../models/ApiTypes";
 import { ArticlesType } from "../models/ArticlesType";
 
 const Api = axios.create({
-  baseURL: "https://newsapi.org/v2/",
-  headers: {
-    Authorization: `Bearer ${import.meta.env.VITE_APP_NEWS_API_KEY}`,
-  },
+  baseURL: "http://localhost:3000/api/v1/",
+  // headers: {
+  //   Authorization: `Bearer ${import.meta.env.VITE_APP_NEWS_API_KEY}`,
+  // },
 });
 
 const buildApiQuery = (

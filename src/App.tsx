@@ -65,9 +65,21 @@ function App() {
   //const articles = ArticelsMock.articles;
   const [shouldFetch, setShouldFetch] = useState<boolean>(true);
   useEffect(() => {
-    const sources: SelectOption[] = createSourcesOptions(SourcesMock);
-    sources.unshift({ value: "", title: "None" });
-    setUniqueSources(sources);
+    const fetchSources = async () => {
+      try {
+        const response = await Api.get(
+          `${Api.defaults.baseURL}filters/sources`
+        );
+        const sourcesOptions = createSourcesOptions(response.data); // Adjust if your data is nested differently
+        console.log(response);
+        sourcesOptions.unshift({ value: "", title: "None" });
+        setUniqueSources(sourcesOptions);
+      } catch (error) {
+        console.error("Failed to fetch sources:", error);
+      }
+    };
+
+    fetchSources();
   }, []);
 
   const {

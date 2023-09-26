@@ -3,6 +3,7 @@ import { Api, buildApiQuery } from "../services/Api";
 import { DEFAULT_COUNTRY, PAGE_SIZE } from "../utils/constants/Constants";
 import { Article } from "../models/ArticleInterface";
 import { ArticlesType } from "../models/ArticlesType";
+import { articles } from "../mockData/Article";
 
 export const useFetchArticles = (
   firstRender: boolean,
@@ -33,12 +34,13 @@ export const useFetchArticles = (
     if (firstRender) {
       const fetchDefaultData = async () => {
         try {
-          const response = await Api.get("top-headlines", {
+          const response = await Api.get("articles", {
             params: {
               country: DEFAULT_COUNTRY,
-              pageSize: PAGE_SIZE,
+              //pageSize: PAGE_SIZE,
             },
           });
+          console.log(response);
           setArticles(response.data.articles);
         } catch (error) {
           console.error("Error fetching default data:", error);
@@ -69,6 +71,7 @@ export const useFetchArticles = (
             if (searchInput) options.q = searchInput;
           }
           const params = buildApiQuery(articlesType, options, currentPage);
+          console.log(params);
           params.pageSize = PAGE_SIZE;
           const response = await Api.get(
             articlesType === "Top Headlines" ? "top-headlines" : "everything",
