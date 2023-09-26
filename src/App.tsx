@@ -66,6 +66,7 @@ function App() {
   const [shouldFetch, setShouldFetch] = useState<boolean>(true);
   useEffect(() => {
     const sources: SelectOption[] = createSourcesOptions(SourcesMock);
+    sources.unshift({ value: "", title: "None" });
     setUniqueSources(sources);
   }, []);
 

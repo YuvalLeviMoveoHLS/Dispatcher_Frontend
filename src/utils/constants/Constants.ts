@@ -1,4 +1,5 @@
 export const countriesOptions = [
+  { value: "", title: "None" },
   { value: "ar", title: "Argentina" },
   { value: "au", title: "Australia" },
   { value: "at", title: "Austria" },
@@ -55,6 +56,7 @@ export const countriesOptions = [
 ];
 
 export const languages = [
+  { value: "", title: "None" },
   { value: "ar", title: "Arabic" },
   { value: "de", title: "German" },
   { value: "en", title: "English" },
@@ -78,11 +80,13 @@ export const languages = [
 ];
 
 export const sortByArr = [
+  { value: "", title: "None" },
   { value: "publishedAt", title: "Published at" },
   { value: "popularity", title: "Popularity" },
   { value: "relevancy", title: "Relevancy" },
 ];
 export const categories = [
+  { value: "", title: "None" },
   { value: "business", title: "Business" },
   { value: "entertainment", title: "Entertainment" },
   { value: "general", title: "General" },
@@ -94,8 +98,6 @@ export const categories = [
 
 export const DEFAULT_COUNTRY = "il";
 export const PAGE_SIZE = 10;
-
-
 
 export enum Status {
   OK = "ok",

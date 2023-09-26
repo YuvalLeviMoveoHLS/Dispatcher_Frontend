@@ -2,7 +2,7 @@ import { Area, AreaChart, Tooltip, XAxis, YAxis } from "recharts";
 import { COLORS } from "../../utils/constants/Colors";
 interface DataItem {
   name: string;
-  val: number;
+  articles: number;
 }
 
 interface CustomAreaChartProps {
@@ -48,7 +48,7 @@ export const CustomAreaChart: React.FC<CustomAreaChartProps> = ({ data }) => (
     <Tooltip />
     <Area
       type="monotone"
-      dataKey="val"
+      dataKey="articles"
       stroke={COLORS.primary}
       fill="url(#colorUv)"
       strokeWidth={3}

@@ -34,11 +34,13 @@ export const createSourcesOptions = (
   }));
 };
 
-const findRelevantMonths = (monthData: { name: string; val: number }[]) => {
+const findRelevantMonths = (
+  monthData: { name: string; articles: number }[]
+) => {
   // Find the month with the max value
   const maxMonth = monthData.reduce(
-    (acc, curr) => (curr.val > acc.val ? curr : acc),
-    { name: "", val: 0 }
+    (acc, curr) => (curr.articles > acc.articles ? curr : acc),
+    { name: "", articles: 0 }
   );
 
   // Find the index of the max month
@@ -88,7 +90,7 @@ export const generateSortedData = (articles: Article[]) => {
 
   const monthData = monthNames.map((name, index) => ({
     name,
-    val: monthMap[index + 1],
+    articles: monthMap[index + 1],
   }));
 
   return findRelevantMonths(monthData);
