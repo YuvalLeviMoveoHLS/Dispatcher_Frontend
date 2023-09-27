@@ -110,15 +110,17 @@ function App() {
   //// make 1 sec of 0 articels
   const resetArticlesAndPage = () => {
     //if articles type change the prev articels still render. /// check this again, i added articlesType to the reset dependncies.
-    if (
-      debouncedSearchInput !== "" ||
-      selectedSortBy !== "" ||
-      selectedSource !== "" ||
-      selectedLanguage !== "" ||
-      selectedCountry !== "" ||
-      selectedCategory !== "" ||
-      (dateRange[0] !== null && dateRange[1] !== null)
-    ) {
+    // if (
+    //   debouncedSearchInput !== "" ||
+    //   selectedSortBy !== "" ||
+    //   selectedSource !== "" ||
+    //   selectedLanguage !== "" ||
+    //   selectedCountry !== "" ||
+    //   selectedCategory !== "" ||
+    //   (dateRange[0] !== null && dateRange[1] !== null)
+    // )
+    {
+      setShouldFetch(false);
       setArticles([]);
       setCurrentPage(1);
     }
@@ -126,6 +128,7 @@ function App() {
 
   useEffect(() => {
     setShouldFetch(false); // Prevent fetching
+    setCurrentPage(1);
     setSearchInput("");
     setSelectedSortBy("");
     setSelectedSource("");
@@ -138,17 +141,6 @@ function App() {
       setShouldFetch(true);
     }
   }, [shouldFetch]);
-  // useEffect(() => {
-  //   setCurrentPage(0);
-  // }, [
-  //   debouncedSearchInput,
-  //   selectedSortBy,
-  //   selectedSource,
-  //   selectedLanguage,
-  //   selectedCountry,
-  //   selectedCategory,
-  //   articlesType,
-  // ]);
 
   return (
     <>

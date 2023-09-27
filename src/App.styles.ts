@@ -23,6 +23,7 @@ export const MainContainer = styled.div`
 export const MainContent = styled.div`
   display: flex;
   gap: 30px;
+  justify-content: space-between;
 `;
 
 export const ArticleContainer = styled.ul`
