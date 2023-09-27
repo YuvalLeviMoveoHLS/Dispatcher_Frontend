@@ -1,3 +1,21 @@
+// useEffect(() => {
+//   const fetchSources = async () => {
+//     try {
+//       const response = await Api.get(
+//         `${Api.defaults.baseURL}filters/sources`
+//       );
+//       const sourcesOptions = createSourcesOptions(response.data); // Adjust if your data is nested differently
+//       console.log(response);
+//       sourcesOptions.unshift({ value: "", title: "None" });
+//       setUniqueSources(sourcesOptions);
+//     } catch (error) {
+//       console.error("Failed to fetch sources:", error);
+//     }
+//   };
+
+//   fetchSources();
+// }, []);
+
 // import "./App.css";
 // import StyledButton from "./components/Button/StyledButton";
 // import FilterDropDown from "./components/FilterDropDown/FilterDropDown";

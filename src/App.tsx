@@ -40,6 +40,7 @@ import { DEFAULT_COUNTRY, PAGE_SIZE } from "./utils/constants/Constants";
 import { Article } from "./models/ArticleInterface";
 import { useFetchArticles } from "./hooks/useFetchArticles";
 import { useSearch } from "./hooks/useSearch";
+import { useFetchSources } from "./hooks/useFetchSources";
 
 function App() {
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
@@ -64,23 +65,8 @@ function App() {
   // const [searchInput, setSearchInput] = useState<string>("");
   //const articles = ArticelsMock.articles;
   const [shouldFetch, setShouldFetch] = useState<boolean>(true);
-  useEffect(() => {
-    const fetchSources = async () => {
-      try {
-        const response = await Api.get(
-          `${Api.defaults.baseURL}filters/sources`
-        );
-        const sourcesOptions = createSourcesOptions(response.data); // Adjust if your data is nested differently
-        console.log(response);
-        sourcesOptions.unshift({ value: "", title: "None" });
-        setUniqueSources(sourcesOptions);
-      } catch (error) {
-        console.error("Failed to fetch sources:", error);
-      }
-    };
 
-    fetchSources();
-  }, []);
+  useFetchSources(setUniqueSources);
 
   const {
     searchInput,
@@ -152,6 +138,17 @@ function App() {
       setShouldFetch(true);
     }
   }, [shouldFetch]);
+  // useEffect(() => {
+  //   setCurrentPage(0);
+  // }, [
+  // debouncedSearchInput;
+  //   selectedSortBy,
+  //   selectedSource,
+  //   selectedLanguage,
+  //   selectedCountry,
+  //   selectedCategory,
+  //   articlesType,
+  // ]);
 
   return (
     <>

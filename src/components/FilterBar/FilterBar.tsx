@@ -1,10 +1,10 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useState } from "react";
 import FilterDropDown from "../FilterDropDown/FilterDropDown";
 import { FilterbarContainer } from "./FilterBar.style";
 import AppContext from "../../context/AppContext";
 import {
   countriesOptions,
-  languages,
+  //languages,
   sortByArr,
   categories,
 } from "../../utils/constants/Constants";
@@ -18,6 +18,7 @@ interface FilterBarProps {
   >;
 }
 import DatePickerComponent from "../DatePicker/DatePickerComponent";
+import { useFetchLanguages } from "../../hooks/useFetchLanguages";
 const FilterBar: FC<FilterBarProps> = ({
   sourceOptions,
   dateRange,
@@ -43,6 +44,7 @@ const FilterBar: FC<FilterBarProps> = ({
   const disableCountryAndCategory = Boolean(
     articlesType === "Top Headlines" && selectedSource
   );
+  const { languages } = useFetchLanguages();
   return (
     <FilterbarContainer>
       {articlesType === "Everything" && (
