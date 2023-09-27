@@ -34,7 +34,7 @@ export const useFetchArticles = (
     if (firstRender) {
       const fetchDefaultData = async () => {
         try {
-          const response = await Api.get("articles", {
+          const response = await Api.get("articles/top-headlines", {
             params: {
               country: DEFAULT_COUNTRY,
               //pageSize: PAGE_SIZE,
@@ -74,9 +74,13 @@ export const useFetchArticles = (
           console.log(params);
           params.pageSize = PAGE_SIZE;
           const response = await Api.get(
-            articlesType === "Top Headlines" ? "top-headlines" : "everything",
+            articlesType === "Top Headlines"
+              ? "articles/top-headlines"
+              : "articles/everything",
             { params }
           );
+          console.log(response);
+
           if (response.data.articles.length > 0) {
             setHasMore(true);
           } else {
