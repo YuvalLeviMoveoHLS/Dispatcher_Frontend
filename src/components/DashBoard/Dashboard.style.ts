@@ -6,4 +6,10 @@ export const DashboardContainer = styled.div`
   max-width: 280px;
   width: 100%;
   min-width: 200px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  position: fixed;
+  top: 211px;
+  right: 180px;
 `;

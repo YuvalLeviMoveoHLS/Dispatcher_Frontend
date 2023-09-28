@@ -20,7 +20,8 @@ export const useFetchArticles = (
   setArticles: React.Dispatch<React.SetStateAction<Article[]>>,
   setFirstRender: React.Dispatch<React.SetStateAction<boolean>>,
   setHasMore: React.Dispatch<React.SetStateAction<boolean>>,
-  shouldFetch: boolean
+  shouldFetch: boolean,
+  setInitialLoadCompleted: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   useEffect(() => {
     if (!shouldFetch) return;
@@ -49,6 +50,8 @@ export const useFetchArticles = (
       fetchDefaultData();
       setFirstRender(false);
     } else {
+      console.log("hh");
+      setInitialLoadCompleted(false);
       const fetchData = async () => {
         try {
           const options: any = {};

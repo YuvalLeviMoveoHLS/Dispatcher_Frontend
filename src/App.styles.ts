@@ -23,9 +23,13 @@ export const MainContainer = styled.div`
 export const MainContent = styled.div`
   display: flex;
   gap: 30px;
-  justify-content: space-between;
 `;
 
+export const StyledH4 = styled.h4`
+  max-width: 986px;
+  width: 960px;
+`;
+export const ImgNoData = styled.img``;
 export const ArticleContainer = styled.ul`
   display: flex;
   flex-direction: column;

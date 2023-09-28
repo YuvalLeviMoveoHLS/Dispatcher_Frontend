@@ -101,3 +101,62 @@ export const StyledSpan = styled.span`
   max-width: 120px;
   display: inline-block;
 `;
+export const StyledMenuListSX = {
+  width: "175px",
+  paddingBottom: "3px",
+  paddingTop: "3px",
+  maxHeight: "125px",
+  overflow: "hidden auto",
+  borderRadius: "8px",
+  "&::-webkit-scrollbar": {
+    width: "5px",
+  },
+
+  "&::-webkit-scrollbar-track": {
+    webkitBorderRadius: "5px",
+    borderRadius: "5px",
+    marginTop: "10px",
+  },
+
+  "&::-webkit-scrollbar-thumb": {
+    webkitBorderRadius: "6px",
+    height: "50px",
+    width: "5px",
+    borderRadius: "6px",
+    background: `${COLORS.purple}`,
+  },
+  "& .MuiMenuItem-root": {
+    color: `${COLORS.purple}`, // replace with your desired hover color
+  },
+  "& .MuiMenuItem-root:hover": {
+    backgroundColor: `${COLORS.hoverMenuItem}`, // replace with your desired hover color
+  },
+  "& .MuiMenuItem-root.Mui-selected, & .MuiMenuItem-root.Mui-selected:hover": {
+    backgroundColor: `${COLORS.hoverMenuItem}`, // replace with your desired hover color
+  },
+};
+export const StyledMenuListSXAppheader = {
+  width: "175px",
+  paddingBottom: "3px",
+  paddingTop: "3px",
+  maxHeight: "125px",
+  overflow: "hidden auto",
+  borderRadius: "8px",
+  "&::-webkit-scrollbar": {
+    width: "5px",
+  },
+
+  "&::-webkit-scrollbar-track": {
+    webkitBorderRadius: "5px",
+    borderRadius: "5px",
+    marginTop: "10px",
+  },
+
+  "&::-webkit-scrollbar-thumb": {
+    webkitBorderRadius: "6px",
+    height: "50px",
+    width: "5px",
+    borderRadius: "6px",
+    background: `${COLORS.purple}`,
+  },
+};

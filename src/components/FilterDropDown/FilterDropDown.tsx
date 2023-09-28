@@ -1,6 +1,7 @@
 import { FC, ReactNode, useState } from "react";
 import { SxProps } from "@mui/material";
 // import InputLabel from "@mui/material/InputLabel";
+import { COLORS } from "../../utils/constants/Colors";
 import MenuItem from "@mui/material/MenuItem";
 
 import FormControl from "@mui/material/FormControl";
@@ -16,8 +17,10 @@ import {
   MenuPropsDefault,
   MenuPropsAppHeader,
   StyledSpan,
+  StyledMenuListSX,
 } from "./FilterDropDown.style";
 import { SelectOption } from "../../models/SelectOption";
+import ArrowDownIconDissable from "../../assets/icon-tsx/arrowDownIconDissable";
 
 type FilterDropDownProps = {
   selectOptions: SelectOption[];
@@ -44,7 +47,7 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
   onChange,
   disabled = false,
 }) => {
-  const DropDownStyleSx = isAppHeader
+  let DropDownStyleSx = isAppHeader
     ? { ...filterDropDownSharedSx, ...filterDropDownSxAppHeader }
     : { ...filterDropDownSharedSx, ...filterDropDownSxDefault };
   const FormControlStyleSx = isAppHeader
@@ -69,7 +72,19 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
     );
     return <StyledSpan>{matchingOption?.title ?? selected}</StyledSpan>;
   };
-
+  const icon = disabled ? ArrowDownIconDissable : ArrowDownIcon;
+  const styledMenuListDef = isAppHeader
+    ? {}
+    : {
+        MenuProps: {
+          MenuListProps: {
+            sx: StyledMenuListSX,
+          },
+        },
+      };
+  const dropDownStyleWithBackColor = disabled
+    ? { ...DropDownStyleSx, backgroundColor: COLORS.stringHover }
+    : DropDownStyleSx;
   return (
     // <Box sx={{ minWidth: 120 }}>
     <FormControl sx={{ ...FormControlStyleSx, ...formControlStyle }}>
@@ -78,10 +93,11 @@ const FilterDropDown: FC<FilterDropDownProps> = ({
         displayEmpty
         value={selectedFilterValue}
         onChange={handleChange}
-        IconComponent={ArrowDownIcon}
-        sx={{ ...DropDownStyleSx, ...filterDropDownStyle }}
+        IconComponent={icon}
+        sx={{ ...dropDownStyleWithBackColor, ...filterDropDownStyle }}
         renderValue={renderSelectedValue}
         disabled={disabled}
+        inputProps={styledMenuListDef}
       >
         {selectOptions.map((option, index) => {
           return (

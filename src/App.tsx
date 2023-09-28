@@ -8,8 +8,8 @@ import { selectOptions } from "./mockData/SelectOptionsDropDown";
 import { CssBaseline } from "@mui/material";
 import AppContext from "./context/AppContext";
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import AppHeader from "./components/AppHeader/AppHeader";
+import noDataQuery from "./assets/svg/noDataQuery.svg";
 import {
   AppContainer,
   ArticleContainer,
@@ -20,6 +20,10 @@ import {
   MainContent,
   TitleHeadLines,
   StyledP,
+  Loading,
+  styleH4,
+  StyledH4,
+  ImgNoData,
 } from "./App.styles";
 import DropdownBody from "./components/DropdownBody/DropdownBody";
 import x from "./assets/fonts/Roboto/Roboto-Regular.ttf";
@@ -60,6 +64,7 @@ function App() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const articlesBySource = countArticlesBySource(articles);
+  const [initialLoadCompleted, setInitialLoadCompleted] = useState(true);
   // const [debouncedSearchInput, setDebouncedSearchInput] = useState(searchInput);
   // const [recentSearches, setRecentSearches] = useState<string[]>([]);
   // const [searchInput, setSearchInput] = useState<string>("");
@@ -105,7 +110,8 @@ function App() {
     setArticles,
     setFirstRender,
     setHasMore,
-    shouldFetch
+    shouldFetch,
+    setInitialLoadCompleted
   );
   //// make 1 sec of 0 articels
   const resetArticlesAndPage = () => {
@@ -178,16 +184,26 @@ function App() {
               <TitleHeadLines>Top Headlines in </TitleHeadLines>
             ) : ( */}
             {/* <p style={{ fontSize: "14px" }}> {articles.length} seraches</p> */}
-            <StyledP>{articles.length} seraches</StyledP>
+            {initialLoadCompleted ? (
+              <TitleHeadLines>Top Headlines in Israel</TitleHeadLines>
+            ) : (
+              <StyledP>{articles.length} Total results</StyledP>
+            )}
             {/* )} */}
             <MainContent>
               <InfiniteScroll
+              
                 dataLength={articles.length}
                 next={() => setCurrentPage((prevPage) => prevPage + 1)}
                 hasMore={hasMore} // You can set a condition to stop loading more articles
-                loader={<h4>Loading...</h4>}
+                loader={<StyledH4>Loading...</StyledH4>}
               >
-                <ArticelsList atricleList={articles} />
+                {/* <ArticelsList atricleList={articles} /> */}
+                {hasMore === false ? (
+                  <ImgNoData src={noDataQuery} />
+                ) : (
+                  <ArticelsList atricleList={articles} />
+                )}
               </InfiniteScroll>
               <Dashboard
                 data={{

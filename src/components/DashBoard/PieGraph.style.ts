@@ -10,7 +10,8 @@ export const StyledPieGraphContainer = styled.div`
   border-radius: 20px;
   padding: 0px 20px 0px 20px;
   max-height: 320px;
-  height: 100%;
+  //height: 100%;
+  height: 320px;
 `;
 
 export const StyledHeader = styled.h1`
