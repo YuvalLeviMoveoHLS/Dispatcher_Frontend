@@ -199,16 +199,16 @@ function App() {
                 dataLength={articles.length}
                 next={() => setCurrentPage((prevPage) => prevPage + 1)}
                 hasMore={hasMore} // You can set a condition to stop loading more articles
-                loader={<StyledH4>Loading...</StyledH4>}
-                // loader={
-                //   <SpinnerCircular
-                //     secondaryColor={COLORS.secondary}
-                //     style={{
-                //       width: "1px",
-                //       color: COLORS.purple,
-                //     }}
-                //   />
-                // }
+                //loader={<StyledH4>Loading...</StyledH4>}
+                loader={
+                  <SpinnerCircular
+                    secondaryColor={COLORS.secondary}
+                    style={{
+                      width: "140px",
+                      color: COLORS.purple,
+                    }}
+                  />
+                }
               >
                 {/* <ArticelsList atricleList={articles} /> */}
                 {articles.length === 0 && !isLoading && !hasMore ? (
