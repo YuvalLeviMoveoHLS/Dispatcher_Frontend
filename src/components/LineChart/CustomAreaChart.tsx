@@ -1,8 +1,8 @@
 import { Area, AreaChart, Tooltip, XAxis, YAxis } from "recharts";
 import { COLORS } from "../../utils/constants/Colors";
-interface DataItem {
+export interface DataItem {
   name: string;
-  articles: number;
+  Articles: number;
 }
 
 interface CustomAreaChartProps {
@@ -45,10 +45,16 @@ export const CustomAreaChart: React.FC<CustomAreaChartProps> = ({ data }) => (
       }}
     />
     <YAxis tickLine={false} tick={false} axisLine={false} />
-    <Tooltip />
+    <Tooltip
+      itemStyle={{
+        color: COLORS.purple,
+        fontFamily: "Roboto-Regular, sans-serif",
+      }}
+      labelStyle={{ fontFamily: "Roboto-Regular, sans-serif" }}
+    />
     <Area
       type="monotone"
-      dataKey="articles"
+      dataKey="Articles"
       stroke={COLORS.primary}
       fill="url(#colorUv)"
       strokeWidth={3}

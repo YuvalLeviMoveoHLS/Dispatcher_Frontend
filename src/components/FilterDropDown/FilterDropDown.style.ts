@@ -125,15 +125,22 @@ export const StyledMenuListSX = {
     borderRadius: "6px",
     background: `${COLORS.purple}`,
   },
+
   "& .MuiMenuItem-root": {
-    color: `${COLORS.purple}`, // replace with your desired hover color
+    color: `${COLORS.purple}`,
   },
   "& .MuiMenuItem-root:hover": {
-    backgroundColor: `${COLORS.hoverMenuItem}`, // replace with your desired hover color
+    backgroundColor: `${COLORS.hoverMenuItem}`,
   },
-  "& .MuiMenuItem-root.Mui-selected, & .MuiMenuItem-root.Mui-selected:hover": {
-    backgroundColor: `${COLORS.hoverMenuItem}`, // replace with your desired hover color
+  "& .MuiMenuItem-root.Mui-selected": {
+    backgroundColor: `${COLORS.hoverMenuItem} !important`,
   },
+  // "& .MuiMenuItem-root.Mui-selected:hover": {
+  //   backgroundColor: `${COLORS.hoverMenuItem} !important`,
+  // },
+  // "& .Mui-focusVisible .MuiMenuItem-root.Mui-selected": {
+  //   backgroundColor: `${COLORS.hoverMenuItem} !important`,
+  // },
 };
 export const StyledMenuListSXAppheader = {
   width: "175px",

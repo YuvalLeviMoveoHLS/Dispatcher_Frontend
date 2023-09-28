@@ -9,14 +9,14 @@ import {
 import { generateSortedData } from "../../helpers/helpers";
 import { Article } from "../../models/ArticleInterface";
 import { CustomAreaChart } from "./CustomAreaChart";
-
+import { DataItem } from "./CustomAreaChart";
 interface LineChartProps {
   articles: Article[];
 }
 const LineChart: React.FC<LineChartProps> = ({ articles }) => {
   //const [data, setData] = useState<{ name: string; val: number }[]>([]);
 
-  const data = useMemo(() => {
+  const data: DataItem[] = useMemo(() => {
     return generateSortedData(articles);
   }, [articles]);
 

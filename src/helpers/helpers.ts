@@ -32,12 +32,12 @@ export const createSourcesOptions = (
 };
 
 const findRelevantMonths = (
-  monthData: { name: string; articles: number }[]
+  monthData: { name: string; Articles: number }[]
 ) => {
   // Find the month with the max value
   const maxMonth = monthData.reduce(
-    (acc, curr) => (curr.articles > acc.articles ? curr : acc),
-    { name: "", articles: 0 }
+    (acc, curr) => (curr.Articles > acc.Articles ? curr : acc),
+    { name: "", Articles: 0 }
   );
 
   // Find the index of the max month
@@ -87,7 +87,7 @@ export const generateSortedData = (articles: Article[]) => {
 
   const monthData = monthNames.map((name, index) => ({
     name,
-    articles: monthMap[index + 1],
+    Articles: monthMap[index + 1],
   }));
 
   return findRelevantMonths(monthData);
