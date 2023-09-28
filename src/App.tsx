@@ -203,10 +203,8 @@ function App() {
                 loader={
                   <SpinnerCircular
                     secondaryColor={COLORS.secondary}
-                    style={{
-                      width: "140px",
-                      color: COLORS.purple,
-                    }}
+                    size={"140px"}
+                    color={COLORS.purple}
                   />
                 }
               >
