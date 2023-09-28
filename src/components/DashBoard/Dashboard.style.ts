@@ -11,5 +11,5 @@ export const DashboardContainer = styled.div`
   top: 10px;
   position: fixed;
   top: 211px;
-  right: 180px;
+  right: 425px;
 `;

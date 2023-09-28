@@ -5,7 +5,7 @@ import ArticleCard from "./components/Article/ArticleCard";
 import SearchInput from "./components/Input/SearchInput";
 import { selectOptions } from "./mockData/SelectOptionsDropDown";
 //import { articles } from "./mockData/Article";
-import { CssBaseline } from "@mui/material";
+import { CircularProgress, CssBaseline } from "@mui/material";
 import AppContext from "./context/AppContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 import AppHeader from "./components/AppHeader/AppHeader";
@@ -45,7 +45,9 @@ import { Article } from "./models/ArticleInterface";
 import { useFetchArticles } from "./hooks/useFetchArticles";
 import { useSearch } from "./hooks/useSearch";
 import { useFetchSources } from "./hooks/useFetchSources";
-
+import { SpinnerCircular } from "spinners-react";
+import { COLORS } from "./utils/constants/Colors";
+import ClipLoader from "react-spinners/ClipLoader";
 function App() {
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
     null,
@@ -70,6 +72,7 @@ function App() {
   // const [searchInput, setSearchInput] = useState<string>("");
   //const articles = ArticelsMock.articles;
   const [shouldFetch, setShouldFetch] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useFetchSources(setUniqueSources);
 
@@ -111,7 +114,8 @@ function App() {
     setFirstRender,
     setHasMore,
     shouldFetch,
-    setInitialLoadCompleted
+    setInitialLoadCompleted,
+    setIsLoading
   );
   //// make 1 sec of 0 articels
   const resetArticlesAndPage = () => {
@@ -192,14 +196,22 @@ function App() {
             {/* )} */}
             <MainContent>
               <InfiniteScroll
-              
                 dataLength={articles.length}
                 next={() => setCurrentPage((prevPage) => prevPage + 1)}
                 hasMore={hasMore} // You can set a condition to stop loading more articles
                 loader={<StyledH4>Loading...</StyledH4>}
+                // loader={
+                //   <SpinnerCircular
+                //     secondaryColor={COLORS.secondary}
+                //     style={{
+                //       width: "1px",
+                //       color: COLORS.purple,
+                //     }}
+                //   />
+                // }
               >
                 {/* <ArticelsList atricleList={articles} /> */}
-                {hasMore === false ? (
+                {articles.length === 0 && !isLoading && !hasMore ? (
                   <ImgNoData src={noDataQuery} />
                 ) : (
                   <ArticelsList atricleList={articles} />

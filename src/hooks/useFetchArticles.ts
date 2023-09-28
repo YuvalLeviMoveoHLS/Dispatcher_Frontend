@@ -21,7 +21,8 @@ export const useFetchArticles = (
   setFirstRender: React.Dispatch<React.SetStateAction<boolean>>,
   setHasMore: React.Dispatch<React.SetStateAction<boolean>>,
   shouldFetch: boolean,
-  setInitialLoadCompleted: React.Dispatch<React.SetStateAction<boolean>>
+  setInitialLoadCompleted: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   useEffect(() => {
     if (!shouldFetch) return;
@@ -32,6 +33,7 @@ export const useFetchArticles = (
     ) {
       return;
     }
+    setIsLoading(true);
     if (firstRender) {
       const fetchDefaultData = async () => {
         try {
@@ -99,6 +101,7 @@ export const useFetchArticles = (
       };
       fetchData();
     }
+    setIsLoading(false);
   }, [
     debouncedSearchInput,
     selectedSortBy,

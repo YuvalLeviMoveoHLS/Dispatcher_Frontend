@@ -26,7 +26,7 @@ export const StyledDatepickerButton = styled.button`
   }
   color: ${(props) => (props.disabled ? COLORS.disable : COLORS.purple)};
   background-color: ${(props) =>
-    props.disabled ? COLORS.stringHover : COLORS.purple};
+    props.disabled ? COLORS.stringHover : COLORS.white};
 `;
 
 // export const StyledCalendarIcon = styled.img`

@@ -68,3 +68,9 @@ export const StyledP = styled.p`
   color: ${COLORS.articleDateAndSource};
   opacity: 0.5;
 `;
+export const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
